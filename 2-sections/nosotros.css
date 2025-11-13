@@ -12,19 +12,20 @@
     text-align: center;
 }
 .about-header-content .highlight-word{
-    color:#6fbbf5 ;
+    color:#74acdf ;
 }
 
 .about-section .section-title-nos {
-    font-size: 2.5em;
+    font-size: 1.7em;
     margin-bottom: 0.5rem;
-    color: #6fbbf5;
+    color: #041E32;
+    box-shadow: white;
     top: -5rem;
 }
 
 .about-text {
     color: white;
-    font-size: 1.5em;
+    font-size: 1.3em;
     line-height: 1.2;
     max-width: 45rem;
     margin: 0 auto;
