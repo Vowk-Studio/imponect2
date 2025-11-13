@@ -72,11 +72,13 @@
     padding: 1.5rem;
     border-radius: 1.5rem;
     border-left: none; 
+    
 }
 .contact-form-container,
 .contact-form-container .form-title,
 .contact-form-container p {
     text-align: left;
+    font-family: 'Roboto', sans-serif;
 }
 
 

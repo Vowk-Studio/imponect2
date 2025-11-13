@@ -171,7 +171,7 @@
 /* --- RESPONSIVE (MÓVILES) --- */
 @media (max-width: 600px) {
     #chat-window {
-        width: 95vw;
+        width: 80vw;
         height: 80vh;
         right: 10px;
         bottom: 70px;
