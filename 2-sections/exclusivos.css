@@ -120,7 +120,7 @@
 }
 
 .btn-exclusive-detail {
-    background-color: #fffb7de8;
+    background-color: #06c8fee8;
     color: white;
     border: none;
     padding: 0.5rem 1.5rem;
@@ -173,7 +173,7 @@
 
     .exclusive-item {
         flex: 1;
-        height: 28rem; /* 💥 Más grande en escritorio */
+        height: 28rem; 
     }
 
     .exclusive-overlay {
