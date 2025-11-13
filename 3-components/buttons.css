@@ -1,0 +1,42 @@
+.btn-submit, .btn-chat {
+    border: none;
+    border-radius: 1.3125rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.btn-submit {
+    background-color: #041E32; 
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.15s;
+}
+
+.btn-chat {
+    background-color: #3AC13F29; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(4px); 
+    color: black;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-button {
+    font-size: 1rem;
+}

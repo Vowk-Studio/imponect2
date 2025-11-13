@@ -1,0 +1,173 @@
+.about-section {
+    position: relative;
+    text-align: center;
+    padding: 0;
+    background-color: #194553; 
+}
+
+
+.about-header-content {
+    color: white;
+    padding: 4rem 1rem 8rem;
+    text-align: center;
+}
+.about-header-content .highlight-word{
+    color:#6fbbf5 ;
+}
+
+.about-section .section-title-nos {
+    font-size: 2.5em;
+    margin-bottom: 0.5rem;
+    color: #6fbbf5;
+    top: -5rem;
+}
+
+.about-text {
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.2;
+    max-width: 45rem;
+    margin: 0 auto;
+}
+
+
+.team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    padding: 0 1.25rem 5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.team-member {
+    width: 18rem;
+    text-align: center;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.member-photo-circle {
+    width: 11.25rem;
+    height: 11.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: -5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
+    background-color: white;
+}
+
+
+.member-photo-circle img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    max-width: none;
+    width: auto;
+    height: 140%;
+    object-fit: contain; 
+    transition: transform 0.3s ease;
+}
+
+
+.member-photo-circle .photo-nicolas {
+    transform: translate(-50%, -25%) scale(1.2); 
+}
+
+.member-photo-circle .photo-alan {
+    transform: translate(-50%, -35%) scale(1.55); 
+}
+
+.member-photo-circle .photo-diego {
+    transform: translate(-50%, -29%) scale(1.55); 
+}
+
+.member-name-area {
+    margin-top: 7rem;
+}
+
+.member-name {
+    background-color: #4dc3ff;
+    border-radius: 3rem;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.1rem 1.5rem;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    width: 10rem;
+    text-align: center;
+}
+
+.member-flag-icon {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    display: block;
+    margin: 4px auto 0;
+}
+
+.member-flag {
+    margin-top: 0.6rem;
+}
+
+.member-flag img {
+    width: 2.2rem;
+    height: auto;
+}
+
+/* --- ESCRITORIO --- */
+@media (min-width: 1024px) {
+
+    .about-section {
+        background-color: transparent;
+    }
+
+    .about-section .section-title-nos {
+        position: relative;
+        top: -4rem;
+    }
+
+    .about-section .about-text {
+        position: relative;
+        top: -4rem;
+        font-size: 1.6rem;
+    }
+
+    .about-header-content {
+        background-color: #194553;
+        padding: 6rem 1rem 10rem;
+        margin-bottom: -6rem;
+    }
+
+    .team-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+        max-width: 75rem;
+        margin: 0 auto;
+        padding-bottom: 6rem;
+    }
+
+    .team-member {
+        width: 15rem;
+        margin-top: 6rem;
+    }
+
+    .member-photo-circle {
+        width: 12.5rem;
+        height: 12.5rem;
+        top: -6rem;
+    }
+
+    .member-photo-circle img {
+        height: 140%;
+        width: auto;
+    }
+
+}

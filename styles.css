@@ -1,0 +1,15 @@
+/* styles.css */
+
+@import url('0-base/reset.css');
+@import url('1-layout/navbar.css');
+@import url('2-sections/hero.css');
+@import url('2-sections/services.css');
+@import url('2-sections/productos.css');
+@import url('2-sections/exclusivos.css');
+@import url('2-sections/modales.css');
+@import url('2-sections/nosotros.css');
+@import url('2-sections/casos-exito.css');
+@import url('2-sections/faq.css');
+@import url('2-sections/footer.css');
+@import url('2-sections/chat.css');
+@import url('3-components/buttons.css');

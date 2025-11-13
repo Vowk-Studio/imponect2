@@ -1,0 +1,167 @@
+.success-stories-section {
+  padding: 3.125rem 0;
+  background-color: #f7f7f7;
+}
+
+.section-header-text-center {
+  text-align: center;
+  align-items: center;
+}
+
+.success-stories-section .section-title-reseñas {
+  color: #041E32;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-stories-section .section-subtitle {
+  color: #093A49;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 2rem; 
+}
+
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.case-studies-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.case-studies-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.case-card {
+  flex: 0 0 100%; 
+  scroll-snap-align: center;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.case-header {
+  background-color: #194553;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: right;
+}
+
+.case-image-wrapper {
+  height: 18.5rem;
+  overflow: hidden;
+}
+
+.case-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case-footer {
+  height: 4rem;
+  background-color: white; 
+  box-shadow: black;
+}
+
+
+.case-body {
+  padding: 1.25rem;
+}
+
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #194553;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 5;
+  display: none; 
+}
+
+.carousel-btn:hover {
+  background-color: #317a8f;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .case-card {
+    flex: 0 0 calc((100% - 1.5rem) / 2);
+  }
+
+  .case-image-wrapper {
+    height: 22rem;
+  }
+
+  .success-stories-section .section-subtitle {
+    margin-bottom: 2.5rem;
+    font-size: 1.5;
+  }
+
+  .carousel-btn {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .case-card {
+    flex: 0 0 calc((100% - 3rem) / 3);
+  }
+
+
+
+  .case-image-wrapper {
+    height: 18rem; 
+  }
+
+  .success-stories-section .section-title-reseñas {
+    margin-bottom: 1rem;
+  }
+
+  .success-stories-section .section-subtitle {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
+
+  .carousel-btn {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+}
