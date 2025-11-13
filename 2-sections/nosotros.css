@@ -172,3 +172,109 @@
     }
 
 }
+/* --- Pantallas grandes 1440px --- */
+@media (min-width: 1440px) {
+
+    .about-header-content {
+        padding: 8rem 2rem 12rem;
+    }
+
+    .about-section .section-title-nos {
+        font-size: 3rem;
+        top: -5rem;
+        padding-bottom: 5rem;
+    }
+
+    .about-section .about-text {
+        font-size: 2.5rem;
+        max-width: 70rem;
+        top: -5rem;
+    }
+
+    .team-container {
+        gap: 4rem;
+        max-width: 90rem;
+        padding-bottom: 7rem;
+    }
+
+    .team-member {
+        width: 20rem;
+        margin-top: 7rem;
+    }
+
+    .member-photo-circle {
+        width: 16rem;
+        height: 16rem;
+        top: -9rem;
+    }
+
+    .member-photo-circle img {
+        height: 140%;
+    }
+
+    .member-name {
+        font-size: 1.5rem;
+        width: 12rem;
+        padding: 0.2rem 2rem;
+        margin-top: 1rem;
+    }
+
+    .member-flag-icon,
+    .member-flag img {
+        width: 2.5rem;
+        height: auto;
+    }
+}
+
+/* --- Pantallas ultra grandes 1920px --- */
+@media (min-width: 1920px) {
+
+    .about-header-content {
+        padding: 10rem 2.5rem 14rem;
+    }
+
+    .about-section .section-title-nos {
+        font-size: 3.5rem;
+        top: -6rem;
+    }
+
+    .about-section .about-text {
+        font-size: 2.5rem;
+        max-width: 80rem;
+        top: -6rem;
+    }
+
+    .team-container {
+        gap: 5rem;
+        max-width: 110rem;
+        padding-bottom: 8rem;
+    }
+
+    .team-member {
+        width: 24rem;
+        margin-top: 8rem;
+    }
+
+    .member-photo-circle {
+        width: 20rem;
+        height: 20rem;
+        top: -12rem;
+    }
+
+    .member-photo-circle img {
+        height: 150%;
+    }
+
+    .member-name {
+        font-size: 2rem;
+        width: 16rem;
+        padding: 0.3rem 2.5rem;
+        margin-top: 3rem;
+    }
+
+    .member-flag-icon,
+    .member-flag img {
+        width: 4rem;
+        height: auto;
+    }
+}

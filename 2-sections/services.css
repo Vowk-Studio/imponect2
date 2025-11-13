@@ -279,3 +279,127 @@
         min-width: 0;
     }
 }
+
+/* Puntos de quiebre grandes */
+
+/* Pantalla grande 1440px */
+@media (min-width: 1440px) {
+    .section-title {
+        font-size: 3rem;
+        padding: 2rem 1.25rem;
+    }
+
+
+    .services-container {
+        max-width: 95rem;
+        gap: 6rem;
+    }
+
+    .service-card {
+        padding: 2.5rem;
+        width: 38%;
+    }
+
+    .icon-large, .icon-large2 {
+        font-size: 3.5em;
+    }
+
+    .card-text-area{
+    font-size: 1.4rem;
+    }
+
+    .card-text-area2{
+    font-size: 1.4rem;
+    }
+
+    .service-name {
+        font-size: 1.4em;
+    }
+
+    .contact-form-container {
+        width: 40%;
+        padding: 2rem;
+        margin-left: 0;
+    }
+    .contact-form-container p{
+        font-size: 1.5rem;
+    }
+
+    .video-container {
+        width: 60%;
+        height: auto;
+        margin-left: 2rem;
+    }
+
+    .form-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .form-buttons button {
+        flex: 1; /* ambos botones iguales */
+    }
+
+    .form-title {
+        font-size: 2em;
+    }
+}
+
+/* Pantalla ultra grande 1920px */
+@media (min-width: 1920px) {
+    .section-title {
+        font-size: 3.5rem;
+        padding: 3rem 1.25rem;
+    }
+
+    .services-container {
+        max-width: 110rem;
+        gap: 7rem;
+    }
+
+    .service-card {
+        padding: 3rem;
+        width: 35%;
+    }
+    .card-text-area{
+    font-size: 1.7rem;
+    }
+
+    .card-text-area2{
+    font-size: 1.7rem;
+    }
+
+    .icon-large, .icon-large2 {
+        font-size: 5em;
+    }
+
+    .service-name {
+        font-size: 1.6em;
+    }
+
+    .contact-form-container {
+        width: 70%;
+        padding: 2.5rem;
+        margin-left: 0;
+    }
+
+    .video-container {
+        width: 80%;
+        height: auto;
+        margin-left: 2rem;
+    }
+
+    .form-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .form-buttons button {
+        flex: 1;
+    }
+
+    .form-title {
+        font-size: 2.5rem;
+    }
+}
+

@@ -40,3 +40,31 @@
 .icon-button {
     font-size: 1rem;
 }
+
+/* Pantalla grande 1024px */
+@media (min-width: 1024px) {
+    .btn-submit, .btn-chat {
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+        font-size: 1.05rem;
+    }
+}
+
+/* Pantalla muy grande 1440px */
+@media (min-width: 1440px) {
+    .btn-submit, .btn-chat {
+        padding-top: 0.95rem;
+        padding-bottom: 0.95rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Pantalla ultra grande 1920px */
+@media (min-width: 1920px) {
+    .btn-submit, .btn-chat {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 1.15rem;
+    }
+}
+

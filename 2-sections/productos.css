@@ -56,17 +56,21 @@
 
 
 .btn-catalog-download {
-    display: block; 
+    display: inline-block; /* que se adapte al contenido */
     margin: 1rem auto 2rem auto; 
-    width: 90%;
-    max-width: 18.75rem;  
-    z-index: 1; 
     color: #DCCA65;
     border-radius: 2rem;
     background-color: #093A49;
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem; /* vertical y horizontal */
     font-size: 1em;
-    
+    white-space: nowrap; /* evita que el texto se divida */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn-catalog-download:hover {
+    background-color: #07406a;
+    transform: scale(1.05);
 }
   
 .products-carousel-container {
@@ -156,15 +160,11 @@
     }
     
     .btn-catalog-download {
-        position: absolute; 
-        z-index: 1; 
-        color: #DCCA65;
-        border-radius: 2rem;
+        font-size: 1.05em;
+        padding: 0.6rem 1.75rem;
         right: 2rem;
         top: 5rem;
-        background-color: #093A49;
-        padding: 0.5rem;
-        font-size: 1em;
+        position: absolute;
     }
 
     
@@ -173,7 +173,7 @@
         max-width: 87.5rem;
         margin: 3.125rem auto;
         padding: 0; 
-        height: 28.125rem;
+        height: 28rem;
         gap: 0.625rem;
     }
     
@@ -209,5 +209,124 @@
 
     .product-item:hover .product-overlay {
         background: linear-gradient(to top, rgba(0, 123, 255, 0.8) 0%, rgba(0, 0, 0, 0) 100%); 
+    }
+}
+/* --- Pantallas grandes 1440px --- */
+@media (min-width: 1440px) {
+
+    .section-title-productos {
+        font-size: 2.5em;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-catalog-download {
+        font-size: 1.1em;
+        padding: 0.65rem 2rem;
+        right: 3rem;
+        top: 5rem;
+    }
+
+    .products-carousel-container {
+        max-width: 1100px;
+        height: 32rem;
+        gap: 1rem;
+    }
+
+    .product-item {
+        width: 16%;
+        height: 100%;
+    }
+
+    .product-item:nth-child(-n+2) {
+        width: 37%;
+    }
+
+    .products-carousel-container:hover .product-item {
+        width: 16%;
+    }
+
+    .products-carousel-container .product-item:hover {
+        width: 55% !important;
+    }
+
+    .product-name {
+        font-size: 1.7em;
+    }
+
+    .product-desc {
+        font-size: 1em;
+    }
+
+    .btn-product-detail {
+        font-size: 1.05em;
+        padding: 0.625rem 1rem;
+    }
+
+    .product-features-grid h4 {
+        font-size: 1.1em;
+    }
+
+    .product-features-grid li {
+        font-size: 1em;
+    }
+}
+
+/* --- Pantallas ultra grandes 1920px --- */
+@media (min-width: 1920px) {
+
+    .section-title-productos {
+        font-size: 3em;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-catalog-download {
+        font-size: 1.2em;
+        padding: 0.75rem 2.25rem;
+        right: 4rem;
+        top: 7rem;
+    }
+
+    .products-carousel-container {
+        max-width: 1400px;
+        height: 36rem;
+        gap: 1.25rem;
+    }
+
+    .product-item {
+        width: 17%;
+        height: 100%;
+    }
+
+    .product-item:nth-child(-n+2) {
+        width: 40%;
+    }
+
+    .products-carousel-container:hover .product-item {
+        width: 17%;
+    }
+
+    .products-carousel-container .product-item:hover {
+        width: 60% !important;
+    }
+
+    .product-name {
+        font-size: 2em;
+    }
+
+    .product-desc {
+        font-size: 1.1em;
+    }
+
+    .btn-product-detail {
+        font-size: 1.1em;
+        padding: 0.75rem 1.125rem;
+    }
+
+    .product-features-grid h4 {
+        font-size: 1.2em;
+    }
+
+    .product-features-grid li {
+        font-size: 1.05em;
     }
 }

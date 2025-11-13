@@ -70,7 +70,7 @@
 }
 
 .footer-bottom p {
-    color: #DCCA; 
+    color: #DCCA65; 
     font-weight: bold;
     margin: 0;
 }
@@ -104,5 +104,102 @@
     
     .footer-icon {
         margin: 0; /* 🔹 elimina el margen lateral sobrante */
+    }
+}
+
+
+/* --- Escritorio estándar 1024px --- */
+@media (min-width: 1024px) {
+    .main-footer {
+        padding: 50px 6%;
+        font-size: 1rem;
+    }
+
+    .footer-content-container {
+        max-width: 1400px;
+        margin-bottom: 40px;
+    }
+
+    .footer-left, .footer-right {
+        flex-basis: 45%;
+        padding: 15px;
+    }
+
+    .footer-left h4, .footer-right h4 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+    }
+
+    .footer-icon {
+        font-size: 2.5rem;
+        margin-left: 25px;
+    }
+
+    .footer-bottom {
+        font-size: 0.95rem;
+    }
+}
+
+/* --- Pantallas grandes 1440px --- */
+@media (min-width: 1440px) {
+    .main-footer {
+        padding: 60px 8%;
+        font-size: 1.1rem;
+    }
+
+    .footer-content-container {
+        max-width: 1600px;
+        margin-bottom: 50px;
+    }
+
+    .footer-left h4, .footer-right h4 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info p {
+        font-size: 1.4rem;
+    }
+
+    .footer-icon {
+        font-size: 2.8rem;
+        margin-left: 30px;
+    }
+
+    .footer-bottom {
+        font-size: 1.4rem;
+    }
+}
+
+/* --- Pantallas ultra grandes 1920px --- */
+@media (min-width: 1920px) {
+    .main-footer {
+        padding: 70px 10%;
+        font-size: 1.2rem;
+    }
+
+    .footer-content-container {
+        max-width: 1800px;
+        margin-bottom: 60px;
+    }
+
+    .footer-left h4, .footer-right h4 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info p {
+        font-size: 1.2rem;
+    }
+
+    .footer-icon {
+        font-size: 3.2rem;
+        margin-left: 35px;
+    }
+
+    .footer-bottom {
+        font-size: 1.1rem;
     }
 }

@@ -159,7 +159,7 @@
 }
 
 .exclusive-section .section-subtitle {
-    font-size: 1.1em;
+    font-size: 1.3em;
     color: var(--color-text-dark);
     margin-bottom: 1rem;
 }
@@ -185,4 +185,85 @@
     .exclusive-item:hover .exclusive-overlay {
         opacity: 1;
     }
+}
+/* Pantalla grande 1440px */
+@media (min-width: 1440px) {
+  .exclusive-header {
+    border-radius: 4rem;
+  }
+
+  .exclusive-section .section-title-exclusivos {
+    font-size: 3rem;
+  }
+
+  .exclusive-section .section-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .exclusive-images-container {
+    gap: 3rem;
+    max-width: 100rem;
+  }
+
+  .exclusive-item {
+    height: 32rem; /* tarjetas más grandes */
+  }
+
+  .exclusive-name {
+    font-size: 2rem;
+  }
+
+  .exclusive-desc {
+    font-size: 1.2rem;
+  }
+
+  .exclusive-features {
+    font-size: 1rem;
+  }
+
+  .btn-exclusive-detail {
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Pantalla ultra grande 1920px */
+@media (min-width: 1920px) {
+  .exclusive-header {
+    padding: 1.2rem 4rem;
+  }
+
+  .exclusive-section .section-title-exclusivos {
+    font-size: 4rem;
+  }
+
+  .exclusive-section .section-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .exclusive-images-container {
+    gap: 4rem;
+    max-width: 120rem;
+  }
+
+  .exclusive-item {
+    height: 36rem; /* tarjetas aún más grandes */
+  }
+
+  .exclusive-name {
+    font-size: 2.3rem;
+  }
+
+  .exclusive-desc {
+    font-size: 1.3rem;
+  }
+
+  .exclusive-features {
+    font-size: 1.1rem;
+  }
+
+  .btn-exclusive-detail {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+  }
 }
