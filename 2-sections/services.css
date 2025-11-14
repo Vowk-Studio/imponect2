@@ -38,23 +38,30 @@
 .card-text-area {
     order: 2; 
 }
+.card-text-area p, .card-text-area2 p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
 
 .icon-large {
     font-size: 2.5em;
     color: #093A49;
     margin-bottom: 0.3125rem;
+    
 }
 .card-text-area2{
+    text-align: center;
     order: 2;
-    color: #B67519;
+    
 }
 .icon-large2{
     font-size: 2.5em;
     color: #B67519;
 }
-.service-name {
-    font-weight: bold;
+.service-name, .service-name2 {
     font-size: 1.1em;
+    font-family: 'Sora', sans-serif;
 }
 
 .content-row {
@@ -229,7 +236,7 @@
         flex-direction: row; 
         width: 38%; 
         align-items: center;
-        text-align: left;
+        text-align: center;
         padding: 1.875rem;
     }
 
@@ -246,9 +253,7 @@
     #importacion .card-icon-area { order: 1; } 
     #importacion .card-text-area { order: 2; } 
 
-    .card-text-area {
-        max-width: 70%;
-    }
+
 
    
     .content-row {
@@ -261,7 +266,7 @@
     .contact-form-container{
         width: 35%; 
         height: auto; 
-        margin-left: 4rem;
+        margin-left: 5rem;
     }
     .video-container{
         width: 50%;
@@ -304,22 +309,22 @@
         font-size: 3.5em;
     }
 
-    .card-text-area{
-    font-size: 1.4rem;
-    }
-
-    .card-text-area2{
-    font-size: 1.4rem;
+    .card-text-area p, .card-text-area2 p{
+    font-size: 1.2rem;
     }
 
     .service-name {
         font-size: 1.4em;
     }
 
+    .service-name2 {
+        font-size: 1.4em;
+    }
+
     .contact-form-container {
         width: 40%;
         padding: 2rem;
-        margin-left: 0;
+        margin-left: 1.2rem;
     }
     .contact-form-container p{
         font-size: 1.5rem;
@@ -359,14 +364,10 @@
 
     .service-card {
         padding: 3rem;
-        width: 35%;
+        width: 31%;
     }
-    .card-text-area{
-    font-size: 1.7rem;
-    }
-
-    .card-text-area2{
-    font-size: 1.7rem;
+    .card-text-area p, .card-text-area2 p{
+    font-size: 1.3rem;
     }
 
     .icon-large, .icon-large2 {
@@ -374,7 +375,10 @@
     }
 
     .service-name {
-        font-size: 1.6em;
+        font-size: 1.7em;
+    }
+        .service-name2 {
+        font-size: 1.7em;
     }
 
     .contact-form-container {

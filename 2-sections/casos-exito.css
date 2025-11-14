@@ -104,11 +104,6 @@
   right: 0;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .case-card {
-    flex: 0 0 calc((100% - 1rem) / 2); /* 2 tarjetas */
-  }
-}
 
 /* Escritorio estándar */
 @media (min-width: 1024px) {

@@ -8,7 +8,7 @@
 #chat-button {
     background-color: var(--color-primary, #007bff);
     color: #fff;
-    padding: 0.9375rem 1.25rem;
+    padding: 0.9375rem 2rem; 
     border: none;
     border-radius: 3.125rem;
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
@@ -139,7 +139,7 @@
 
 .whatsapp-float {
     position: fixed;
-    bottom: 6rem;
+    bottom: 5.5rem; 
     right: 1.25rem;
     width: 3.4375rem;
     height: 3.4375rem;
@@ -170,7 +170,8 @@
     }
 
     .whatsapp-float {
-        bottom: 7.5rem;
+        /* AJUSTE CLAVE: Acercamos el botón de WhatsApp al botón de chat */
+        bottom: 4.5rem; 
         right: 0.9375rem;
         width: 3.125rem;
         height: 3.125rem;
@@ -178,7 +179,7 @@
     }
 
     #chat-button {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 1.25rem; 
         font-size: 0.9375rem;
     }
 }
@@ -190,12 +191,12 @@
     }
 
     #chat-button {
-        padding: 1rem 1.25rem;
+        padding: 0.7rem 2.25rem; 
         font-size: 1rem;
     }
 
     .whatsapp-float {
-        bottom: 6.25rem;
+        bottom: 5rem; 
         right: 1.5rem;
         width: 3.75rem;
         height: 3.75rem;
@@ -210,12 +211,12 @@
     }
 
     #chat-button {
-        padding: 1rem 1.5rem;
-        font-size: 1.125rem;
+        padding: 0.7rem 2.5rem; 
+        font-size: 1.4rem;
     }
 
     .whatsapp-float {
-        bottom: 6.5rem;
+        bottom: 5rem; 
         right: 2rem;
         width: 4rem;
         height: 4rem;
@@ -230,12 +231,12 @@
     }
 
     #chat-button {
-        padding: 1.125rem 1.5rem;
+        padding: 1.125rem 2.75rem; 
         font-size: 1.25rem;
     }
 
     .whatsapp-float {
-        bottom: 6.75rem;
+        bottom: 6.25rem; 
         right: 2.5rem;
         width: 4.5rem;
         height: 4.5rem;

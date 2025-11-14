@@ -156,6 +156,9 @@
         flex-direction: row;
         justify-content: space-between;
         padding: 0.9375rem 3.125rem;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
     }
 
     .menu-toggle-btn {
@@ -163,8 +166,8 @@
     }
 
     .menu-list {
-        display: flex !important; 
-        position: static; 
+        display: flex !important;
+        position: static;
         flex-direction: row;
         width: auto;
         gap: 0.9375rem;
@@ -172,7 +175,7 @@
         box-shadow: none;
         background: none;
         padding: 0;
-        top: initial; 
+        top: initial;
     }
 
     .menu-list li {
@@ -186,7 +189,7 @@
     }
 
     .separator {
-        display: inline-block; 
+        display: inline-block;
         color: #ccc;
     }
 
@@ -202,6 +205,7 @@
         width: 4rem;
     }
 }
+
 
 /* Pantallas grandes 1440px */
 @media (min-width: 1440px) {
