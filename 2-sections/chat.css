@@ -170,7 +170,6 @@
     }
 
     .whatsapp-float {
-        /* AJUSTE CLAVE: Acercamos el botón de WhatsApp al botón de chat */
         bottom: 4.5rem; 
         right: 0.9375rem;
         width: 3.125rem;

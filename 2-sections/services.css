@@ -285,9 +285,6 @@
     }
 }
 
-/* Puntos de quiebre grandes */
-
-/* Pantalla grande 1440px */
 @media (min-width: 1440px) {
     .section-title {
         font-size: 3rem;
@@ -342,7 +339,7 @@
     }
 
     .form-buttons button {
-        flex: 1; /* ambos botones iguales */
+        flex: 1; 
     }
 
     .form-title {
@@ -350,7 +347,7 @@
     }
 }
 
-/* Pantalla ultra grande 1920px */
+
 @media (min-width: 1920px) {
     .section-title {
         font-size: 3.5rem;

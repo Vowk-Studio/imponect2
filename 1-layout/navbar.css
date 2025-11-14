@@ -27,7 +27,7 @@
     font-weight: bold;
 }
 
-/* IMPORTANTE: Eliminamos el 'display: none;' global. */
+
 .menu-list {
     display: flex; 
     flex-direction: column;
@@ -54,7 +54,7 @@
     display: none; 
 }
 
-/* Botón menú hamburguesa solo en móviles */
+
 .menu-toggle-btn {
     display: none;
     font-size: 2rem;
@@ -65,7 +65,7 @@
     z-index: 101;
 }
 
-/* Móviles (Estilos base Mobile First) */
+
 @media (max-width: 1023px) {
     .navbar {
         align-items: center;
@@ -103,10 +103,10 @@
         right: 1rem;
     }
 
-    /* Ocultar el menú en mobile (no activo) */
+    
     .menu-list {
         position: fixed;
-        top: -100%; /* Oculto fuera de pantalla */
+        top: -100%; 
         left: 50%;
         transform: translateX(-50%);
         flex-direction: column;
@@ -121,7 +121,7 @@
         z-index: 100;
     }
 
-    /* Muestra el menú al agregar la clase 'active' */
+    
     .menu-list.active {
         top: 5rem; 
     }
@@ -150,7 +150,7 @@
     }
 }
 
-/* Escritorio (Sobrescribe los estilos móviles) */
+
 @media (min-width: 1024px) {
     .navbar {
         flex-direction: row;
@@ -206,8 +206,6 @@
     }
 }
 
-
-/* Pantallas grandes 1440px */
 @media (min-width: 1440px) {
   .navbar {
     padding: 1rem 6rem;
@@ -226,7 +224,7 @@
   }
 }
 
-/* Pantallas extra grandes 1920px */
+
 @media (min-width: 1920px) {
   .navbar {
     padding: 1rem 10rem;

@@ -211,7 +211,7 @@
         background: linear-gradient(to top, rgba(0, 123, 255, 0.8) 0%, rgba(0, 0, 0, 0) 100%); 
     }
 }
-/* --- Pantallas grandes 1440px --- */
+
 @media (min-width: 1440px) {
 
     .section-title-productos {
@@ -271,7 +271,7 @@
     }
 }
 
-/* --- Pantallas ultra grandes 1920px --- */
+
 @media (min-width: 1920px) {
 
     .section-title-productos {

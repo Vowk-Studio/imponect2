@@ -40,39 +40,38 @@
     box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
 }
 
-/* Escritorio base */
+
 @media (min-width: 1024px) {
     .faq-container {
         max-width: 62.5rem; 
     }
 }
 
-/* Pantalla grande 1440px */
 @media (min-width: 1440px) {
     .faq-section .section-title-faq {
-        font-size: 2rem;         /* Título más grande */
-        margin-top: 3rem;        /* Espacio arriba del título */
-        margin-bottom: 4rem;     /* Más espacio debajo del título */
-        color: #093A49;          /* Color aplicado correctamente */
+        font-size: 2rem;         
+        margin-top: 3rem;        
+        margin-bottom: 4rem;     
+        color: #093A49;          
     }
 
     .faq-container {
-        max-width: 75rem;        /* Contenedor más ancho */
+        max-width: 75rem;        
     }
 
     .faq-question-box {
-        padding: 2rem 2.5rem;    /* Más espacio dentro de la caja */
-        font-size: 1.6rem;       /* Texto más grande */
-        border-radius: 1rem;     /* Bordes más redondeados */
+        padding: 2rem 2.5rem;    
+        font-size: 1.6rem;       
+        border-radius: 1rem;     
     }
 }
 
-/* Pantalla ultra grande 1920px */
+
 @media (min-width: 1920px) {
     .faq-section .section-title-faq {
         font-size: 3.5rem;
-        margin-top: 4rem;        /* Espacio extra arriba */
-        margin-bottom: 6rem;     /* Espacio extra debajo */
+        margin-top: 4rem;        
+        margin-bottom: 6rem;     
         color: #093A49;
     }
 

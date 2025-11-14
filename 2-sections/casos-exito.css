@@ -1,10 +1,9 @@
-/* Sección principal */
 .success-stories-section {
   padding: 3.125rem 0;
   background-color: var(--color-secondary);
 }
 
-/* Títulos */
+
 .success-stories-section .section-title-reseñas {
   color: #041E32;
   text-align: center;
@@ -19,7 +18,7 @@
   margin-bottom: 2rem;
 }
 
-/* Contenedor del carrusel */
+
 .carousel-wrapper {
   position: relative;
   max-width: 1200px;
@@ -28,7 +27,7 @@
   padding: 0 1rem;
 }
 
-/* Contenedor de tarjetas */
+
 .case-studies-container {
   display: flex;
   overflow-x: auto;
@@ -74,7 +73,7 @@
   object-fit: contain;
 }
 
-/* Botones del carrusel */
+
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -105,10 +104,10 @@
 }
 
 
-/* Escritorio estándar */
+
 @media (min-width: 1024px) {
   .case-card {
-    flex: 0 0 calc((100% - 2rem) / 3); /* 3 tarjetas */
+    flex: 0 0 calc((100% - 2rem) / 3); 
     aspect-ratio: 3 / 4;
   }
   .carousel-btn {
@@ -118,7 +117,7 @@
   }
 }
 
-/* Pantallas grandes 1440px */
+
 @media (min-width: 1440px) {
   .carousel-wrapper {
     max-width: 1300px;
@@ -130,11 +129,11 @@
     font-size: 2rem;
   }
   .case-card {
-    flex: 0 0 calc((100% - 2.5rem) / 3); /* tarjetas más grandes */
+    flex: 0 0 calc((100% - 2.5rem) / 3); 
   }
 }
 
-/* Pantallas ultra grandes 1920px */
+
 @media (min-width: 1920px) {
   .carousel-wrapper {
     max-width: 1500px;
@@ -146,6 +145,6 @@
     font-size: 2.5rem;
   }
   .case-card {
-    flex: 0 0 calc((100% - 3rem) / 3); /* tarjetas más grandes */
+    flex: 0 0 calc((100% - 3rem) / 3); 
   }
 }

@@ -186,7 +186,7 @@
         opacity: 1;
     }
 }
-/* Pantalla grande 1440px */
+
 @media (min-width: 1440px) {
   .exclusive-header {
     border-radius: 4rem;
@@ -206,7 +206,7 @@
   }
 
   .exclusive-item {
-    height: 32rem; /* tarjetas más grandes */
+    height: 32rem; 
   }
 
   .exclusive-name {
@@ -227,7 +227,7 @@
   }
 }
 
-/* Pantalla ultra grande 1920px */
+
 @media (min-width: 1920px) {
   .exclusive-header {
     padding: 1.2rem 4rem;
@@ -247,7 +247,7 @@
   }
 
   .exclusive-item {
-    height: 36rem; /* tarjetas aún más grandes */
+    height: 36rem; 
   }
 
   .exclusive-name {

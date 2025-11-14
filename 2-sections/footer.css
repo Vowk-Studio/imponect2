@@ -75,7 +75,7 @@
     margin: 0;
 }
 
-/* -------- Estilos móviles -------- */
+
 @media (max-width: 768px) {
     .footer-content-container {
         flex-direction: column; 
@@ -91,24 +91,22 @@
     }
 
     .footer-right h4 {
-        text-align: center; /* 🔹 asegura que el título esté centrado */
+        text-align: center; 
     }
 
     .social-links {
         display: flex; 
         justify-content: center;
         align-items: center;
-        gap: 20px; /* espacio entre iconos */
+        gap: 20px; 
         margin-top: 10px;
     }
     
     .footer-icon {
-        margin: 0; /* 🔹 elimina el margen lateral sobrante */
+        margin: 0; 
     }
 }
 
-
-/* --- Escritorio estándar 1024px --- */
 @media (min-width: 1024px) {
     .main-footer {
         padding: 50px 6%;
@@ -144,7 +142,7 @@
     }
 }
 
-/* --- Pantallas grandes 1440px --- */
+
 @media (min-width: 1440px) {
     .main-footer {
         padding: 60px 8%;
@@ -174,7 +172,7 @@
     }
 }
 
-/* --- Pantallas ultra grandes 1920px --- */
+
 @media (min-width: 1920px) {
     .main-footer {
         padding: 70px 10%;

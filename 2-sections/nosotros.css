@@ -122,7 +122,7 @@
     height: auto;
 }
 
-/* --- ESCRITORIO --- */
+
 @media (min-width: 1024px) {
 
     .about-section {
@@ -172,7 +172,7 @@
     }
 
 }
-/* --- Pantallas grandes 1440px --- */
+
 @media (min-width: 1440px) {
 
     .about-header-content {
@@ -226,7 +226,7 @@
     }
 }
 
-/* --- Pantallas ultra grandes 1920px --- */
+
 @media (min-width: 1920px) {
 
     .about-header-content {
