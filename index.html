@@ -125,7 +125,7 @@
         
         <div class="video-container">
             <video id="institutional-video" class="institutional-video" muted loop preload="auto" poster="poster-video.jpg">
-                <source src="video-institucional.mp4" type="video/mp4">
+                <source src="assets/video-institucional.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
             <div class="video-controls-overlay">
@@ -167,7 +167,11 @@
                             </ul>
                         </div>
                     </div>
+                <div class="button-wrapper">
                     <button class="btn-product-detail">Ver Catálogo</button>
+                    <button class="btn-product-detail">Ficha Técnica</button>
+                    <button class="btn-product-detail">Consultar Stock</button>
+                </div>
                 </div>
                 <img src="assets/productos-1.jpg" alt="Cámara Endoscópica de precisión">
             </div>
@@ -186,7 +190,11 @@
                             </ul>
                         </div>
                     </div>
+                <div class="button-wrapper">
+                    <button class="btn-product-detail">Ver Catálogo</button>
+                    <button class="btn-product-detail">Ficha Técnica</button>
                     <button class="btn-product-detail">Consultar Stock</button>
+                </div>
                 </div>
                 <img src="assets/producto-2.jpg" alt="Inflador Portátil">
             </div>
@@ -216,7 +224,11 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="btn-product-detail">Solicitar Muestras</button>
+                <div class="button-wrapper">
+                    <button class="btn-product-detail">Ver Catálogo</button>
+                    <button class="btn-product-detail">Ficha Técnica</button>
+                    <button class="btn-product-detail">Consultar Stock</button>
+                </div>
                 </div>
                 <img src="assets/producto-3.jpg" alt="vincha led">
             </div>
@@ -246,7 +258,11 @@
                             </ul>
                         </div>
                     </div>
+                <div class="button-wrapper">
+                    <button class="btn-product-detail">Ver Catálogo</button>
                     <button class="btn-product-detail">Ficha Técnica</button>
+                    <button class="btn-product-detail">Consultar Stock</button>
+                </div>
                 </div>
                 <img src="assets/producto-4.jpg" alt="Chaleco LED">
             </div>
@@ -307,31 +323,31 @@ Regulable en altura y apertura de las piernas.</p>
         
         <div class="team-member" aria-label="Miembro del equipo, Nicolás">
             <div class="member-photo-circle">
-                <img src="assets/nosotros-img1.jpg" alt="Foto de Nicolás, cofundador de Imponect" loading="lazy" class="photo-nicolas">
+                <img src="assets/nosotros-img1.jpg"  loading="lazy" alt="Foto de Nicolás, cofundador de Imponect" loading="lazy" class="photo-nicolas">
             </div>
             <div class="member-name-area">
                 <h3 class="member-name">NICOLÁS</h3>
-                <img src="assets/bandera.png" alt="Bandera de Argentina" class="member-flag-icon">
+                <img src="assets/bandera.png"  loading="lazy" alt="Bandera de Argentina" class="member-flag-icon">
             </div>
         </div>
 
         <div class="team-member" aria-label="Miembro del equipo, Alan">
             <div class="member-photo-circle">
-                <img src="assets/nosotros-img2.jpg" alt="Foto de Alan, ejecutivo de cuentas de Imponect" loading="lazy" class="photo-alan">
+                <img src="assets/nosotros-img2.jpg"  loading="lazy" alt="Foto de Alan, ejecutivo de cuentas de Imponect" loading="lazy" class="photo-alan">
             </div>
             <div class="member-name-area">
                 <h3 class="member-name">ALAN</h3>
-                <img src="assets/bandera.png" alt="Bandera de Argentina" class="member-flag-icon">
+                <img src="assets/bandera.png"  loading="lazy" alt="Bandera de Argentina" class="member-flag-icon">
             </div>
         </div>
 
         <div class="team-member" aria-label="Miembro del equipo, Diego">
             <div class="member-photo-circle">
-                <img src="assets/nosotros-img3.jpg" alt="Foto de Diego, director de logística de Imponect" loading="lazy" class="photo-diego">
+                <img src="assets/nosotros-img3.jpg"  loading="lazy" alt="Foto de Diego, director de logística de Imponect" loading="lazy" class="photo-diego">
             </div>
             <div class="member-name-area">
                 <h3 class="member-name">DIEGO</h3>
-                <img src="assets/bandera.png" alt="Bandera de Argentina" class="member-flag-icon">
+                <img src="assets/bandera.png"  loading="lazy" alt="Bandera de Argentina" class="member-flag-icon">
             </div>
         </div>
         
@@ -341,43 +357,88 @@ Regulable en altura y apertura de las piernas.</p>
 
 <section class="success-stories-section">
   <div class="container">
-    <header class="section-header-text-center">
+    <div class="section-header-text-center">
       <h2 class="section-title-reseñas">CASOS DE ÉXITO</h2>
       <p class="section-subtitle">Historias reales, resultados reales</p>
-    </header>
+    </div>
 
     <div class="carousel-wrapper">
       <button class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
 
       <div class="case-studies-container">
         <article class="case-card">
-          <div class="case-image-wrapper">
-            <img src="assets/reseñas.PNG" alt="Caso de éxito 1" class="case-image">
-          </div>
+            <div class="case-top-info">
+                <h3 class="case-title">Título del caso</h3>
+                <p class="case-subtitle">Subtítulo o descripción breve</p>
+            </div>
+
+            <div class="case-image-wrapper">
+                <img src="assets/reseñas.PNG"  loading="lazy" alt="Caso de éxito 1" class="case-image">
+            </div>
+
+            <div class="case-bottom-info">
+                <p class="case-extra">Información adicional</p>
+            </div>
         </article>
 
         <article class="case-card">
-          <div class="case-image-wrapper">
-            <img src="assets/reseñas.PNG" alt="Caso de éxito 2" class="case-image">
-          </div>
+            <div class="case-top-info">
+                <h3 class="case-title">Título del caso</h3>
+                <p class="case-subtitle">Subtítulo o descripción breve</p>
+            </div>
+
+            <div class="case-image-wrapper">
+                <img src="assets/reseñas2.PNG"  loading="lazy" alt="Caso de éxito 1" class="case-image">
+            </div>
+
+            <div class="case-bottom-info">
+                <p class="case-extra">Información adicional</p>
+            </div>
         </article>
 
         <article class="case-card">
-          <div class="case-image-wrapper">
-            <img src="assets/reseñas3.PNG" alt="Caso de éxito 3" class="case-image">
-          </div>
+            <div class="case-top-info">
+                <h3 class="case-title">Título del caso</h3>
+                <p class="case-subtitle">Subtítulo o descripción breve</p>
+            </div>
+
+            <div class="case-image-wrapper">
+                <img src="assets/reseñas3.PNG"  loading="lazy" alt="Caso de éxito 1" class="case-image">
+            </div>
+
+            <div class="case-bottom-info">
+                <p class="case-extra">Información adicional</p>
+            </div>
         </article>
 
         <article class="case-card">
-          <div class="case-image-wrapper">
-            <img src="assets/reseñas4.PNG" alt="Caso de éxito 4" class="case-image">
-          </div>
+            <div class="case-top-info">
+                <h3 class="case-title">Título del caso</h3>
+                <p class="case-subtitle">Subtítulo o descripción breve</p>
+            </div>
+
+            <div class="case-image-wrapper">
+                <img src="assets/reseñas4.PNG"  loading="lazy" alt="Caso de éxito 1" class="case-image">
+            </div>
+
+            <div class="case-bottom-info">
+                <p class="case-extra">Información adicional</p>
+            </div>
         </article>
 
         <article class="case-card">
-          <div class="case-image-wrapper">
-            <img src="assets/reseñas5.PNG" alt="Caso de éxito 5" class="case-image">
-          </div>
+            <div class="case-top-info">
+                <h3 class="case-title">Título del caso</h3>
+                <p class="case-subtitle">Subtítulo o descripción breve</p>
+            </div>
+
+            <div class="case-image-wrapper">
+                <img src="assets/reseñas5.PNG"  loading="lazy" alt="Caso de éxito 1" class="case-image">
+            </div>
+
+            <div class="case-bottom-info">
+                <p class="case-extra">Información adicional</p>
+            </div>
         </article>
       </div>
 
@@ -523,7 +584,8 @@ Regulable en altura y apertura de las piernas.</p>
 </footer>
 
 
-   <div id="chat-widget">  <button id="chat-button" aria-expanded="false" aria-controls="chat-window">
+<div id="chat-widget">
+    <button id="chat-button" aria-expanded="false" aria-controls="chat-window">
         💬 Chatear
     </button>
     
@@ -532,15 +594,18 @@ Regulable en altura y apertura de las piernas.</p>
             <h3>Imponect Soporte</h3>
             <button class="close-chat" aria-label="Cerrar ventana de chat">&times;</button>
         </header>
-        <div class="chat-body">
+        
+        <div class="chat-body" id="chatBody">
             <p class="chat-message incoming">¡Hola! Soy Imponect, tu asistente virtual. ¿Tienes alguna consulta sobre nuestros productos importados?</p>
         </div>
+        
         <footer class="chat-footer">
-            <input type="text" placeholder="Escribe tu mensaje..." aria-label="Campo de entrada de mensaje">
-            <button>Enviar</button>
+            <form id="chatForm">
+                <input type="text" id="chatInput" name="mensaje" placeholder="Escribe tu mensaje..." aria-label="Campo de entrada de mensaje" required>
+                <button type="submit" id="chatSendBtn">Enviar</button>
+            </form>
         </footer>
     </div>
-</div>
 </div>
 
 <a href="https://wa.me/543564369474" 

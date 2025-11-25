@@ -148,3 +148,73 @@ document.addEventListener("DOMContentLoaded", () => {
         container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
 });
+
+// VIDEO: overlay play, hover play, click -> modal (pausa al cerrar)
+document.addEventListener("DOMContentLoaded", () => {
+    const smallVideo = document.getElementById("institutional-video");
+    if (!smallVideo) return;
+
+    const wrapper = smallVideo.parentElement;
+    wrapper.style.position = wrapper.style.position || "relative";
+    wrapper.classList.add("has-video-overlay");
+
+    const playBtn = document.createElement("button");
+    playBtn.type = "button";
+    playBtn.className = "video-play-btn";
+    playBtn.setAttribute("aria-label","Reproducir video");
+    playBtn.innerHTML = '<svg viewBox="0 0 100 100" width="48" height="48" aria-hidden="true"><polygon points="30,20 80,50 30,80" fill="white"/></svg>';
+    wrapper.appendChild(playBtn);
+
+    smallVideo.pause();
+
+    function showPlay() { playBtn.style.opacity = "1"; playBtn.style.pointerEvents = "auto"; }
+    function hidePlay() { playBtn.style.opacity = "0"; playBtn.style.pointerEvents = "none"; }
+
+    if (window.matchMedia("(hover: hover)").matches) {
+        wrapper.addEventListener("mouseenter", () => {
+            smallVideo.muted = true;
+            smallVideo.play().catch(()=>{});
+            hidePlay();
+        });
+        wrapper.addEventListener("mouseleave", () => {
+            smallVideo.pause();
+            showPlay();
+        });
+    }
+
+    function openModalWithVideo() {
+        const sources = [];
+        smallVideo.querySelectorAll("source").forEach(s => { if (s.src) sources.push({src: s.src, type: s.type}); });
+
+        const poster = smallVideo.getAttribute("poster") || "";
+        const modal = document.createElement("div");
+        modal.className = "video-modal";
+        modal.innerHTML = '<div class="video-modal-inner"><button class="video-modal-close" aria-label="Cerrar">✕</button><div class="video-modal-stage"><video class="video-modal-player" controls playsinline></video></div></div>';
+        document.body.appendChild(modal);
+
+        const modalVideo = modal.querySelector(".video-modal-player");
+        if (poster) modalVideo.poster = poster;
+        sources.forEach(s => { const srcEl = document.createElement("source"); srcEl.src = s.src; if (s.type) srcEl.type = s.type; modalVideo.appendChild(srcEl); });
+
+        document.body.style.overflow = "hidden";
+        modalVideo.play().catch(()=>{});
+        smallVideo.pause();
+
+        modal.querySelector(".video-modal-close").addEventListener("click", () => {
+            modalVideo.pause();
+            modal.remove();
+            document.body.style.overflow = "";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modalVideo.pause();
+                modal.remove();
+                document.body.style.overflow = "";
+            }
+        });
+    }
+
+    playBtn.addEventListener("click", (e) => { e.stopPropagation(); openModalWithVideo(); });
+    smallVideo.addEventListener("click", openModalWithVideo);
+});

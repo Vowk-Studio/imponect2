@@ -159,6 +159,7 @@
         position: sticky;
         top: 0;
         z-index: 9999;
+        height: 5rem;
     }
 
     .menu-toggle-btn {
@@ -209,6 +210,7 @@
 @media (min-width: 1440px) {
   .navbar {
     padding: 1rem 6rem;
+    height: 5rem;
   }
 
   .menu-list a {
