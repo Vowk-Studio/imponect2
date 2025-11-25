@@ -145,7 +145,6 @@
     width: 100%;
 }
 
-/* === MOBILE OVERLAY === */
 
 @media (max-width: 1023px) {
     .product-item.open .product-overlay {
@@ -169,7 +168,6 @@
     }
 }
 
-/* ====== DESKTOP ====== */
 
 @media (min-width: 1024px) {
     .products-section {
