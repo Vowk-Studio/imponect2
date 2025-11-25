@@ -144,6 +144,9 @@
     display: flex;
     width: 100%;
 }
+.button-wrapper a {
+    text-decoration: none;
+}
 
 
 @media (max-width: 1023px) {

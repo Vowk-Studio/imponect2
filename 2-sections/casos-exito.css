@@ -51,6 +51,7 @@
   aspect-ratio: 3 / 4;
   transition: transform 0.3s ease;
   padding: 0;
+  box-shadow: 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
 .case-top-info {
