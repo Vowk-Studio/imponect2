@@ -60,7 +60,7 @@
   text-align: center;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  box-shadow:5px rgba(0,0,0,0.15);
+  box-shadow:10px rgba(0,0,0,0.15);
 }
 
 .case-title {
@@ -100,7 +100,7 @@
   text-align: center;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  box-shadow:5px rgba(0,0,0,0.15);
+  box-shadow:10px rgba(0,0,0,0.15);
 }
 
 .case-extra {

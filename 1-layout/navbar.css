@@ -25,6 +25,7 @@
     order: 1;
     font-size: 1.2em;
     font-weight: bold;
+    margin-top: 0.7rem;
 }
 
 
@@ -159,7 +160,7 @@
         position: sticky;
         top: 0;
         z-index: 9999;
-        height: 5rem;
+        height: 3rem;
     }
 
     .menu-toggle-btn {
@@ -177,6 +178,7 @@
         background: none;
         padding: 0;
         top: initial;
+        align-items: center;
     }
 
     .menu-list li {
@@ -195,22 +197,22 @@
     }
 
     .menu-list a {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .logo-container h1 {
-        font-size: 1.7em;
+        font-size: 1.5em;
     }
 
     .logo-img {
-        width: 4rem;
+        width: 2.8rem;
     }
 }
 
 @media (min-width: 1440px) {
   .navbar {
     padding: 1rem 6rem;
-    height: 5rem;
+    height: 4rem;
   }
 
   .menu-list a {
@@ -218,11 +220,11 @@
   }
 
   .logo-container h1 {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   .logo-img {
-    width: 5rem;
+    width: 3.5rem;
   }
 }
 
@@ -241,6 +243,6 @@
   }
 
   .logo-img {
-    width: 5.5rem;
+    width: rem;
   }
 }

@@ -141,8 +141,8 @@
     position: fixed;
     bottom: 5.5rem; 
     right: 1.25rem;
-    width: 3.4375rem;
-    height: 3.4375rem;
+    width: 4rem;
+    height: 4rem;
     background-color: #25D366;
     color: #fff;
     border-radius: 50%;
@@ -160,7 +160,9 @@
     transform: scale(1.1);
     box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.3);
 }
-
+.whatsapp-float i {
+    font-size: 2rem; /* Ajustá este valor */
+}
 @media (max-width: 600px) {
     #chat-window {
         width: 80vw;
@@ -197,8 +199,8 @@
     .whatsapp-float {
         bottom: 5rem; 
         right: 1.5rem;
-        width: 3.75rem;
-        height: 3.75rem;
+        width: 2.75rem;
+        height: 2.75rem;
         font-size: 2rem;
     }
 }
@@ -217,9 +219,12 @@
     .whatsapp-float {
         bottom: 5rem; 
         right: 2rem;
-        width: 4rem;
-        height: 4rem;
-        font-size: 2.25rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 2.6rem;
+    }
+    .whatsapp-float i{
+        font-size: 2.4rem;
     }
 }
 
@@ -240,5 +245,8 @@
         width: 4.5rem;
         height: 4.5rem;
         font-size: 2.5rem;
+    }
+    .whatsapp-float i{
+        font-size: 3.2rem;
     }
 }
