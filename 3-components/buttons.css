@@ -22,7 +22,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.15s;
 }
-
+.btn-chat a {
+    text-decoration: none;
+    color: inherit;}
 .btn-chat {
     background-color: #3AC13F29; 
     border: 1px solid rgba(255, 255, 255, 0.3); 

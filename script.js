@@ -218,3 +218,85 @@ document.addEventListener("DOMContentLoaded", () => {
     playBtn.addEventListener("click", (e) => { e.stopPropagation(); openModalWithVideo(); });
     smallVideo.addEventListener("click", openModalWithVideo);
 });
+// === 4. LÓGICA DE ENVÍO ASÍNCRONO DEL FORMULARIO (AJAX/FETCH) ===
+// Objetivo: Evitar que la página se recargue cuando envían la consulta.
+// Importante: El FORMULARIO en HTML TIENE que tener id="contactForm"
+const contactForm = document.getElementById('contactForm'); 
+
+if (contactForm) {
+    
+    // Función helper para que los mensajes de estado (ok/error) aparezcan chido
+    function displayStatusMessage(message, isSuccess) {
+        // Primero, borro cualquier alerta anterior si existe
+        const existingAlert = document.querySelector('.form-alert');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+
+        const alertBox = document.createElement('div');
+        alertBox.classList.add('form-alert');
+        alertBox.textContent = message;
+        
+        // Estilos ultra-básicos. Mejorar esto en el CSS principal!
+        alertBox.style.padding = '10px';
+        alertBox.style.marginBottom = '15px';
+        alertBox.style.borderRadius = '5px';
+        alertBox.style.color = 'white';
+        alertBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#F44336'; // Verde si es OK, Rojo si falla
+
+        // Lo inserto justo antes del form, para que se vea bien
+        contactForm.insertAdjacentElement('beforebegin', alertBox);
+    }
+
+    // El listener principal: cuando el usuario hace click en 'Enviar Consulta'
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); // <-- SÚPER CLAVE: Esto detiene la recarga del navegador
+
+        const submitButton = contactForm.querySelector('.btn-submit');
+        
+        // Deshabilito el botón y le cambio el texto para que no hagan doble click
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+        
+        // Tomo los datos del formulario de forma fácil
+        const formData = new FormData(contactForm);
+        const data = {};
+        // Lo convierto a JSON, que es lo que espera el script de PHP ahora
+        formData.forEach((value, key) => (data[key] = value));
+
+        try {
+            // Hago la llamada 'Fetch' (el AJAX moderno) al archivo PHP
+            const response = await fetch('send_email.php', {
+                method: 'POST',
+                headers: {
+                    // Le aviso al servidor: "te envío datos en formato JSON"
+                    'Content-Type': 'application/json' 
+                },
+                // Mando los datos convertidos a texto JSON
+                body: JSON.stringify(data) 
+            });
+
+            // Espero la respuesta, que debería ser otro JSON
+            const result = await response.json();
+
+            // Chequeo si todo salió bien (código HTTP 200 y el flag 'success' en el JSON)
+            if (response.ok && result.success) {
+                displayStatusMessage(result.message, true); // Muestro el mensaje de éxito
+                contactForm.reset(); // Limpio los campos del form
+            } else {
+                // Si la llamada fue OK pero PHP dijo que falló el envío del mail, muestro error
+                const errorMessage = result.message || 'Error desconocido al procesar el envío. ¡Revisar logs del servidor!';
+                displayStatusMessage(errorMessage, false);
+            }
+
+        } catch (error) {
+            // Error si falló la conexión o el script PHP no se encontró
+            console.error('Error de red/procesamiento:', error);
+            displayStatusMessage('Error de conexión. ¿El archivo PHP está ahí?', false);
+        } finally {
+            // Esto se ejecuta siempre, haya éxito o error. Vuelvo a dejar el botón usable
+            submitButton.disabled = false;
+            submitButton.textContent = 'Enviar Consulta';
+        }
+    });
+}
