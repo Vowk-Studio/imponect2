@@ -1,6 +1,6 @@
 #chat-widget {
     position: fixed;
-    bottom: 1.25rem;
+    bottom: 1rem;
     right: 1.25rem;
     z-index: 1003;
 }
@@ -28,7 +28,7 @@
 
 #chat-window {
     width: 20rem;
-    height: 28.125rem;
+    height: 28rem;
     background-color: #fff;
     border-radius: 0.75rem;
     box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
@@ -188,7 +188,7 @@
 @media (min-width: 1024px) {
     #chat-window {
         width: 22.5rem;
-        height: 31.25rem;
+        height: 29rem;
     }
 
     #chat-button {
