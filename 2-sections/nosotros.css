@@ -1,9 +1,9 @@
 /* =========================================
-   SECCIÓN NOSOTROS - DISEÑO MODERNO GLASS
+   SECCIÓN NOSOTROS - DISEÑO FINAL
    ========================================= */
 
 .about-section {
-    padding: 5rem 1.5rem;
+    padding: 6rem 1.5rem;
     background: linear-gradient(135deg, #041E32 0%, #6CACE4 100%);
     color: #fff;
     text-align: center;
@@ -12,13 +12,13 @@
 }
 
 .about-container {
+    max-width: 1520px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
 }
 
 /* --- ENCABEZADO Y TÍTULO --- */
-
 .section-title-nos {
     font-family: 'Sora', sans-serif;
     font-size: 2.5rem;
@@ -36,18 +36,17 @@
     background: #DCCA65;
     border-radius: 4px;
     margin: 1rem auto 0 auto;
-    
     box-shadow: 0 4px 15px rgba(220, 202, 101, 0.3);
 }
 
-/* --- FRASE DESTACADA (CORREGIDO PARA CENTRAR) --- */
+/* --- FRASE DESTACADA (CORREGIDO Y CENTRADO) --- */
 .about-quote-container {
     position: relative;
-    max-width: 1200px; /* Limitamos el ancho para que las comillas no se alejen tanto */
-    margin: 0; /* "0 auto" centra el bloque horizontalmente */
+    max-width: 1520px; /* Ancho limitado para que las comillas abracen el texto */
+    margin: 0 auto; /* "0 auto" centra el bloque horizontalmente */
     padding: 2rem;
-    display: inline-block; /* Ayuda a que el bloque se comporte mejor centrado */
-    width: 100%; /* Asegura que no se colapse */
+    display: inline-block;
+    width: 100%;
 }
 
 .about-text {
@@ -58,8 +57,7 @@
     color: rgba(255, 255, 255, 0.9);
     position: relative;
     z-index: 2;
-    /* El texto ya se hereda centrado del padre .about-section, pero aseguramos: */
-    text-align: center; 
+    text-align: center;
 }
 
 /* El nuevo color Celeste Argentino */
@@ -69,12 +67,28 @@
     text-shadow: 0 0 15px rgba(108, 172, 228, 0.4);
 }
 
-/* Ajuste responsive para móviles */
-@media (max-width: 768px) {
-    .about-quote-container {
-        max-width: 90%; /* En móviles ocupamos casi todo el ancho */
-        padding: 1.5rem;
-    }
+/* Comillas decorativas posicionadas correctamente */
+.quote-mark {
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(220, 202, 101, 0.15); /* Dorado muy sutil */
+    font-family: serif;
+    z-index: 1;
+    line-height: 1;
+}
+
+.quote-left { 
+    top: -2rem; 
+    left: 0; 
+    color: #6CACE4; 
+    opacity: 0.4;
+}
+
+.quote-right { 
+    bottom: -3rem; 
+    right: 0; 
+    color: #6CACE4; 
+    opacity: 0.4;
 }
 
 /* --- GRID DE TARJETAS (EQUIPO) --- */
@@ -82,7 +96,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 60px; /* Espacio vertical en móviles */
+    gap: 60px;
     margin-top: 4rem;
 }
 
@@ -100,7 +114,7 @@
     text-align: center;
     transition: all 0.4s ease;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    margin-top: 4rem; /* Espacio para la foto que sobresale */
+    margin-top: 4rem; 
 }
 
 .team-card:hover {
@@ -113,11 +127,11 @@
 .member-photo-box {
     width: 160px;
     height: 160px;
-    margin: -5rem auto 2rem auto; /* Sobresale hacia arriba */
+    margin: -5rem auto 1rem auto; /* Sobresale hacia arriba */
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.1);
     padding: 4px;
-    background: #062a45; /* Fondo oscuro para evitar transparencias raras */
+    background: #062a45;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s ease, border-color 0.4s ease;
     overflow: hidden;
@@ -133,75 +147,125 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top center; /* Asegura que se vean las caras */
+    object-position: top center;
 }
 
-/* Información */
+/* Información del Nombre */
 .member-info { margin-top: 0.5rem; }
 
 .member-name {
     font-family: 'Sora', sans-serif;
     font-size: 1.5rem;
     font-weight: 800;
-    margin: 0 0 1rem 0;
+    margin: 0;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.member-role {
-    display: inline-flex;
+/* --- LÓGICA DE HOVER (BANDERA Y DETALLES) --- */
+
+.member-meta {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(108, 172, 228, 0.2); /* Fondo celeste suave */
-    padding: 8px 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(108, 172, 228, 0.3);
+    gap: 8px;
+    margin-top: 1rem;
+    min-height: 4rem; /* Reserva espacio para que no salte el diseño */
 }
 
-.flag-icon {
-    width: 20px;
+/* La bandera sola, siempre visible */
+.flag-icon-solo {
+    width: 28px;
     height: auto;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
 }
+
+/* Efecto: La bandera sube al hacer hover */
+.team-card:hover .flag-icon-solo {
+    transform: scale(1.1) translateY(-5px);
+}
+
+/* Detalles ocultos (Cargo y Localidad) */
+.member-hidden-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    
+    /* Estado inicial: Oculto */
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(10px);
+    overflow: hidden;
+    
+    /* Animación suave */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* HOVER: Aparecen los detalles */
+.team-card:hover .member-hidden-details {
+    opacity: 1;
+    max-height: 60px; 
+    transform: translateY(0);
+}
+
+.member-role-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #DCCA65; /* Dorado */
+    letter-spacing: 0.5px;
+}
+
+.member-location {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+
 
 /* =========================================
    MEDIA QUERIES (RESPONSIVE)
    ========================================= */
+
+@media (max-width: 768px) {
+    .about-quote-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    .quote-mark { font-size: 5rem; }
+    .quote-left { left: -10px; top: -1.5rem; }
+    .quote-right { right: -10px; bottom: -2rem; }
+    
+    .team-card {
+        /* En móviles, dejamos que la info se vea siempre o mantenemos el hover? 
+           Normalmente hover en móvil es un click. Lo dejamos igual. */
+    }
+}
 
 @media (min-width: 1024px) {
     .team-grid {
         gap: 30px;
         margin-top: 5rem;
     }
-    
     .section-title-nos { font-size: 3rem; }
-    
-    .team-card {
-        width: 300px;
-        margin-top: 0; /* En desktop ya no necesitamos tanto margen superior individual */
-    }
-    
+    .team-card { width: 300px; margin-top: 0; }
     .member-photo-box {
         width: 180px;
         height: 180px;
-        margin-top: -6rem; /* Ajuste para desktop */
+        margin-top: -6rem;
     }
 }
 
 @media (min-width: 1440px) {
     .about-section { padding: 5rem 2rem; }
-    
     .section-title-nos { font-size: 3.5rem; }
-    
     .about-text { font-size: 1.8rem; }
-    
     .quote-mark { font-size: 10rem; }
-    
     .team-grid { gap: 50px; }
     
     .team-card {
@@ -215,19 +279,14 @@
         height: 200px;
         margin-top: -7rem;
     }
-    
     .member-name { font-size: 1.8rem; }
-    .member-role { font-size: 1rem; padding: 10px 25px; }
 }
 
 @media (min-width: 1920px) {
     .about-section { padding: 5rem 2rem; }
-    
     .section-title-nos { font-size: 4.5rem; }
     .title-underline-gold { width: 150px; height: 8px; }
-    
     .about-text { font-size: 2.2rem; max-width: 1400px; }
-    
     .team-grid { gap: 80px; margin-top: 8rem; }
     
     .team-card {
@@ -243,13 +302,8 @@
         border-width: 6px;
     }
     
-    .member-name { font-size: 2.5rem; margin-bottom: 1.5rem; }
-    
-    .member-role { 
-        font-size: 1.3rem; 
-        padding: 12px 35px;
-        border-radius: 30px;
-    }
-    
-    .flag-icon { width: 30px; }
+    .member-name { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .member-role-title { font-size: 1.2rem; }
+    .member-location { font-size: 1.1rem; }
+    .flag-icon-solo { width: 40px; }
 }

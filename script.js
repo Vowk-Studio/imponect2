@@ -76,18 +76,31 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Chat Widget
-if (chatButton && chatWidget) {
-    chatButton.addEventListener('click', () => {
-        const isVisible = chatWidget.style.display === 'block';
-        chatWidget.style.display = isVisible ? 'none' : 'block';
-    });
+// =========================================================================
+// CHAT WIDGET (Lógica del script viejo recuperada)
+// =========================================================================
+
+// 1. Definimos la función que tenías antes (La clave es el .toggle('is-open'))
+function toggleChat() {
+    if (!chatWidget) return;
+    
+    // Esto agrega/quita la clase "is-open" definida en tu CSS
+    chatWidget.classList.toggle('is-open'); 
+    
+    // Accesibilidad (opcional pero recomendada)
+    if (chatButton) {
+        const isExpanded = chatWidget.classList.contains('is-open') ? 'true' : 'false';
+        chatButton.setAttribute('aria-expanded', isExpanded);
+    }
 }
 
-if (closeChatButton && chatWidget) {
-    closeChatButton.addEventListener('click', () => {
-        chatWidget.style.display = 'none';
-    });
+// 2. Asignamos los listeners
+if (chatButton && chatWidget) {
+    chatButton.addEventListener('click', toggleChat);
+}
+
+if (closeChatButton) {
+    closeChatButton.addEventListener('click', toggleChat);
 }
 
 
