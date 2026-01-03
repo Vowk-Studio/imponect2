@@ -1,98 +1,266 @@
+/* =========================================
+   MODALES MODERNOS (Estilo IT / SaaS)
+   ========================================= */
+
+/* El fondo oscuro (Overlay) */
 .modal {
-    display: none;
+    display: none; /* Se activa con JS */
     position: fixed;
-    z-index: 1000;
+    z-index: 2000; /* Por encima de todo, incluso del navbar */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    
+    /* Fondo moderno: Oscuro pero con desenfoque (Glass effect) */
+    background-color: rgba(4, 30, 50, 0.65); 
+    backdrop-filter: blur(8px); /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(8px);
+    
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 3.125rem;
-    overflow-y: auto;
-    padding-bottom: 3.125rem;
+    align-items: center; /* Centrado perfecto vertical y horizontal */
+    padding: 1rem;
+    overflow-y: hidden; /* Evitamos doble scroll */
 }
 
+/* La Caja del Contenido */
 .modal-content {
-    background-color: white;
+    background-color: #ffffff;
     margin: auto;
-    padding: 1.875rem;
-    border-radius: var(--border-radius-card);
-    width: 95%; 
-    max-width: 37.5rem;
-    box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.4);
+    padding: 3rem 2.5rem; /* Más espacio interno */
+    border-radius: 1.5rem; /* Bordes más redondeados */
+    width: 100%; 
+    max-width: 40rem; /* Ancho máximo elegante */
+    
+    /* Sombra suave y profunda para dar elevación */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    
     position: relative;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    max-height: 90vh; /* Para que quepa en pantallas chicas */
+    overflow-y: auto; /* Scroll interno si el texto es muy largo */
+    
+    /* Animación de entrada: Zoom suave */
+    animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: scale(0.9);
+    opacity: 0;
 }
 
+/* Animación Keyframes */
+@keyframes modalPop {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- BOTÓN CERRAR (X) --- */
 .close-button {
-    color: #aaa;
     position: absolute;
-    top: 0.625rem;
+    top: 1.25rem;
     right: 1.25rem;
-    font-size: 2rem;
+    
+    /* Convertimos la X en un botón circular */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #f0f2f5;
+    color: #555;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.2s ease;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: var(--color-primary);
-    text-decoration: none;
+.close-button:hover {
+    background-color: #ffe5e5; /* Fondo rojizo suave al pasar mouse */
+    color: #d32f2f;
+    transform: rotate(90deg); /* Pequeño giro divertido */
 }
 
+/* --- TIPOGRAFÍA Y TÍTULOS --- */
 .modal-title-service {
     color: #041E32;
-    font-size: 1.8em;
-    margin-bottom: 0.9375rem;
-    border-bottom: 0.125rem solid var(--color-light-gray);
-    padding-bottom: 0.625rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800; /* Extra negrita */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: none; /* Quitamos la línea simple vieja */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Línea decorativa moderna debajo del título */
+.modal-title-service::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #041E32); /* Gradiente de marca */
+    border-radius: 2px;
 }
 
 .modal-intro-text,
 .modal-extra-text {
-    font-size: 1.1em;
-    line-height: 1.5;
-    margin-bottom: 0.9375rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #4a5568; /* Gris moderno, no negro puro */
+    margin-bottom: 1.5rem;
 }
 
+/* --- LISTAS PERSONALIZADAS (Adiós puntos de Word) --- */
 .modal-content ul {
-    list-style-type: '● ';
-    padding-left: 1.25rem;
-    margin-bottom: 1.25rem;
+    list-style: none; /* Quitamos los puntos por defecto */
+    padding: 0;
+    margin-bottom: 2rem;
 }
 
 .modal-content ul li {
-    margin-bottom: 0.5rem;
-    font-size: 1em;
+    position: relative;
+    padding-left: 2rem; /* Espacio para el ícono */
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
 
-.modal-button-area {
-    margin-top: 1.875rem;
-    text-align: center; 
+/* Creamos el ícono de Checkmark (✓) con CSS puro */
+.modal-content ul li::before {
+    content: '✓'; /* Carácter unicode */
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    color: #007bff; /* Color azul primario */
+    font-weight: 900;
+    font-size: 1.1rem;
+    
+    /* Opcional: Un circulito de fondo para el check */
+    background-color: rgba(0, 123, 255, 0.1);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-solicitar-presupuesto {
-    background-color: #041E32; 
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+        width: 90%;
+        margin-top: 20%; /* Un poco más abajo en móviles */
+    }
+    
+    .modal-title-service {
+        font-size: 1.5rem;
+    }
+}
+
+/* =========================================
+   ESTILOS INTERNOS DEL MODAL (Títulos y Botón)
+   ========================================= */
+
+/* 1. Estilo para el subtítulo "INCLUYE:" */
+.modal-subtitle-incluye {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #041E32; /* Azul oscuro corporativo */
+    
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* Línea sutil abajo */
+}
+
+/* Icono decorativo antes de la palabra Incluye */
+.modal-subtitle-incluye::before {
+    content: '★'; /* Estrella o puedes usar '' para una línea */
+    color: #fff;
+    background-color: #007bff; /* Fondo azul */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* 2. Estilo para el subtítulo "EXTRA (OPCIONAL):" */
+.modal-subtitle-extra {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #6c757d; /* Gris para indicar que es secundario */
+    
+    background-color: #f8f9fa;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #DCCA65; /* Borde dorado a la izquierda */
+    
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block; /* Para que la caja se ajuste al texto o width:100% si prefieres */
+    width: 100%;
+}
+
+/* 3. BOTÓN "SOLICITAR PRESUPUESTO" (Estilo Moderno CTA) */
+.btn-modal-action {
+    display: block; /* Ocupa todo el ancho disponible */
+    width: 100%;
+    margin-top: 2.5rem;
+    
+    background: linear-gradient(135deg, #041E32 0%, #007bff 100%); /* Gradiente elegante */
     color: white;
-    padding: 0.75rem 1.5625rem;
-    border: none;
-    border-radius: 1.3125rem;
-    font-size: 1.1em;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    padding: 1.2rem;
+    border-radius: 50px; /* Botón tipo píldora */
+    border: none;
+    box-shadow: 0 10px 20px rgba(4, 30, 50, 0.2); /* Sombra flotante */
+    
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-solicitar-presupuesto:hover {
-    background-color: #69beff;
-    transform: translateY(-0.125rem);
+/* Efecto Hover (al pasar el mouse) */
+.btn-modal-action:hover {
+    transform: translateY(-3px); /* Sube un poquito */
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.4); /* Sombra brilla más azul */
+    background: linear-gradient(135deg, #041E32 0%, #0056b3 100%);
 }
 
-@keyframes animatetop {
-    from {top: -18.75rem; opacity: 0} 
-    to {top: 0; opacity: 1}
+/* Iconito de flecha automático después del texto del botón */
+.btn-modal-action::after {
+    content: '→';
+    margin-left: 10px;
+    transition: margin-left 0.3s ease;
+}
+
+.btn-modal-action:hover::after {
+    margin-left: 20px; /* La flecha se mueve al hacer hover */
 }

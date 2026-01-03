@@ -1,4 +1,6 @@
-// 1. OBTENCIÓN DE ELEMENTOS
+// =========================================================================
+// 1. OBTENCIÓN DE ELEMENTOS Y VARIABLES GLOBALES
+// =========================================================================
 const cotizacionCard = document.getElementById('cotizacion');
 const importacionCard = document.getElementById('importacion');
 const modalCotizacion = document.getElementById('modalCotizacion');
@@ -17,12 +19,17 @@ const menuToggle = document.getElementById('menu-toggle');
 const menuList = document.querySelector('.menu-list');
 const navbar = document.querySelector('.navbar');
 
+
+// =========================================================================
 // 2. FUNCIONES DE CONTROL DE MODALES
+// =========================================================================
 function openModal(modalElement) {
+    if(!modalElement) return;
     modalElement.style.display = 'flex';
 }
 
 function closeModal(modalElement) {
+    if(!modalElement) return;
     modalElement.style.display = 'none';
 }
 
@@ -31,272 +38,291 @@ function openFaqModal(box) {
     const content = box.getAttribute('data-content');
     if (faqModalTitle && faqModalBody) {
         faqModalTitle.textContent = title;
-        faqModalBody.innerHTML = content;
-    }
-    openModal(faqModal);
-}
-
-function toggleChat() {
-    chatWidget.classList.toggle('is-open');
-    const isExpanded = chatWidget.classList.contains('is-open') ? 'true' : 'false';
-    chatButton.setAttribute('aria-expanded', isExpanded);
-}
-
-function toggleMenu() {
-    menuList.classList.toggle('active');
-    const isExpanded = menuList.classList.contains('active') ? 'true' : 'false';
-    menuToggle.setAttribute('aria-expanded', isExpanded);
-}
-
-function closeMenuIfOpen() {
-    if (menuList && menuList.classList.contains('active')) {
-        toggleMenu();
+        faqModalBody.innerHTML = content; 
+        openModal(faqModal);
     }
 }
 
-// 3. ASIGNACIÓN DE LISTENERS
 
-if (cotizacionCard && modalCotizacion) {
+// =========================================================================
+// 3. EVENT LISTENERS (Interacciones del usuario)
+// =========================================================================
+
+// Modales principales (Cards de Servicios)
+if (cotizacionCard) {
     cotizacionCard.addEventListener('click', () => openModal(modalCotizacion));
 }
-if (importacionCard && modalImportacion) {
+if (importacionCard) {
     importacionCard.addEventListener('click', () => openModal(modalImportacion));
 }
+
+// FAQ Modales
 faqBoxes.forEach(box => {
     box.addEventListener('click', () => openFaqModal(box));
 });
-if (chatButton && chatWidget && closeChatButton) {
-    chatButton.addEventListener('click', toggleChat);
-    closeChatButton.addEventListener('click', toggleChat);
-}
+
+// Cerrar modales (Botón X)
 closeButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        const modalToClose = event.target.closest('.modal');
-        if (modalToClose) closeModal(modalToClose);
+    button.addEventListener('click', (e) => {
+        const modal = e.target.closest('.modal');
+        closeModal(modal);
     });
 });
+
+// Cerrar al hacer click fuera del contenido (Overlay oscuro)
 window.addEventListener('click', (event) => {
-    if (event.target === modalCotizacion) closeModal(modalCotizacion);
-    if (event.target === modalImportacion) closeModal(modalImportacion);
-    if (event.target === faqModal) closeModal(faqModal);
+    if (event.target.classList.contains('modal')) {
+        closeModal(event.target);
+    }
 });
 
-// NAV
-if (menuToggle && menuList) {
-    menuToggle.addEventListener('click', (event) => {
-        event.stopPropagation();
-        toggleMenu();
-    });
-    
-    menuList.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenuIfOpen);
-    });
-
-    window.addEventListener('click', (event) => {
-        const isMenuOpen = menuList.classList.contains('active');
-        if (isMenuOpen && !menuList.contains(event.target) && event.target !== menuToggle) {
-            closeMenuIfOpen();
-        }
-    });
-
-    let isMobile = window.matchMedia("(max-width: 1023px)").matches;
-    let lastScrollTop = 0;
-
-    window.addEventListener('scroll', () => {
-        if (isMobile) {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && menuList.classList.contains('active')) {
-                closeMenuIfOpen();
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }
-    }, false);
-    
-    window.addEventListener('resize', () => {
-        isMobile = window.matchMedia("(max-width: 1023px)").matches;
-        if (!isMobile && menuList.classList.contains('active')) {
-             menuList.classList.remove('active');
-        }
+// Chat Widget
+if (chatButton && chatWidget) {
+    chatButton.addEventListener('click', () => {
+        const isVisible = chatWidget.style.display === 'block';
+        chatWidget.style.display = isVisible ? 'none' : 'block';
     });
 }
 
-// === NAVBAR SCROLL EFFECT ===
-window.addEventListener('scroll', () => {
-    if (!navbar) return;
-    if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// === CARRUSEL ===
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".case-studies-container");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-
-    if (!container || !prevBtn || !nextBtn) return;
-
-    const scrollAmount = container.clientWidth * 0.9;
-
-    prevBtn.addEventListener("click", () => {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+if (closeChatButton && chatWidget) {
+    closeChatButton.addEventListener('click', () => {
+        chatWidget.style.display = 'none';
     });
+}
 
-    nextBtn.addEventListener("click", () => {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-});
 
-// VIDEO: overlay play, hover play, click -> modal (pausa al cerrar)
-document.addEventListener("DOMContentLoaded", () => {
-    const smallVideo = document.getElementById("institutional-video");
-    if (!smallVideo) return;
-
-    const wrapper = smallVideo.parentElement;
-    wrapper.style.position = wrapper.style.position || "relative";
-    wrapper.classList.add("has-video-overlay");
-
-    const playBtn = document.createElement("button");
-    playBtn.type = "button";
-    playBtn.className = "video-play-btn";
-    playBtn.setAttribute("aria-label","Reproducir video");
-    playBtn.innerHTML = '<svg viewBox="0 0 100 100" width="48" height="48" aria-hidden="true"><polygon points="30,20 80,50 30,80" fill="white"/></svg>';
-    wrapper.appendChild(playBtn);
-
-    smallVideo.pause();
-
-    function showPlay() { playBtn.style.opacity = "1"; playBtn.style.pointerEvents = "auto"; }
-    function hidePlay() { playBtn.style.opacity = "0"; playBtn.style.pointerEvents = "none"; }
-
-    if (window.matchMedia("(hover: hover)").matches) {
-        wrapper.addEventListener("mouseenter", () => {
-            smallVideo.muted = true;
-            smallVideo.play().catch(()=>{});
-            hidePlay();
-        });
-        wrapper.addEventListener("mouseleave", () => {
-            smallVideo.pause();
-            showPlay();
-        });
-    }
-
-    function openModalWithVideo() {
-        const sources = [];
-        smallVideo.querySelectorAll("source").forEach(s => { if (s.src) sources.push({src: s.src, type: s.type}); });
-
-        const poster = smallVideo.getAttribute("poster") || "";
-        const modal = document.createElement("div");
-        modal.className = "video-modal";
-        modal.innerHTML = '<div class="video-modal-inner"><button class="video-modal-close" aria-label="Cerrar">✕</button><div class="video-modal-stage"><video class="video-modal-player" controls playsinline></video></div></div>';
-        document.body.appendChild(modal);
-
-        const modalVideo = modal.querySelector(".video-modal-player");
-        if (poster) modalVideo.poster = poster;
-        sources.forEach(s => { const srcEl = document.createElement("source"); srcEl.src = s.src; if (s.type) srcEl.type = s.type; modalVideo.appendChild(srcEl); });
-
-        document.body.style.overflow = "hidden";
-        modalVideo.play().catch(()=>{});
-        smallVideo.pause();
-
-        modal.querySelector(".video-modal-close").addEventListener("click", () => {
-            modalVideo.pause();
-            modal.remove();
-            document.body.style.overflow = "";
-        });
-
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modalVideo.pause();
-                modal.remove();
-                document.body.style.overflow = "";
-            }
-        });
-    }
-
-    playBtn.addEventListener("click", (e) => { e.stopPropagation(); openModalWithVideo(); });
-    smallVideo.addEventListener("click", openModalWithVideo);
-});
-// === 4. LÓGICA DE ENVÍO ASÍNCRONO DEL FORMULARIO (AJAX/FETCH) ===
-// Objetivo: Evitar que la página se recargue cuando envían la consulta.
-// Importante: El FORMULARIO en HTML TIENE que tener id="contactForm"
-const contactForm = document.getElementById('contactForm'); 
-
+// =========================================================================
+// 4. LÓGICA DE FORMULARIO DE CONTACTO (CORREGIDA Y ANIMADA)
+// =========================================================================
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    
-    // Función helper para que los mensajes de estado (ok/error) aparezcan chido
-    function displayStatusMessage(message, isSuccess) {
-        // Primero, borro cualquier alerta anterior si existe
-        const existingAlert = document.querySelector('.form-alert');
-        if (existingAlert) {
-            existingAlert.remove();
-        }
-
-        const alertBox = document.createElement('div');
-        alertBox.classList.add('form-alert');
-        alertBox.textContent = message;
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); 
         
-        // Estilos ultra-básicos. Mejorar esto en el CSS principal!
-        alertBox.style.padding = '10px';
-        alertBox.style.marginBottom = '15px';
-        alertBox.style.borderRadius = '5px';
-        alertBox.style.color = 'white';
-        alertBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#F44336'; // Verde si es OK, Rojo si falla
-
-        // Lo inserto justo antes del form, para que se vea bien
-        contactForm.insertAdjacentElement('beforebegin', alertBox);
-    }
-
-    // El listener principal: cuando el usuario hace click en 'Enviar Consulta'
-    contactForm.addEventListener('submit', async function(event) {
-        event.preventDefault(); // <-- SÚPER CLAVE: Esto detiene la recarga del navegador
-
-        const submitButton = contactForm.querySelector('.btn-submit');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
         
-        // Deshabilito el botón y le cambio el texto para que no hagan doble click
+        // 1. ACTIVAR ANIMACIÓN DE CARGA (CSS)
+        // Agregamos la clase que convierte el botón en barra de progreso
+        submitButton.classList.add('btn-loading');
         submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
-        
-        // Tomo los datos del formulario de forma fácil
+
+        // Función auxiliar para alertas
+        const displayStatusMessage = (message, isSuccess) => {
+            let statusMsg = contactForm.querySelector('.status-message');
+            if (!statusMsg) {
+                statusMsg = document.createElement('div');
+                statusMsg.className = 'status-message';
+                statusMsg.style.marginTop = '15px';
+                statusMsg.style.fontWeight = 'bold';
+                statusMsg.style.padding = '10px';
+                statusMsg.style.borderRadius = '8px';
+                statusMsg.style.textAlign = 'center';
+                contactForm.appendChild(statusMsg);
+            }
+            statusMsg.textContent = message;
+            statusMsg.style.backgroundColor = isSuccess ? '#d4edda' : '#f8d7da';
+            statusMsg.style.color = isSuccess ? '#155724' : '#721c24';
+            statusMsg.style.border = isSuccess ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+            
+            setTimeout(() => {
+                statusMsg.remove();
+            }, 5000);
+        };
+
         const formData = new FormData(contactForm);
-        const data = {};
-        // Lo convierto a JSON, que es lo que espera el script de PHP ahora
-        formData.forEach((value, key) => (data[key] = value));
+        const data = Object.fromEntries(formData.entries());
 
         try {
-            // Hago la llamada 'Fetch' (el AJAX moderno) al archivo PHP
+            // CORRECCIÓN AQUÍ: Usamos 'send_email.php' (como en el script original)
             const response = await fetch('send_email.php', {
                 method: 'POST',
-                headers: {
-                    // Le aviso al servidor: "te envío datos en formato JSON"
-                    'Content-Type': 'application/json' 
-                },
-                // Mando los datos convertidos a texto JSON
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data) 
             });
 
-            // Espero la respuesta, que debería ser otro JSON
             const result = await response.json();
 
-            // Chequeo si todo salió bien (código HTTP 200 y el flag 'success' en el JSON)
             if (response.ok && result.success) {
-                displayStatusMessage(result.message, true); // Muestro el mensaje de éxito
-                contactForm.reset(); // Limpio los campos del form
+                displayStatusMessage(result.message, true);
+                contactForm.reset(); 
             } else {
-                // Si la llamada fue OK pero PHP dijo que falló el envío del mail, muestro error
-                const errorMessage = result.message || 'Error desconocido al procesar el envío. ¡Revisar logs del servidor!';
+                const errorMessage = result.message || 'Error desconocido.';
                 displayStatusMessage(errorMessage, false);
             }
 
         } catch (error) {
-            // Error si falló la conexión o el script PHP no se encontró
-            console.error('Error de red/procesamiento:', error);
-            displayStatusMessage('Error de conexión. ¿El archivo PHP está ahí?', false);
+            console.error('Error:', error);
+            displayStatusMessage('Error de conexión. Verifica send_email.php', false);
         } finally {
-            // Esto se ejecuta siempre, haya éxito o error. Vuelvo a dejar el botón usable
+            // 2. DESACTIVAR ANIMACIÓN DE CARGA
+            // Quitamos la clase para que el botón vuelva a la normalidad
+            submitButton.classList.remove('btn-loading');
             submitButton.disabled = false;
-            submitButton.textContent = 'Enviar Consulta';
         }
     });
 }
+
+
+// =========================================================================
+// 5. NAVBAR STICKY
+// =========================================================================
+(function() {
+    const navbar = document.querySelector('.navbar');
+    const hero = document.querySelector('#home') || document.querySelector('.hero-section');
+
+    if (!navbar || !hero) return;
+
+    function updateNavbarState() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        const navbarHeight = navbar.getBoundingClientRect().height;
+        
+        if (heroBottom <= navbarHeight + 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateNavbarState));
+    window.addEventListener('resize', () => requestAnimationFrame(updateNavbarState));
+    document.addEventListener('DOMContentLoaded', updateNavbarState);
+    updateNavbarState();
+})();
+
+
+// =========================================================================
+// 6. MOTOR DE ANIMACIONES SCROLL
+// =========================================================================
+function initAnimations() {
+    const observerOptions = {
+        threshold: 0.1, 
+        rootMargin: "0px 0px -50px 0px" 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    const selectorsToAnimate = [
+        '.section-title', 
+        '.section-title-nos', 
+        '.section-title-productos', 
+        '.section-title-reseñas', 
+        '.section-title-faq', 
+        '.section-title-exclusivos',
+        '.section-subtitle',
+        '.about-text',        
+        '.about-header-content',
+        '.card-text-area',
+        '.exclusive-desc',
+        '.service-card',
+        '.video-container',        
+        '.contact-form-container', 
+        '.map-container',          
+        '.product-item',
+        '.case-card',
+        '.faq-question-box',
+        '.team-member',
+        '.exclusive-item',
+        '.footer-content-container',
+        '.footer-bottom'
+    ];
+
+    selectorsToAnimate.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        
+        elements.forEach((el, index) => {
+            el.classList.add('reveal-up');
+
+            const isGridItem = el.matches('.service-card, .product-item, .case-card, .team-member, .exclusive-item, .faq-question-box');
+            
+            if (isGridItem) {
+                const delay = (index % 3) * 150; 
+                el.style.transitionDelay = `${delay}ms`;
+            } else if (el.matches('.contact-form-container, .video-container')) {
+                el.style.transitionDelay = '200ms';
+            }
+
+            observer.observe(el);
+        });
+    });
+
+    // Animación Hero
+    const heroTitle = document.querySelector('.main-title');
+    const heroSubtitle = document.querySelector('.subtitle');
+    const heroLogo = document.querySelector('.hero-logo');
+
+    if(heroLogo) {
+        heroLogo.classList.add('simple-fade'); 
+        observer.observe(heroLogo);
+    }
+    
+    if(heroTitle) {
+        heroTitle.classList.add('reveal-up'); 
+        heroTitle.style.transitionDelay = '300ms';
+        observer.observe(heroTitle);
+    }
+    
+    if(heroSubtitle) {
+        heroSubtitle.classList.add('reveal-up');
+        heroSubtitle.style.transitionDelay = '600ms';
+        observer.observe(heroSubtitle);
+    }
+}
+
+// ==========================================
+// 7. CERRAR MODALES CON TECLA ESC
+// ==========================================
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const openModals = document.querySelectorAll('.modal');
+        openModals.forEach(modal => {
+            if (modal.style.display === 'flex') {
+                closeModal(modal);
+            }
+        });
+    }
+});
+
+// ==========================================
+// 8. DESPLAZAMIENTO SUAVE (SMOOTH SCROLL) - VERSIÓN NATIVA
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Buscamos todos los enlaces del menú
+    const menuLinks = document.querySelectorAll('.menu-list a');
+
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+
+            // Solo actuamos si es un enlace interno
+            if (targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    e.preventDefault(); // Detenemos el salto brusco
+
+                    // Usamos la función nativa del navegador
+                    // 'start' hace que el elemento se alinee arriba.
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Si el menú móvil está abierto, lo cerramos
+                    if (document.querySelector('.menu-list').classList.contains('active')) {
+                        toggleMenu(); 
+                    }
+                }
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', initAnimations);
+window.addEventListener('load', initAnimations);
