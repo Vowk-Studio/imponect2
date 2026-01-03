@@ -1,280 +1,309 @@
+/* =========================================
+   SECCIÓN NOSOTROS - DISEÑO FINAL
+   ========================================= */
+
 .about-section {
+    padding: 6rem 1.5rem;
+    background: linear-gradient(135deg, #041E32 0%, #6CACE4 100%);
+    color: #fff;
+    text-align: center;
     position: relative;
-    text-align: center;
-    padding: 0;
-    background-color: #194553; 
+    overflow: hidden;
 }
 
-
-.about-header-content {
-    color: white;
-    padding: 4rem 1rem 8rem;
-    text-align: center;
-}
-.about-header-content .highlight-word{
-    color:#74acdf ;
-}
-
-.about-section .section-title-nos {
-    font-size: 1.7em;
-    margin-bottom: 0.5rem;
-    color: #74acdf;
-    box-shadow: white;
-    top: -5rem;
-}
-
-.about-text {
-    color: white;
-    font-size: 1.3em;
-    line-height: 1.2;
-    max-width: 45rem;
+.about-container {
+    max-width: 1520px;
     margin: 0 auto;
-}
-
-
-.team-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5rem;
-    padding: 0 1.25rem 5rem;
     position: relative;
     z-index: 2;
 }
 
-.team-member {
-    width: 18rem;
-    text-align: center;
+/* --- ENCABEZADO Y TÍTULO --- */
+.section-title-nos {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+/* Línea dorada moderna */
+.title-underline-gold {
+    height: 6px;
+    width: 100px;
+    background: #DCCA65;
+    border-radius: 4px;
+    margin: 1rem auto 0 auto;
+    box-shadow: 0 4px 15px rgba(220, 202, 101, 0.3);
+}
+
+/* --- FRASE DESTACADA (CORREGIDO Y CENTRADO) --- */
+.about-quote-container {
     position: relative;
-    margin-top: 2rem;
+    max-width: 1520px; /* Ancho limitado para que las comillas abracen el texto */
+    margin: 0 auto; /* "0 auto" centra el bloque horizontalmente */
+    padding: 2rem;
+    display: inline-block;
+    width: 100%;
 }
 
-.member-photo-circle {
-    width: 11.25rem;
-    height: 11.25rem;
+.about-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* El nuevo color Celeste Argentino */
+.highlight-arg {
+    color: #6CACE4; 
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(108, 172, 228, 0.4);
+}
+
+/* Comillas decorativas posicionadas correctamente */
+.quote-mark {
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(220, 202, 101, 0.15); /* Dorado muy sutil */
+    font-family: serif;
+    z-index: 1;
+    line-height: 1;
+}
+
+.quote-left { 
+    top: -2rem; 
+    left: 0; 
+    color: #6CACE4; 
+    opacity: 0.4;
+}
+
+.quote-right { 
+    bottom: -3rem; 
+    right: 0; 
+    color: #6CACE4; 
+    opacity: 0.4;
+}
+
+/* --- GRID DE TARJETAS (EQUIPO) --- */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 4rem;
+}
+
+/* Tarjeta de Cristal */
+.team-card {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    margin-top: 4rem; 
+}
+
+.team-card:hover {
+    transform: translateY(-15px);
+    border-color: rgba(108, 172, 228, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de la foto */
+.member-photo-box {
+    width: 160px;
+    height: 160px;
+    margin: -5rem auto 1rem auto; /* Sobresale hacia arriba */
     border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    padding: 4px;
+    background: #062a45;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, border-color 0.4s ease;
     overflow: hidden;
-    position: absolute;
-    top: -5.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
-    background-color: white;
 }
 
+.team-card:hover .member-photo-box {
+    transform: scale(1.05);
+    border-color: #DCCA65;
+}
 
-.member-photo-circle img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    max-width: none;
-    width: auto;
-    height: 140%;
-    object-fit: contain; 
+.member-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* Información del Nombre */
+.member-info { margin-top: 0.5rem; }
+
+.member-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- LÓGICA DE HOVER (BANDERA Y DETALLES) --- */
+
+.member-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+    min-height: 4rem; /* Reserva espacio para que no salte el diseño */
+}
+
+/* La bandera sola, siempre visible */
+.flag-icon-solo {
+    width: 28px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
 }
 
-
-.member-photo-circle .photo-nicolas {
-    transform: translate(-50%, -25%) scale(1.2); 
+/* Efecto: La bandera sube al hacer hover */
+.team-card:hover .flag-icon-solo {
+    transform: scale(1.1) translateY(-5px);
 }
 
-.member-photo-circle .photo-alan {
-    transform: translate(-50%, -35%) scale(1.55); 
+/* Detalles ocultos (Cargo y Localidad) */
+.member-hidden-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    
+    /* Estado inicial: Oculto */
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(10px);
+    overflow: hidden;
+    
+    /* Animación suave */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.member-photo-circle .photo-diego {
-    transform: translate(-50%, -29%) scale(1.55); 
+/* HOVER: Aparecen los detalles */
+.team-card:hover .member-hidden-details {
+    opacity: 1;
+    max-height: 60px; 
+    transform: translateY(0);
 }
 
-.member-name-area {
-    margin-top: 7rem;
+.member-role-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #DCCA65; /* Dorado */
+    letter-spacing: 0.5px;
 }
 
-.member-name {
-    background-color: #4dc3ff;
-    border-radius: 3rem;
-    color: white;
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 0.1rem 1.5rem;
-    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    width: 10rem;
-    text-align: center;
+.member-location {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.member-flag-icon {
-    width: 2rem;
-    height: 2rem;
-    object-fit: cover;
-    display: block;
-    margin: 4px auto 0;
-}
 
-.member-flag {
-    margin-top: 0.6rem;
-}
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
 
-.member-flag img {
-    width: 2.2rem;
-    height: auto;
+@media (max-width: 768px) {
+    .about-quote-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    .quote-mark { font-size: 5rem; }
+    .quote-left { left: -10px; top: -1.5rem; }
+    .quote-right { right: -10px; bottom: -2rem; }
+    
+    .team-card {
+        /* En móviles, dejamos que la info se vea siempre o mantenemos el hover? 
+           Normalmente hover en móvil es un click. Lo dejamos igual. */
+    }
 }
-
 
 @media (min-width: 1024px) {
-
-    .about-section {
-        background-color: transparent;
+    .team-grid {
+        gap: 30px;
+        margin-top: 5rem;
     }
-
-    .about-section .section-title-nos {
-        position: relative;
-        top: -4rem;
+    .section-title-nos { font-size: 3rem; }
+    .team-card { width: 300px; margin-top: 0; }
+    .member-photo-box {
+        width: 180px;
+        height: 180px;
+        margin-top: -6rem;
     }
-
-    .about-section .about-text {
-        position: relative;
-        top: -4rem;
-        font-size: 1.6rem;
-    }
-
-    .about-header-content {
-        background-color: #194553;
-        padding: 6rem 1rem 10rem;
-        margin-bottom: -6rem;
-    }
-
-    .team-container {
-        flex-direction: row;
-        justify-content: center;
-        gap: 3rem;
-        max-width: 75rem;
-        margin: 0 auto;
-        padding-bottom: 6rem;
-    }
-
-    .team-member {
-        width: 15rem;
-        margin-top: 6rem;
-    }
-
-    .member-photo-circle {
-        width: 12.5rem;
-        height: 12.5rem;
-        top: -6rem;
-    }
-
-    .member-photo-circle img {
-        height: 140%;
-        width: auto;
-    }
-
 }
 
 @media (min-width: 1440px) {
-
-    .about-header-content {
-        padding: 8rem 2rem 12rem;
+    .about-section { padding: 5rem 2rem; }
+    .section-title-nos { font-size: 3.5rem; }
+    .about-text { font-size: 1.8rem; }
+    .quote-mark { font-size: 10rem; }
+    .team-grid { gap: 50px; }
+    
+    .team-card {
+        width: 350px;
+        max-width: none;
+        padding: 3rem 2rem;
     }
-
-    .about-section .section-title-nos {
-        font-size: 3rem;
-        top: -5rem;
-        padding-bottom: 5rem;
+    
+    .member-photo-box {
+        width: 200px;
+        height: 200px;
+        margin-top: -7rem;
     }
-
-    .about-section .about-text {
-        font-size: 2.5rem;
-        max-width: 70rem;
-        top: -5rem;
-    }
-
-    .team-container {
-        gap: 4rem;
-        max-width: 90rem;
-        padding-bottom: 7rem;
-    }
-
-    .team-member {
-        width: 20rem;
-        margin-top: 7rem;
-    }
-
-    .member-photo-circle {
-        width: 16rem;
-        height: 16rem;
-        top: -9rem;
-    }
-
-    .member-photo-circle img {
-        height: 140%;
-    }
-
-    .member-name {
-        font-size: 1.5rem;
-        width: 12rem;
-        padding: 0.2rem 2rem;
-        margin-top: 1rem;
-    }
-
-    .member-flag-icon,
-    .member-flag img {
-        width: 2.5rem;
-        height: auto;
-    }
+    .member-name { font-size: 1.8rem; }
 }
 
-
 @media (min-width: 1920px) {
-
-    .about-header-content {
-        padding: 10rem 2.5rem 14rem;
+    .about-section { padding: 5rem 2rem; }
+    .section-title-nos { font-size: 4.5rem; }
+    .title-underline-gold { width: 150px; height: 8px; }
+    .about-text { font-size: 2.2rem; max-width: 1400px; }
+    .team-grid { gap: 80px; margin-top: 8rem; }
+    
+    .team-card {
+        width: 450px;
+        padding: 4rem 2rem;
+        border-radius: 40px;
     }
-
-    .about-section .section-title-nos {
-        font-size: 3.5rem;
-        top: -6rem;
+    
+    .member-photo-box {
+        width: 250px;
+        height: 250px;
+        margin-top: -9rem;
+        border-width: 6px;
     }
-
-    .about-section .about-text {
-        font-size: 2.5rem;
-        max-width: 80rem;
-        top: -6rem;
-    }
-
-    .team-container {
-        gap: 5rem;
-        max-width: 110rem;
-        padding-bottom: 8rem;
-    }
-
-    .team-member {
-        width: 24rem;
-        margin-top: 8rem;
-    }
-
-    .member-photo-circle {
-        width: 20rem;
-        height: 20rem;
-        top: -12rem;
-    }
-
-    .member-photo-circle img {
-        height: 150%;
-    }
-
-    .member-name {
-        font-size: 2rem;
-        width: 16rem;
-        padding: 0.3rem 2.5rem;
-        margin-top: 3rem;
-    }
-
-    .member-flag-icon,
-    .member-flag img {
-        width: 4rem;
-        height: auto;
-    }
+    
+    .member-name { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .member-role-title { font-size: 1.2rem; }
+    .member-location { font-size: 1.1rem; }
+    .flag-icon-solo { width: 40px; }
 }

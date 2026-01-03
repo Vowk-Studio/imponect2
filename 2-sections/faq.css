@@ -1,5 +1,5 @@
 .faq-section {
-    padding: 3.125rem 0;
+    padding: 0 0 3.125rem 0;
     background-color: #f7f7f7;
     text-align: center;
 }
@@ -7,7 +7,6 @@
 .faq-section .section-title-faq {
     color: #093A49; 
     text-align: center;
-    margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -49,10 +48,9 @@
 
 @media (min-width: 1440px) {
     .faq-section .section-title-faq {
-        font-size: 2rem;         
-        margin-top: 3rem;        
-        margin-bottom: 4rem;     
-        color: #093A49;          
+        font-size: 2rem;
+        margin-bottom: 4rem;
+        color: #093A49;
     }
 
     .faq-container {
@@ -70,8 +68,7 @@
 @media (min-width: 1920px) {
     .faq-section .section-title-faq {
         font-size: 3.5rem;
-        margin-top: 4rem;        
-        margin-bottom: 6rem;     
+        margin-bottom: 6rem;
         color: #093A49;
     }
 

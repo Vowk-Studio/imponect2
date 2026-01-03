@@ -1,6 +1,10 @@
+/* =========================================
+   SECCIÓN CASOS DE ÉXITO - MARCO DORADO LUXE
+   ========================================= */
+
 .success-stories-section {
   padding: 3.125rem 0;
-  background-color: var(--color-secondary);
+  background-color: #f7f7f7; /* Fondo gris claro de la sección */
 }
 
 .success-stories-section .section-title-reseñas {
@@ -21,8 +25,8 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
-  padding: 0 1rem;
+  overflow: visible; /* Permitimos que las sombras se vean bien */
+  padding: 1rem;
 }
 
 .case-studies-container {
@@ -30,199 +34,192 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  gap: 1rem;
+  gap: 1.5rem;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  padding: 1rem 0 2rem 0; /* Espacio para sombras arriba y abajo */
 }
 
 .case-studies-container::-webkit-scrollbar {
   display: none;
 }
 
+/* --- TARJETA CONTENEDORA (EL MARCO DORADO) --- */
 .case-card {
   flex: 0 0 100%;
   scroll-snap-align: center;
-  border-radius: 1rem;
+  
+  /* FONDO DORADO IMPONECT */
+  background-color: #ffffff; 
+  
+  /* ESTO CREA EL MARCO UNIFORME ALREDEDOR DE TODO */
+  padding: 1.2rem; 
+  
+  border-radius: 1.5rem; /* Bordes exteriores redondeados */
   overflow: hidden;
-  background-color: var(--color-secondary);
+  
+  /* Flexbox vertical */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
   aspect-ratio: 3 / 4;
-  transition: transform 0.3s ease;
-  padding: 0;
-  box-shadow: 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.15);
+  
+  /* Sombra dorada para profundidad */
+  box-shadow: 0 10px 25px rgba(220, 202, 101, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover: realce */
+.case-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(220, 202, 101, 0.6);
+}
+
+/* --- ENCABEZADO (Sobre el dorado) --- */
 .case-top-info {
   width: 100%;
-  background-color: #ffffff;
-  padding: 0.8rem 1rem;
+  background-color: transparent; /* Transparente para ver el oro */
+  padding: 0 0 0.8rem 0; /* Solo espacio abajo */
   text-align: center;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  box-shadow:10px rgba(0,0,0,0.15);
+  
+  /* Quitamos estilos viejos de tarjeta blanca */
+  box-shadow: none;
+  border-radius: 0;
+  
+  flex-shrink: 0; 
+  z-index: 2;
+  position: relative;
 }
 
 .case-title {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #041E32;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #041E32; /* Azul Navy para contraste sobre dorado */
 }
 
 .case-subtitle {
-  margin: 0.3rem 0 0 0;
+  margin: 0.2rem 0 0 0;
   font-size: 0.9rem;
-  color: #093A49;
+  color: #041E32; /* Azul Navy */
+  opacity: 0.8;
 }
 
+/* --- CONTENEDOR DE LA IMAGEN (EL RECUADRO BLANCO) --- */
 .case-image-wrapper {
   width: 100%;
-  height: 100%;
+  flex: 1; 
+  min-height: 0; 
+  
+  /* FONDO BLANCO PARA LA FOTO */
+  background-color: #ffffff;
+  
+  /* Bordes redondeados internos */
+  border-radius: 1rem; 
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-secondary);
-  border-radius: 0;
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  /* Sombra interna sutil para hundir el área blanca */
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .case-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: block;
+  border-radius: 0.5rem; /* Radio más pequeño para la imagen en sí */
 }
 
+/* --- PIE (Sobre el dorado) --- */
 .case-bottom-info {
   width: 100%;
-  background-color: #ffffff;
-  padding: 2rem 1rem;
+  background-color: transparent;
+  padding: 0.8rem 0 0 0; /* Solo espacio arriba */
   text-align: center;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  box-shadow:10px rgba(0,0,0,0.15);
+  
+  box-shadow: none;
+  border-radius: 0;
+  
+  flex-shrink: 0;
+  z-index: 2;
+  position: relative;
+  min-height: 1.5rem;
 }
 
 .case-extra {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #041E32;
+  color: #041E32; /* Azul Navy */
 }
 
+/* --- BOTONES --- */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #194553;
-  color: white;
-  border: none;
+  background-color: #041E32; /* Botón Navy */
+  color: #DCCA65; /* Flecha Dorada */
+  border: 2px solid #DCCA65;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 5;
   display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .carousel-btn:hover {
-  background-color: #317a8f;
+  background-color: #DCCA65;
+  color: #041E32;
+  border-color: #041E32;
 }
 
-.prev-btn {
-  left: 0;
-}
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
 
-.next-btn {
-  right: 0;
-}
-
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
 @media (min-width: 480px) {
-  .case-title {
-    font-size: 1.2rem;
-  }
-  .case-subtitle {
-    font-size: 1rem;
-  }
-  .case-extra {
-    font-size: 1rem;
-  }
+  .case-title { font-size: 1.2rem; }
 }
 
 @media (min-width: 768px) {
-  .case-title {
-    font-size: 1.3rem;
-  }
-  .case-subtitle {
-    font-size: 1.05rem;
-  }
-  .case-extra {
-    font-size: 1.05rem;
-  }
+  .case-title { font-size: 1.3rem; }
 }
 
 @media (min-width: 1024px) {
   .case-card {
-    flex: 0 0 calc((100% - 2rem) / 3);
-    aspect-ratio: 3 / 4;
+    flex: 0 0 calc((100% - 3rem) / 3);
+    aspect-ratio: 3 / 4; 
   }
   .carousel-btn {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .case-card:hover {
-    transform: translateY(-8px);
-  }
 }
 
 @media (min-width: 1440px) {
-  .carousel-wrapper {
-    max-width: 1300px;
-  }
-  .success-stories-section .section-title-reseñas {
-    font-size: 3rem;
-  }
-  .success-stories-section .section-subtitle {
-    font-size: 2rem;
-  }
-  .case-card {
-    flex: 0 0 calc((100% - 2.5rem) / 3);
-  }
-  .case-title {
-    font-size: 1.4rem;
-  }
-  .case-subtitle {
-    font-size: 1.1rem;
-  }
-  .case-extra {
-    font-size: 1.1rem;
-  }
+  .carousel-wrapper { max-width: 1300px; }
+  .success-stories-section .section-title-reseñas { font-size: 3rem; }
+  .success-stories-section .section-subtitle { font-size: 2rem; }
+  .case-card { flex: 0 0 calc((100% - 3rem) / 3); }
+  .case-title { font-size: 1.4rem; }
 }
 
 @media (min-width: 1920px) {
-  .carousel-wrapper {
-    max-width: 1500px;
-  }
-  .success-stories-section .section-title-reseñas {
-    font-size: 3.5rem;
-  }
-  .success-stories-section .section-subtitle {
-    font-size: 2.5rem;
-  }
-  .case-card {
-    flex: 0 0 calc((100% - 3rem) / 3);
-  }
-  .case-title {
-    font-size: 1.6rem;
-  }
-  .case-subtitle {
-    font-size: 1.2rem;
-  }
-  .case-extra {
-    font-size: 1.2rem;
-  }
+  .carousel-wrapper { max-width: 1500px; }
+  .success-stories-section .section-title-reseñas { font-size: 3.5rem; }
+  .success-stories-section .section-subtitle { font-size: 2.5rem; }
+  .case-card { flex: 0 0 calc((100% - 3rem) / 3); }
+  .case-title { font-size: 1.6rem; }
 }

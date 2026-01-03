@@ -1,31 +1,84 @@
+/* =========================================
+   WIDGET DE CHAT - ESTILO PÍLDORA MODERNA
+   ========================================= */
+
 #chat-widget {
     position: fixed;
-    bottom: 1rem;
+    bottom: 1.5rem;
     right: 1.25rem;
     z-index: 1003;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
+/* --- EL BOTÓN FLOTANTE (Logo + Texto) --- */
 #chat-button {
-    background-color: var(--color-primary, #007bff);
-    color: #fff;
-    padding: 0.9375rem 2rem; 
+    background: none; /* Quitamos el fondo del botón original */
+    padding: 0;
     border: none;
-    border-radius: 3.125rem;
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1004;
+    filter: drop-shadow(0 0.25rem 0.75rem rgba(0, 0, 0, 0.2));
 }
 
 #chat-button:hover {
-    transform: translateY(-0.125rem);
+    transform: scale(1.05) translateY(-2px);
 }
 
+/* El círculo que contiene el Logo */
+.chat-icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #041E32; /* Azul Imponect */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* Por encima de la etiqueta */
+    border: 2px solid #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.chat-icon-circle img {
+    width: 38px;
+    height: auto;
+    display: block;
+}
+
+/* La etiqueta rectangular (Píldora) */
+.chat-label {
+    background-color: #041E32;
+    color: #ffffff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+    /* Geometría */
+    height: 42px; /* Más bajo que el círculo para el efecto visual */
+    padding: 0 25px 0 35px; /* Más padding a la izq por solapamiento */
+    margin-left: -25px; /* Metemos la etiqueta DEBAJO del círculo */
+    border-radius: 0 25px 25px 0; /* Solo redondeado a la derecha */
+    
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+/* Color de marca al pasar el mouse */
+#chat-button:hover .chat-icon-circle,
+#chat-button:hover .chat-label {
+    background-color: #007bff;
+}
+
+/* --- VENTANA DE CHAT --- */
 #chat-window {
     width: 20rem;
     height: 28rem;
@@ -38,7 +91,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    margin-bottom: 0.9375rem;
+    margin-bottom: 5rem; /* Ajustado para que no tape el nuevo botón */
     opacity: 0;
     transform: scale(0.8) translateY(3.125rem);
     transform-origin: bottom right;
@@ -54,199 +107,93 @@
 }
 
 .chat-header {
-    background-color: var(--color-primary, #007bff);
+    background-color: #041E32;
     color: #fff;
     padding: 0.75rem 0.9375rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
 }
 
-.chat-header h3 {
-    margin: 0;
-    font-weight: 500;
-}
+.chat-header h3 { margin: 0; font-size: 1.1rem; font-weight: 500; }
 
 .close-chat {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
+    background: none; border: none; color: #fff;
+    font-size: 1.5rem; cursor: pointer;
 }
 
 .chat-body {
-    flex-grow: 1;
-    padding: 0.9375rem;
-    overflow-y: auto;
-    background-color: #f0f2f5;
-    display: flex;
-    flex-direction: column;
+    flex-grow: 1; padding: 0.9375rem;
+    overflow-y: auto; background-color: #f0f2f5;
+    display: flex; flex-direction: column;
 }
 
 .chat-message {
-    padding: 0.625rem 0.875rem;
-    border-radius: 1.125rem;
-    margin-bottom: 0.625rem;
-    max-width: 85%;
-    line-height: 1.4;
-    box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.08);
+    padding: 0.625rem 0.875rem; border-radius: 1.125rem;
+    margin-bottom: 0.625rem; max-width: 85%;
 }
 
-.incoming {
-    background-color: #fff;
-    align-self: flex-start;
-    margin-right: auto;
-    border-bottom-left-radius: 0.25rem;
-}
-
-.outgoing {
-    background-color: #dcf8c6;
-    align-self: flex-end;
-    margin-left: auto;
-    border-bottom-right-radius: 0.25rem;
-}
+.incoming { background-color: #fff; align-self: flex-start; }
+.outgoing { background-color: #dcf8c6; align-self: flex-end; }
 
 .chat-footer {
-    display: flex;
-    align-items: center;
-    padding: 0.625rem 0.9375rem;
-    border-top: 1px solid #e0e0e0;
-    background-color: #fff;
+    display: flex; padding: 0.625rem 0.9375rem;
+    border-top: 1px solid #e0e0e0; background-color: #fff;
 }
 
 .chat-footer input {
-    flex-grow: 1;
-    padding: 0.625rem 0.9375rem;
-    border: 1px solid #ddd;
-    border-radius: 1.25rem;
-    margin-right: 0.625rem;
-    font-size: 0.875rem;
+    flex-grow: 1; padding: 0.625rem 0.9375rem;
+    border: 1px solid #ddd; border-radius: 1.25rem; margin-right: 0.625rem;
 }
 
 .chat-footer button {
-    background-color: var(--color-primary, #007bff);
-    color: #fff;
-    border: none;
-    padding: 0.625rem 0.9375rem;
-    border-radius: 1.25rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    background-color: #007bff; color: #fff; border: none;
+    padding: 0.625rem 0.9375rem; border-radius: 1.25rem; cursor: pointer;
 }
 
+/* --- WHATSAPP FLOAT --- */
 .whatsapp-float {
     position: fixed;
-    bottom: 5.5rem; 
+    bottom: 6.5rem; /* Un poco más arriba para no chocar con el chat */
     right: 1.25rem;
-    width: 4rem;
-    height: 4rem;
+    width: 55px;
+    height: 55px;
     background-color: #25D366;
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
     text-decoration: none;
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
     z-index: 1002;
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.3);
-}
-.whatsapp-float i {
-    font-size: 2rem; 
-}
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float i { font-size: 1.8rem; }
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
+
 @media (max-width: 600px) {
-    #chat-window {
-        width: 80vw;
-        height: 80vh;
-        right: 0.625rem;
-        bottom: 3.5rem;
-    }
-
-    .whatsapp-float {
-        bottom: 4.5rem; 
-        right: 0.9375rem;
-        width: 3.125rem;
-        height: 3.125rem;
-        font-size: 1.5rem;
-    }
-
-    #chat-button {
-        padding: 0.75rem 1.25rem; 
-        font-size: 0.9375rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    #chat-window {
-        width: 22.5rem;
-        height: 29rem;
-    }
-
-    #chat-button {
-        padding: 0.7rem 2.25rem; 
-        font-size: 1rem;
-    }
-
-    .whatsapp-float {
-        bottom: 5rem; 
-        right: 1.5rem;
-        width: 2.75rem;
-        height: 2.75rem;
-        font-size: 2rem;
-    }
+    #chat-window { width: 85vw; height: 70vh; right: 0; bottom: 1rem; }
+    .chat-icon-circle { width: 50px; height: 50px; }
+    .chat-icon-circle img { width: 30px; }
+    .chat-label { height: 36px; font-size: 0.85rem; padding-right: 15px; }
 }
 
 @media (min-width: 1440px) {
-    #chat-window {
-        width: 25rem;
-        height: 35rem;
-    }
-
-    #chat-button {
-        padding: 0.7rem 2.5rem; 
-        font-size: 1.4rem;
-    }
-
-    .whatsapp-float {
-        bottom: 5rem; 
-        right: 2rem;
-        width: 3.2rem;
-        height: 3.2rem;
-        font-size: 2.6rem;
-    }
-    .whatsapp-float i{
-        font-size: 2.4rem;
-    }
+    #chat-window { width: 25rem; height: 35rem; }
+    .chat-icon-circle { width: 70px; height: 70px; }
+    .chat-icon-circle img { width: 45px; }
+    .chat-label { height: 50px; font-size: 1.2rem; }
 }
 
 @media (min-width: 1920px) {
-    #chat-window {
-        width: 28rem;
-        height: 38rem;
-    }
-
-    #chat-button {
-        padding: 1.125rem 2.75rem; 
-        font-size: 1.25rem;
-    }
-
-    .whatsapp-float {
-        bottom: 6.25rem; 
-        right: 2.5rem;
-        width: 4.5rem;
-        height: 4.5rem;
-        font-size: 2.5rem;
-    }
-    .whatsapp-float i{
-        font-size: 3.2rem;
-    }
+    #chat-window { width: 30rem; height: 40rem; }
+    .chat-icon-circle { width: 85px; height: 85px; }
+    .chat-icon-circle img { width: 55px; }
+    .chat-label { height: 60px; font-size: 1.4rem; padding-right: 40px; }
 }

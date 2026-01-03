@@ -1,98 +1,275 @@
+/* =========================================
+   MODALES PREMIUM (Estilo Navy & Gold)
+   ========================================= */
+
+/* 1. EL FONDO (OVERLAY) */
 .modal {
-    display: none;
+    display: none; /* Se activa con JS (display: flex) */
     position: fixed;
-    z-index: 1000;
+    z-index: 10000; /* Por encima de todo */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    
+    /* Fondo Glass Dark Premium */
+    background-color: rgba(4, 30, 50, 0.85); /* Navy muy oscuro y transparente */
+    backdrop-filter: blur(8px); /* Difumina el fondo de la web */
+    -webkit-backdrop-filter: blur(8px);
+    
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 3.125rem;
-    overflow-y: auto;
-    padding-bottom: 3.125rem;
+    align-items: center;
+    padding: 1rem;
+    overflow-y: hidden;
 }
 
+/* 2. LA CAJA DEL CONTENIDO */
 .modal-content {
-    background-color: white;
+    background-color: #ffffff;
     margin: auto;
-    padding: 1.875rem;
-    border-radius: var(--border-radius-card);
-    width: 95%; 
-    max-width: 37.5rem;
-    box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.4);
+    padding: 3rem 2.5rem;
+    border-radius: 1.5rem;
+    width: 100%; 
+    max-width: 40rem; /* Ancho de lectura cómodo */
+    
     position: relative;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    max-height: 90vh; 
+    overflow-y: auto; /* Scroll interno si es necesario */
+    
+    /* Sombra de alta profundidad */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Animación de entrada */
+    animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: scale(0.95);
+    opacity: 0;
 }
 
+/* Animación de aparición */
+@keyframes modalPop {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 3. BOTÓN CERRAR (X) */
 .close-button {
-    color: #aaa;
     position: absolute;
-    top: 0.625rem;
-    right: 1.25rem;
+    top: 1.5rem;
+    right: 1.5rem;
+    
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    color: #999;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 300;
     cursor: pointer;
-    transition: color 0.3s;
+    line-height: 1;
+    transition: all 0.3s ease;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: var(--color-primary);
-    text-decoration: none;
+.close-button:hover {
+    color: #DCCA65; /* Dorado al pasar el mouse */
+    transform: rotate(90deg); /* Pequeño giro elegante */
+    background-color: rgba(4, 30, 50, 0.05);
 }
 
-.modal-title-service {
-    color: #041E32;
-    font-size: 1.8em;
-    margin-bottom: 0.9375rem;
-    border-bottom: 0.125rem solid var(--color-light-gray);
-    padding-bottom: 0.625rem;
+/* 4. TIPOGRAFÍA Y TÍTULOS */
+.modal-title-service,
+.modal-title-faq {
+    color: #041E32; /* Navy */
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    line-height: 1.2;
 }
 
-.modal-intro-text,
+/* Línea dorada debajo del título */
+.modal-title-service::after,
+.modal-title-faq::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 5px;
+    background: #DCCA65; /* Dorado Imponect */
+    border-radius: 2px;
+}
+
+/* Textos generales dentro del modal */
+.modal-body-faq,
+.modal-intro-text, 
 .modal-extra-text {
-    font-size: 1.1em;
-    line-height: 1.5;
-    margin-bottom: 0.9375rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 1.5rem;
 }
 
+/* 5. SUBTÍTULOS INTERNOS (Incluye / Extra) */
+.modal-subtitle-incluye {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #041E32;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre la estrella y el texto */
+    
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 0.5rem;
+}
+
+/* LA ESTRELLA AZUL (Restaurada) */
+.modal-subtitle-incluye::before {
+    content: '★'; 
+    color: #fff; /* Estrella blanca */
+    background-color: #007bff; /* Fondo Azul Eléctrico */
+    width: 28px;
+    height: 28px;
+    border-radius: 50%; /* Círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Brillo azul */
+}
+
+.modal-subtitle-extra {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #666; 
+    
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #DCCA65; /* Mantenemos el dorado solo aquí como detalle */
+    
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 6. LISTAS CON ESTILO (Checkmarks Azules) */
 .modal-content ul {
-    list-style-type: '● ';
-    padding-left: 1.25rem;
-    margin-bottom: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
 }
 
 .modal-content ul li {
-    margin-bottom: 0.5rem;
-    font-size: 1em;
+    position: relative;
+    padding-left: 2.2rem; /* Espacio para el ícono */
+    margin-bottom: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.5;
 }
 
+/* EL BULLET: Checkmark Azul (Restaurado) */
+.modal-content ul li::before {
+    content: '✓'; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    color: #007bff; /* Azul */
+    font-weight: 900;
+    font-size: 0.9rem;
+    
+    /* Círculo suave de fondo */
+    background-color: rgba(0, 123, 255, 0.1);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 7. BOTONES DE ACCIÓN (Solicitar Presupuesto / Consulta) */
 .modal-button-area {
-    margin-top: 1.875rem;
-    text-align: center; 
+    margin-top: 2.5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 2rem;
+    text-align: center;
 }
 
+/* Estilo unificado para los botones de acción del modal */
+.btn-modal-action,
 .btn-solicitar-presupuesto {
-    background-color: #041E32; 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    background: linear-gradient(135deg, #041E32 0%, #06385a 100%); /* Navy Gradient */
     color: white;
-    padding: 0.75rem 1.5625rem;
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    padding: 1rem 2rem;
+    border-radius: 50px;
     border: none;
-    border-radius: 1.3125rem;
-    font-size: 1.1em;
-    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(4, 30, 50, 0.15);
+    
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s;
 }
 
+/* Hover: Se vuelve dorado */
+.btn-modal-action:hover,
 .btn-solicitar-presupuesto:hover {
-    background-color: #69beff;
-    transform: translateY(-0.125rem);
+    background: #DCCA65; /* Fondo Dorado */
+    color: #041E32;       /* Texto Navy */
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(220, 202, 101, 0.4);
 }
 
-@keyframes animatetop {
-    from {top: -18.75rem; opacity: 0} 
-    to {top: 0; opacity: 1}
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+        width: 95%;
+        margin-top: 10%;
+    }
+    
+    .modal-title-service,
+    .modal-title-faq {
+        font-size: 1.6rem;
+    }
+    
+    .modal-button-area {
+        text-align: center;
+    }
+    
+    .btn-modal-action,
+    .btn-solicitar-presupuesto {
+        width: 100%; /* Botón full width en celular */
+    }
 }
