@@ -8,22 +8,65 @@
     <link rel="icon" type="image/png" href="assets/logo-small.png">
 
     <script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "Organization",
-"name": "Imponect - Soluciones de Importación",
-"url": "https://imponect.com",
-"logo": "https://drive.google.com/file/d/1VTBUBtwR-TqYyV_Ifun2usyZOf30jzyL/view",
-"description": "Imponect es una empresa de logística y sourcing internacional, especializada en la importación de productos B2B con total transparencia y eficiencia."
-}
-</script>
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Imponect - Soluciones de Importación",
+    "url": "https://imponect.com",
+    "logo": "https://drive.google.com/file/d/1VTBUBtwR-TqYyV_Ifun2usyZOf30jzyL/view",
+    "description": "Imponect es una empresa de logística y sourcing internacional, especializada en la importación de productos B2B con total transparencia y eficiencia."
+    }
+    </script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="exclusivos.css"> 
+    <link rel="stylesheet" href="hero.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        .carousel-btn {
+            /* Diseño Moderno Glassmorphism Imponect */
+            background: rgba(8, 57, 72, 0.35) !important; /* Azul Imponect transparente */
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important; /* Flecha blanca limpia */
+            
+            /* Geometría */
+            width: 45px !important;
+            height: 45px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.2rem !important;
+            cursor: pointer !important;
+            z-index: 10 !important;
+            
+            /* Transiciones suaves */
+            transition: all 0.3s ease, opacity 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(8, 57, 72, 0.85) !important; /* Más sólido al pasar el mouse */
+            transform: translateY(-50%) scale(1.1) !important;
+            box-shadow: 0 8px 25px rgba(8, 57, 72, 0.4) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        /* Clase para ocultar flechas cuando no son necesarias */
+        .carousel-btn.hidden-arrow {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+    </style>
 
 </head>
 
@@ -152,12 +195,11 @@
         <h2 class="section-title-productos">Algunos de nuestros productos innovadores<br>para el mercado argentino.</h2>
         
         <div class="catalog-container">
-            <button class="btn-catalog-modern">
-                <i class="fas fa-file-pdf"></i>
-                <span>Descarga el catálogo completo acá</span>
-                <i class="fas fa-download"></i>
+            <a href="catalog.html" target="_blank" class="btn-catalog-modern">
+                <span>Ver el catálogo completo</span>
+                <i class="fas fa-arrow-right"></i>
                 <div class="btn-shine"></div>
-            </button>
+            </a>
         </div>
 
         <div class="products-carousel-container">
@@ -168,7 +210,6 @@
                     <h3 class="product-name">Cámara Endoscópica</h3>
                     <div class="product-features-grid">
 
-                        <!-- Columna 1 -->
                         <div class="feature-col">
                             <h4>Single Lens:</h4>
                             <ul>
@@ -178,7 +219,6 @@
                             </ul>
                         </div>
 
-                        <!-- Columna 2 -->
                         <div class="feature-col">
                             <h4>Largo:</h4>
                             <ul>
@@ -190,8 +230,8 @@
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <!--  <a href="LINK_PDF" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-<a href="LINK_PDF" target="_blank" class="btn-product-detail">Ficha Técnica</a> -->
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
                         <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
                     </div>
                 </div>
@@ -213,8 +253,8 @@
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <!--  <a href="LINK_PDF" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-<a href="LINK_PDF" target="_blank" class="btn-product-detail">Ficha Técnica</a> -->
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
                         <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
                     </div>
                 </div>
@@ -227,7 +267,6 @@
                     <h3 class="product-name">Vincha Led</h3>
                     <div class="product-features-grid">
 
-                        <!-- Columna 1 -->
                         <div class="feature-col">
                             <h4>LEDs de 3 Colores:</h4>
                             <ul>
@@ -237,7 +276,6 @@
                             </ul>
                         </div>
 
-                        <!-- Columna 2 -->
                         <div class="feature-col">
                             <ul>
                                 <li>Linterna LED en un lateral.</li>
@@ -248,8 +286,8 @@
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <!--  <a href="LINK_PDF" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-<a href="LINK_PDF" target="_blank" class="btn-product-detail">Ficha Técnica</a> -->
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
                         <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
                     </div>
                 </div>
@@ -262,7 +300,6 @@
                     <h3 class="product-name">Chaleco LED</h3>
                     <div class="product-features-grid">
 
-                        <!-- Columna 1 -->
                         <div class="feature-col">
                             <h4>Colores de Chaleco:</h4>
                             <ul>
@@ -274,7 +311,6 @@
                             </ul>
                         </div>
 
-                        <!-- Columna 2 -->
                         <div class="feature-col">
 
                             <ul>
@@ -283,8 +319,8 @@
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <!--  <a href="LINK_PDF" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-<a href="LINK_PDF" target="_blank" class="btn-product-detail">Ficha Técnica</a> -->
+                    <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
+                    <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
                         <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
 
                     </div>
@@ -297,8 +333,9 @@
 
     <section id="exclusivos" class="exclusive-section">
         <div class="exclusive-header">
-            <div class="btn-shine"></div> <h2 class="section-title-exclusivos">Exclusivos IMPONECT</h2>
-    <p class="section-subtitle">Somos representantes oficiales de marcas únicas en Argentina.</p>
+            <div class="btn-shine"></div> 
+            <h2 class="section-title-exclusivos">Exclusivos IMPONECT</h2>
+            <p class="section-subtitle">Somos representantes oficiales de marcas únicas en Argentina.</p>
         </div>
 
         <div class="exclusive-images-container">
@@ -332,12 +369,11 @@
         </div>
 
         <div class="catalog-container">
-            <button class="btn-catalog-modern btn-exclusive-catalog">
-                <i class="fas pdf-blue fa-file-pdf"></i>
-                <span>Descarga el catálogo exclusivo</span>
-                <i class="fas fa-download"></i>
+            <a href="catalog_exclusive.html" target="_blank" class="btn-catalog-modern btn-exclusive-catalog">
+                <span>Ver el catálogo exclusivo</span>
+                <i class="fas fa-arrow-right"></i>
                 <div class="btn-shine"></div>
-            </button>
+            </a>
         </div>
     </section>
 
@@ -418,7 +454,7 @@
             </div>
 
             <div class="carousel-wrapper">
-                <button class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+                <button class="carousel-btn prev-btn" aria-label="Anterior">◄</button>
 
                 <div class="case-studies-container">
                     <article class="case-card">
@@ -453,9 +489,20 @@
                             <img src="assets/reseñas5.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
                         </div>
                     </article>
+
+                    <article class="case-card">
+                        <div class="case-top-info">
+                            <h3 class="case-title">Gonzalo</h3>
+                            <p class="case-subtitle">⭐⭐⭐⭐⭐</p>
+                        </div>
+
+                        <div class="case-image-wrapper">
+                            <img src="assets/reseñas2.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
+                        </div>
+                    </article>
                 </div>
 
-                <button class="carousel-btn next-btn" aria-label="Siguiente">›</button>
+                <button class="carousel-btn next-btn" aria-label="Siguiente">►</button>
             </div>
         </div>
     </section>
@@ -615,19 +662,28 @@
 
         <div id="chat-window">
             <header class="chat-header">
-                <h3>Imponect Soporte</h3>
+                <div class="header-info">
+                    <h3>ASISTENTE IMPONECT</h3>
+                    <div class="status-indicator">
+                        <span class="dot"></span> <span class="text">En línea</span>
+                    </div>
+                </div>
                 <button class="close-chat" aria-label="Cerrar ventana de chat">&times;</button>
             </header>
 
             <div class="chat-body" id="chatBody">
-                <p class="chat-message incoming">Chat temporalmente fuera de servicio: ⚙️🛠️🚧</p>
+                <div class="chat-message bot">
+                    <p>¡Hola! 👋 Bienvenido a Imponect. <br>¿En qué podemos innovar juntos hoy?</p>
+                    <span class="time">Justo ahora</span>
+                </div>
             </div>
 
             <footer class="chat-footer">
                 <form id="chatForm">
-                    <input type="text" id="chatInput" name="mensaje" placeholder="Escribe tu mensaje..."
-                        aria-label="Campo de entrada de mensaje" required>
-                    <button type="submit" id="chatSendBtn">Enviar</button>
+                    <textarea id="chatInput" name="mensaje" rows="1" placeholder="Escribe tu consulta..." required></textarea>
+                    <button type="submit" id="chatSendBtn" aria-label="Enviar mensaje">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
             </footer>
         </div>
@@ -663,7 +719,101 @@
             // Ejecutar inmediatamente también
             updateNavbarState();
         })();
+
+        // ===============================================
+        // LÓGICA DE LAS FLECHAS DEL CARRUSEL (MODERNA)
+        // ===============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.case-studies-container');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            if (!container || !prevBtn || !nextBtn) return;
+
+            // Función para actualizar visibilidad de flechas
+            const updateArrows = () => {
+                // Obtenemos posición de scroll con margen de error pequeño
+                const scrollLeft = Math.ceil(container.scrollLeft);
+                const scrollWidth = container.scrollWidth;
+                const clientWidth = container.clientWidth;
+
+                // 1. Flecha Izquierda: Se oculta si estamos al principio (scroll < 10px)
+                if (scrollLeft > 10) {
+                    prevBtn.classList.remove('hidden-arrow');
+                } else {
+                    prevBtn.classList.add('hidden-arrow');
+                }
+
+                // 2. Flecha Derecha: Se oculta si llegamos al final
+                if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                    nextBtn.classList.add('hidden-arrow');
+                } else {
+                    nextBtn.classList.remove('hidden-arrow');
+                }
+            };
+
+            // Escuchar el evento de scroll
+            container.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+
+            // Funcionalidad de clic (por si script.js no lo cubre o para asegurar)
+            prevBtn.addEventListener('click', () => {
+                container.scrollBy({ left: -320, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                container.scrollBy({ left: 320, behavior: 'smooth' });
+            });
+
+            // Chequeo inicial
+            updateArrows();
+        });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuList = document.querySelector('.menu-list');
+
+        // Definimos los colores aquí para fácil edición
+        const colorOriginal = '#041E32'; // Azul Oscuro (Hamburguesa)
+        const colorActivo = '#00ADEF';   // Azul Claro/Cyan (Cruz) - Puedes ajustar este tono
+
+        if (menuToggle && menuList) {
+            menuToggle.addEventListener('click', () => {
+                // Alternar la clase 'active' para mostrar/ocultar el menú
+                menuList.classList.toggle('active');
+                
+                // Lógica de Icono y Color
+                if (menuList.classList.contains('active')) {
+                    // ESTADO ABIERTO (CRUZ)
+                    menuToggle.innerHTML = '✕'; 
+                    menuToggle.style.color = colorActivo; // Se pone azul
+                    // Quitamos el scaleY para la X porque la X no necesita ser aplastada
+                    menuToggle.style.transform = 'scaleY(1)'; 
+                } else {
+                    // ESTADO CERRADO (HAMBURGUESA)
+                    menuToggle.innerHTML = '☰'; 
+                    menuToggle.style.color = colorOriginal; // Vuelve al color original
+                    // Volvemos a aplastar la hamburguesa para que se vea estilizada
+                    menuToggle.style.transform = 'scaleY(0.8)'; 
+                }
+            });
+
+            // Cerrar el menú automáticamente al hacer click en un enlace
+            const navLinks = document.querySelectorAll('.menu-list a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuList.classList.remove('active');
+                    
+                    // Reseteamos el icono al cerrar por click en enlace
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.style.color = colorOriginal;
+                    menuToggle.style.transform = 'scaleY(0.8)';
+                });
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

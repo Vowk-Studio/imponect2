@@ -3,34 +3,44 @@
    ========================================= */
 
 .exclusive-section {
-    padding: 5rem 0;
+    padding: 0 0 5rem 0; /* Quitamos padding superior para que el header toque el borde si es necesario */
     text-align: center;
     background-color: var(--color-light-gray, #f8f9fa);
+    overflow-x: hidden; /* Importante para evitar scroll horizontal por el 100vw */
 }
 
-/* --- HEADER AZUL CON ANIMACIÓN DE BRILLO --- */
+/* --- HEADER AZUL FULL WIDTH --- */
 .exclusive-header {
+    /* Lógica para Ancho Completo (Full Width) */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* Diseño Visual */
     background: linear-gradient(135deg, #041a2b 0%, #0e4c83 100%);
     color: #DCCA65;
     
-    /* Centrado del bloque */
+    /* Centrado del contenido interno */
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center;
-    margin: 0 auto 5rem auto; 
     
-    padding: 3rem 4.5rem;
-    border-radius: 2.5rem;
-    box-shadow: 0 15px 40px rgba(4, 30, 50, 0.3);
-    border: 1px solid rgba(220, 202, 101, 0.2);
+    padding: 4rem 1rem; /* Padding vertical generoso */
+    margin-bottom: 5rem; /* Espacio antes de las tarjetas */
     
-    /* Control de dimensiones */
-    width: fit-content;
-    max-width: 90%;
+    /* Bordes y Sombras */
+    border-top: 1px solid rgba(220, 202, 101, 0.4);
+    border-bottom: 1px solid rgba(220, 202, 101, 0.4);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     
-    /* Configuración para el brillo */
-    position: relative; 
+    /* Eliminamos bordes redondeados para el modo Full Width */
+    border-radius: 0;
+    max-width: none;
+    
     overflow: hidden; 
 }
 
@@ -39,18 +49,18 @@
     position: absolute;
     top: 0;
     left: -100%;
-    width: 60%; 
+    width: 50%; 
     height: 100%;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.1) 50%, 
         rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-25deg);
     pointer-events: none;
-    z-index: 1; /* Por debajo del texto */
-    animation: shine-loop 4s infinite ease-in-out;
+    z-index: 1; 
+    animation: shine-loop 6s infinite ease-in-out; /* Un poco más lento al ser más ancho */
 }
 
 .exclusive-section .section-title-exclusivos {
@@ -63,7 +73,7 @@
     line-height: 1.1;
     text-align: center;
     position: relative;
-    z-index: 2; /* Por encima del brillo */
+    z-index: 2;
 }
 
 /* La línea dorada separatoria centrada */
@@ -80,15 +90,16 @@
 
 .exclusive-section .section-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    color: #ffffff; 
+    font-size: 1.6rem; /* Ajustado ligeramente */
+    color: #cfcfcf; 
     margin-top: 2rem;
     display: block;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.4;
     text-align: center;
     position: relative;
-    z-index: 2; /* Por encima del brillo */
+    z-index: 2;
+    max-width: 800px; /* Para que el texto no se estire demasiado en pantallas anchas */
 }
 
 /* --- TARJETAS DE PRODUCTOS --- */
@@ -215,7 +226,8 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .exclusive-header { padding: 2.5rem 1.5rem; width: 92%; border-radius: 1.5rem; }
+    /* Ajustes para móvil en el header full width */
+    .exclusive-header { padding: 3rem 1rem; }
     .exclusive-section .section-title-exclusivos { font-size: 2.2rem; }
     .exclusive-section .section-subtitle { font-size: 1.1rem; }
     .exclusive-item { height: 420px; min-width: 100%; }
