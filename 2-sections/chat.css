@@ -14,7 +14,7 @@
 
 /* --- EL BOTÓN FLOTANTE (Logo + Texto) --- */
 #chat-button {
-    background: none; /* Quitamos el fondo del botón original */
+    background: none;
     padding: 0;
     border: none;
     cursor: pointer;
@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 2; /* Por encima de la etiqueta */
+    z-index: 2;
     border: 2px solid #ffffff;
     transition: background-color 0.3s ease;
 }
@@ -61,10 +61,10 @@
     text-transform: uppercase;
     
     /* Geometría */
-    height: 42px; /* Más bajo que el círculo para el efecto visual */
-    padding: 0 25px 0 35px; /* Más padding a la izq por solapamiento */
-    margin-left: -25px; /* Metemos la etiqueta DEBAJO del círculo */
-    border-radius: 0 25px 25px 0; /* Solo redondeado a la derecha */
+    height: 42px;
+    padding: 0 25px 0 35px;
+    margin-left: -25px;
+    border-radius: 0 25px 25px 0;
     
     display: flex;
     align-items: center;
@@ -78,83 +78,233 @@
     background-color: #007bff;
 }
 
-/* --- VENTANA DE CHAT --- */
+/* =========================================
+   NUEVA VENTANA DE CHAT - ESTILO DARK TECH (PESTAÑA INFERIOR)
+   ========================================= */
+
 #chat-window {
-    width: 20rem;
-    height: 28rem;
-    background-color: #fff;
-    border-radius: 0.75rem;
-    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    /* Dimensiones */
+    width: 22rem;
+    height: 32rem;
+    
+    /* POSICIONAMIENTO FIJO AL PISO */
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    margin-bottom: 0;
+    
+    /* Estética Dark Mode */
+    background-color: #0f131a;
+    border: 1px solid #333;
+    border-bottom: none;
+    
+    /* Redondeamos SOLO arriba para efecto "Pestaña" */
+    border-radius: 1.25rem 1.25rem 0 0; 
+    
+    /* Sombra hacia arriba */
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5); 
+    
+    /* Flexbox */
     display: flex;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-bottom: 5rem; /* Ajustado para que no tape el nuevo botón */
+    overflow: hidden;
+    
+    /* Animaciones */
     opacity: 0;
-    transform: scale(0.8) translateY(3.125rem);
-    transform-origin: bottom right;
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transform: translateY(100%);
+    transform-origin: bottom center;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     pointer-events: none;
     z-index: 1005;
 }
 
+/* Estado Abierto */
 #chat-widget.is-open #chat-window {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
+/* --- HEADER --- */
 .chat-header {
-    background-color: #041E32;
-    color: #fff;
-    padding: 0.75rem 0.9375rem;
+    background: linear-gradient(135deg, #041E32 0%, #02121f 100%);
+    padding: 1rem 1.2rem; /* Padding ajustado */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid #b7812b;
 }
 
-.chat-header h3 { margin: 0; font-size: 1.1rem; font-weight: 500; }
+.header-info {
+    display: flex;
+    flex-direction: column;
+}
 
+.header-info h3 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.status-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff88;
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 5px #00ff88;
+}
+
+.status-indicator .text {
+    font-size: 0.75rem;
+    color: #ccc;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- BOTÓN DE CIERRE CON HITBOX AMPLIADO --- */
 .close-chat {
-    background: none; border: none; color: #fff;
-    font-size: 1.5rem; cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+    
+    /* HITBOX MAGICO */
+    width: 44px; /* Tamaño táctil ideal */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Para que el hover sea redondo */
+    font-size: 2rem; /* Tamaño visual del icono */
+    
+    /* Ajuste de posición visual */
+    margin-right: -10px; /* Compensamos el ancho extra */
 }
 
+.close-chat:hover {
+    color: #b7812b; /* Dorado */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+}
+
+/* --- BODY (Mensajes) --- */
 .chat-body {
-    flex-grow: 1; padding: 0.9375rem;
-    overflow-y: auto; background-color: #f0f2f5;
-    display: flex; flex-direction: column;
+    flex-grow: 1;
+    padding: 1.2rem;
+    overflow-y: auto;
+    background-color: #0b0e11;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #0b0e11;
 }
 
 .chat-message {
-    padding: 0.625rem 0.875rem; border-radius: 1.125rem;
-    margin-bottom: 0.625rem; max-width: 85%;
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    position: relative;
+    font-family: 'Inter', sans-serif;
 }
 
-.incoming { background-color: #fff; align-self: flex-start; }
-.outgoing { background-color: #dcf8c6; align-self: flex-end; }
+.chat-message.bot {
+    align-self: flex-start;
+    background-color: #1e252b;
+    color: #e0e0e0;
+    border-bottom-left-radius: 2px;
+    border: 1px solid #333;
+}
 
+.chat-message.user {
+    align-self: flex-end;
+    background-color: #b7812b;
+    color: #fff;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 4px 15px rgba(183, 129, 43, 0.2);
+}
+
+.time {
+    display: block;
+    font-size: 0.65rem;
+    margin-top: 5px;
+    opacity: 0.6;
+    text-align: right;
+}
+
+/* --- FOOTER --- */
 .chat-footer {
-    display: flex; padding: 0.625rem 0.9375rem;
-    border-top: 1px solid #e0e0e0; background-color: #fff;
+    padding: 15px;
+    background-color: #151a1e;
+    border-top: 1px solid #333;
 }
 
-.chat-footer input {
-    flex-grow: 1; padding: 0.625rem 0.9375rem;
-    border: 1px solid #ddd; border-radius: 1.25rem; margin-right: 0.625rem;
+.chat-footer form {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+}
+
+.chat-footer textarea {
+    flex: 1;
+    background-color: #0b0e11;
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 12px 15px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    resize: none;
+    outline: none;
+    min-height: 45px;
+    max-height: 100px;
+    transition: border-color 0.3s;
+}
+
+.chat-footer textarea:focus {
+    border-color: #b7812b;
 }
 
 .chat-footer button {
-    background-color: #007bff; color: #fff; border: none;
-    padding: 0.625rem 0.9375rem; border-radius: 1.25rem; cursor: pointer;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #041E32;
+    color: #b7812b;
+    border: 1px solid #041E32;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.chat-footer button:hover {
+    background-color: #b7812b;
+    color: #fff;
+    transform: rotate(-10deg) scale(1.1);
 }
 
 /* --- WHATSAPP FLOAT --- */
 .whatsapp-float {
     position: fixed;
-    bottom: 6.5rem; /* Un poco más arriba para no chocar con el chat */
+    bottom: 6.5rem;
     right: 1.25rem;
     width: 55px;
     height: 55px;
@@ -178,21 +328,30 @@
    ========================================= */
 
 @media (max-width: 600px) {
-    #chat-window { width: 85vw; height: 70vh; right: 0; bottom: 1rem; }
+    #chat-window {
+        width: 100%;
+        height: 80vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+        margin-bottom: 0;
+    }
+
     .chat-icon-circle { width: 50px; height: 50px; }
     .chat-icon-circle img { width: 30px; }
     .chat-label { height: 36px; font-size: 0.85rem; padding-right: 15px; }
 }
 
 @media (min-width: 1440px) {
-    #chat-window { width: 25rem; height: 35rem; }
+    #chat-window { width: 25rem; height: 38rem; }
     .chat-icon-circle { width: 70px; height: 70px; }
     .chat-icon-circle img { width: 45px; }
     .chat-label { height: 50px; font-size: 1.2rem; }
 }
 
 @media (min-width: 1920px) {
-    #chat-window { width: 30rem; height: 40rem; }
+    #chat-window { width: 30rem; height: 42rem; }
     .chat-icon-circle { width: 85px; height: 85px; }
     .chat-icon-circle img { width: 55px; }
     .chat-label { height: 60px; font-size: 1.4rem; padding-right: 40px; }

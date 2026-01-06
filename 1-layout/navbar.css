@@ -4,113 +4,136 @@
 
 .navbar {
     display: flex;
-    flex-direction: column; 
+    flex-direction: row; /* Cambiado a row para alinear Logo - Botón */
+    flex-wrap: wrap; /* Permite que el menú caiga abajo al abrirse */
+    justify-content: space-between; /* Logo a la izq, Botón a la der */
     align-items: center;
     
     /* Efecto Glassmorphism (Vidrio) */
-    background-color: rgba(255, 255, 255, 0.85); 
+    background-color: rgba(255, 255, 255, 0.95); /* Un poco más opaco en mobile para lectura */
     backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
     
     box-shadow: var(--shadow-light);
     font-family: 'Sora', sans-serif;
-    position: relative;
+    position: fixed; /* Fijo para que acompañe el scroll en mobile también */
+    top: 0;
+    width: 100%;
     transition: all 0.3s ease;
     z-index: 1000;
+    padding: 1rem 1.5rem; /* Padding base móvil */
 }
 
+/* --- LOGO --- */
 .logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: 0.625rem;
+    /* Eliminamos margins innecesarios */
 }
 
 .logo-img {
     order: 2;
-    width: 2rem; /* Ligeramente más grande */
+    width: 2.2rem; 
     height: auto;
-    margin-right: 0.625rem;
+    margin-left: 10px; /* Separación entre texto e imagen */
 }
 
 .logo-container h1 {
     order: 1;
-    /* AUMENTADO: Tamaño base más grande para móviles */
-    font-size: 1.5rem; 
-    font-weight: 800; /* Extra bold para más impacto */
-    margin-top: 0.7rem;
-    letter-spacing: -0.5px; /* Un toque moderno */
-    color: #041E32; /* Aseguramos color oscuro fuerte */
+    font-size: 1.4rem; 
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #041E32;
+    margin: 0; /* Reseteo de margen */
 }
 
+/* --- BOTÓN HAMBURGUESA (Móvil) --- */
+#menu-toggle {
+    display: block; /* Visible en móvil */
+    background: none;
+    border: none;
+    
+    /* AJUSTES ESTÉTICOS */
+    font-size: 1.8rem; /* Un poco más chico que antes (era 2rem) */
+    line-height: 1;    /* Evita espacios extra arriba/abajo */
+    padding: 0 5px;    /* Un poco de aire a los costados */
+    
+    color: #041E32;    /* Color original Oscuro */
+    cursor: pointer;
+    
+    /* TRUCO VISUAL: Aplasta el icono un 20% verticalmente para que sea menos "grotesco" */
+    transform: scaleY(0.8); 
+    transform-origin: center;
+    
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#menu-toggle:hover {
+    /* Al pasar el mouse, mantenemos el aplastamiento */
+    transform: scaleY(0.8) scale(1.1); 
+}
+
+/* --- LISTA DEL MENÚ (Móvil) --- */
 .menu-list {
-    display: flex; 
+    display: none; /* Oculto por defecto en móvil */
     flex-direction: column;
-    width: 100%;
+    width: 100%; /* Ocupa todo el ancho al bajar */
     list-style: none;
     text-align: center;
-    font-family: 'inter', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05); /* Separador sutil */
+    padding-top: 1rem;
+}
+
+/* Clase que agregaremos con JS para mostrar el menú */
+.menu-list.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .menu-list li {
-    padding: 0.4rem 0; /* Un poco más de espacio vertical */
+    padding: 0.8rem 0; /* Más espacio para el dedo */
 }
 
 .menu-list a {
     text-decoration: none;
     color: var(--color-text);
-    /* AUMENTADO: Tamaño de letra del menú */
-    font-size: 1.1rem; 
-    font-weight: 600; /* Un poco más grueso */
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-/* Animación sutil del subrayado en el menú */
-.menu-list a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px; /* Línea un poco más gruesa */
-    bottom: -4px;
-    left: 0;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease;
-    border-radius: 2px;
-}
-
-.menu-list a:hover::after {
-    width: 100%;
+    font-size: 1.2rem; 
+    font-weight: 600;
 }
 
 .separator {
-    display: none; 
+    display: none; /* Ocultar separadores | en móvil */
 }
 
-#menu-toggle {
-    display: none; 
-}
+/* =========================
+   MEDIA QUERIES (Escritorio)
+   ========================= */
 
-/* MEDIA QUERIES */
-
-/* Tablet y Escritorio pequeño */
-@media (min-width: 768px) {
+@media (min-width: 1024px) { /* Ajustado a 1024 para tablets grandes/laptops */
     .navbar {
-        flex-direction: row; 
-        justify-content: space-between;
+        flex-wrap: nowrap; /* No permite que baje nada */
         padding: 0.8rem 2rem;
         height: auto;
-        position: fixed; 
-        top: 0;
-        width: 100%;
+    }
+
+    #menu-toggle {
+        display: none; /* Ocultar botón hamburguesa */
     }
 
     .menu-list {
+        display: flex; /* Siempre visible */
         flex-direction: row; 
         width: auto;
-        margin: 0;
-        align-items: center; /* Centrado vertical perfecto */
+        margin-top: 0;
+        border-top: none;
+        padding-top: 0;
+        align-items: center;
     }
     
     .menu-list li {
@@ -118,71 +141,57 @@
     }
 
     .menu-list a {
-        /* AUMENTADO: Tamaño en escritorio estándar */
-        font-size: 1.15rem;
+        font-size: 1rem;
+        position: relative;
+    }
+
+    /* Animación subrayado solo en escritorio */
+    .menu-list a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--color-primary); /* O el color dorado/azul */
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .menu-list a:hover::after {
+        width: 100%;
     }
 
     .separator {
         display: inline-block;
-        margin: 0 1rem; /* Más separación */
+        margin: 0 0.8rem;
         color: #ccc;
-        font-size: 1.2rem; /* Separador más grande acorde al texto */
-    }
-    
-    .logo-container {
-        margin-bottom: 0;
+        font-size: 1rem;
     }
     
     .logo-img {
-        width: 3rem; /* Logo imagen más grande */
+        width: 2.5rem; 
+        margin-left: 0;
+        margin-right: 0.625rem;
     }
+    
+    /* En escritorio volvemos al orden original si prefieres img a la derecha del texto o viceversa */
+    .logo-img { order: 2; }
+    .logo-container h1 { order: 1; font-size: 1.6rem; }
 
-    .logo-container h1 {
-        /* AUMENTADO: Marca más grande en escritorio */
-        font-size: 1.8rem;
-    }
-
-    /* Estilos cuando se hace scroll (Sticky) */
+    /* Sticky Desktop */
     .navbar.scrolled {
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         padding: 0.6rem 3.125rem;
     }
-
-    .navbar.scrolled .menu-list a { color: var(--color-text); }
 }
 
-/* Laptops grandes */
-@media (min-width: 1024px) {
-    .navbar {
-        padding: 0.8rem 5rem;
-    }
-    .navbar.scrolled {
-        padding: 0.8rem 5rem;
-    }
-}
-
-/* Pantallas muy grandes (Full HD / 4K) */
+/* Pantallas muy grandes */
 @media (min-width: 1440px) {
-    .navbar {
-        padding: 1.2rem 8rem;
-    }
-    
-    .logo-container h1 {
-        /* AUMENTADO: Marca gigante para pantallas grandes */
-        font-size: 2.2rem; 
-    }
-    
-    .logo-img {
-        width: 3.5rem;
-    }
-
-    .menu-list a {
-        /* AUMENTADO: Menú grande */
-        font-size: 1.3rem; 
-    }
-    
-    .separator {
-        margin: 0 1.5rem;
-    }
+    .navbar { padding: 1.2rem 8rem; }
+    .logo-container h1 { font-size: 2rem; }
+    .logo-img { width: 3rem; }
+    .menu-list a { font-size: 1.15rem; }
+    .separator { margin: 0 1.2rem; }
 }

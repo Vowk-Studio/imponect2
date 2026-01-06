@@ -34,7 +34,7 @@
     
     position: relative;
     max-height: 90vh; 
-    overflow-y: auto; /* Scroll interno si es necesario */
+    overflow-y: hidden; /* Scroll interno si es necesario */
     
     /* Sombra de alta profundidad */
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
@@ -54,33 +54,75 @@
     }
 }
 
-/* 3. BOTÓN CERRAR (X) */
+/* 3. BOTÓN CERRAR (X) - FIX HITBOX & SCROLL */
 .close-button {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
     
-    width: 2.5rem;
-    height: 2.5rem;
+    /* Tamaño del círculo visible */
+    width: 3rem;
+    height: 3rem;
+    
     background-color: transparent;
-    color: #999;
     border-radius: 50%;
+    
+    /* Ocultamos la X de texto original para que no rote el contenedor */
+    color: transparent; 
     
     display: flex;
     align-items: center;
     justify-content: center;
     
-    font-size: 2rem;
-    font-weight: 300;
     cursor: pointer;
+    z-index: 10;
+    
+    /* Transición solo para el fondo */
+    transition: background-color 0.3s ease;
+}
+
+/* LA X VISUAL (Pseudo-elemento que sí rota) */
+.close-button::before {
+    content: '×'; /* El símbolo de multiplicación */
+    font-family: sans-serif; /* Fuente limpia */
+    font-size: 2.2rem;
+    font-weight: 300;
     line-height: 1;
+    color: #999; /* El color gris original */
+    
+    /* Centrado absoluto dentro del botón */
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+    /* La transición de giro va aquí */
     transition: all 0.3s ease;
 }
 
+/* EL HITBOX INVISIBLE (Área de click expandida) */
+.close-button::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    left: -15px;
+    right: -15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* EFECTO HOVER */
 .close-button:hover {
-    color: #DCCA65; /* Dorado al pasar el mouse */
-    transform: rotate(90deg); /* Pequeño giro elegante */
-    background-color: rgba(4, 30, 50, 0.05);
+    background-color: rgba(4, 30, 50, 0.05); /* Fondo sutil */
+    /* IMPORTANTE: No rotamos el contenedor principal aquí */
+}
+
+.close-button:hover::before {
+    color: #DCCA65; /* Dorado */
+    transform: rotate(90deg); /* SOLO rota la X interna */
 }
 
 /* 4. TIPOGRAFÍA Y TÍTULOS */

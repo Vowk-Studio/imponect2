@@ -339,3 +339,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', initAnimations);
 window.addEventListener('load', initAnimations);
+
+// =========================================================================
+// 9. LÓGICA DE MENSAJERÍA DEL CHAT (INTEGRACIÓN CON AI / N8N)
+// =========================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. SELECTORES INTERNOS DEL CHAT
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatBody = document.getElementById('chatBody');
+    
+    // 🚨 IMPORTANTE: Reemplaza esto con tu URL real de n8n cuando la tengas
+    const N8N_WEBHOOK_URL = 'https://nicoediz.app.n8n.cloud/webhook/chat-imponect'; 
+
+    // 2. FUNCIÓN PARA AGREGAR MENSAJES A LA PANTALLA
+    function appendMessage(text, sender) {
+        const div = document.createElement('div');
+        div.classList.add('chat-message', sender); // sender será 'user' o 'bot'
+        
+        // Texto del mensaje
+        const p = document.createElement('p');
+        p.textContent = text; 
+        
+        // Hora del mensaje
+        const timeSpan = document.createElement('span');
+        timeSpan.classList.add('time');
+        const now = new Date();
+        // Formato de hora simple (ej: 14:05)
+        timeSpan.textContent = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
+
+        div.appendChild(p);
+        div.appendChild(timeSpan);
+        chatBody.appendChild(div);
+
+        // Scroll automático hacia el último mensaje
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // 3. INDICADOR DE "ESCRIBIENDO..."
+    function showTypingIndicator() {
+        // Evita duplicados
+        if(document.getElementById('typingIndicator')) return;
+
+        const div = document.createElement('div');
+        div.classList.add('chat-message', 'bot');
+        div.id = 'typingIndicator';
+        div.innerHTML = '<p>Pensando... <i class="fas fa-circle-notch fa-spin"></i></p>';
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.remove();
+    }
+
+    // 4. MANEJO DEL ENVÍO DE MENSAJES
+    if (chatForm) {
+        chatForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Evita que se recargue la página
+
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            // A. Mostrar mensaje del usuario inmediatamente (Lado derecho/Dorado)
+            appendMessage(userMessage, 'user');
+            
+            // Limpiar input y resetear altura
+            chatInput.value = ''; 
+            chatInput.style.height = 'auto'; 
+
+            // B. Mostrar "Escribiendo..."
+            showTypingIndicator();
+
+            try {
+                // C. Enviar a n8n (o tu backend)
+                // Si aún no tienes la URL, esto dará error en consola pero la UI funcionará
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMessage })
+                });
+
+                const data = await response.json();
+                
+                // D. Ocultar "Escribiendo" y mostrar respuesta del Bot
+                removeTypingIndicator();
+                
+                // Asumimos que n8n devuelve { "output": "Hola..." }
+                // Si n8n devuelve otra estructura, ajusta 'data.output' aquí.
+                const botReply = data.output || "Gracias por tu mensaje. Un asesor revisará tu consulta.";
+                appendMessage(botReply, 'bot');
+
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                removeTypingIndicator();
+                
+                // Mensaje de fallback si falla la conexión (opcional)
+                // appendMessage("Lo siento, no pude conectar con el servidor en este momento.", 'bot');
+            }
+        });
+
+        // 5. ENVIAR CON ENTER (Mejora de UX)
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Evita el salto de línea
+                chatForm.dispatchEvent(new Event('submit')); // Dispara el envío
+            }
+        });
+        
+        // Auto-resize del textarea (Crece mientras escribes)
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if(this.value === '') this.style.height = 'auto';
+        });
+    }
+});

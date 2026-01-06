@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPONECT | Catálogo Exclusivo 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-blue: #083948;       
+            --primary-dark: #052630;       
+            --accent-gold: #b7812b;        
+            --accent-gold-light: #e5b96e;  
+            --accent-gold-dark: #9d6518;   
+            --bg-color: #0b1216;           
+            --text-white: #ffffff;
+            --text-gray: #cfcfcf;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            margin: 0;
+        }
+
+        /* WRAPPER PRINCIPAL */
+        #main-wrapper {
+            background-color: var(--bg-color);
+            width: 100%;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            overflow: hidden;
+            position: relative;
+            background-image: linear-gradient(90deg, transparent 0%, transparent 49%, rgba(183, 129, 43, 0.05) 50%, transparent 51%, transparent 100%);
+            background-size: 150px 100%; 
+            
+            /* Flexbox para empujar footer */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER */
+        header {
+            background: radial-gradient(circle at center, #094557 0%, var(--primary-dark) 100%);
+            padding: 70px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-gold);
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold-light), var(--accent-gold-dark));
+        }
+
+        h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1;
+        }
+
+        h1 .brand { color: #fff; display: block; font-size: 2.5rem; letter-spacing: 8px; margin-bottom: 5px; }
+        h1 .exclusive {
+            background: linear-gradient(to bottom, #cf9d46 0%, #b7812b 50%, #7a5012 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            filter: drop-shadow(0 2px 0px rgba(0,0,0,0.5));
+        }
+
+        .subtitle {
+            margin-top: 20px;
+            color: var(--accent-gold-light);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* BOTÓN */
+        .btn-download-exclusive {
+            background: transparent;
+            border: 1px solid var(--accent-gold-light);
+            color: var(--accent-gold-light);
+            padding: 12px 35px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            width: 300px;
+            z-index: 1;
+        }
+
+        .btn-download-exclusive::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: var(--progress, 0%);
+            background: linear-gradient(135deg, var(--accent-gold-dark) 0%, var(--accent-gold) 100%);
+            z-index: -1;
+            transition: width 0.1s linear;
+        }
+        .btn-text { position: relative; z-index: 2; }
+        .pdf-icon { font-size: 1.1rem; position: relative; top: 1px; right: 10px;}
+        .btn-download-exclusive:hover { box-shadow: 0 10px 30px rgba(183, 129, 43, 0.4); color: #fff; border-color: #fff; transform: translateY(-2px); }
+
+        /* GRID CORREGIDA */
+        .catalog-container {
+            max-width: 1250px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 45px;
+            
+            justify-content: center; /* Centra horizontalmente si hay 1 item */
+            
+            /* ESTO HACE QUE EL CONTENEDOR CREZCA... */
+            flex-grow: 1; 
+            
+            /* ...PERO ESTO EVITA QUE LOS ITEMS SE ESTIREN VERTICALMENTE */
+            align-content: start; 
+        }
+
+        .product-card {
+            background-color: rgba(21, 26, 30, 0.95);
+            border: 1px solid var(--accent-gold-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* Quitamos altura fija para que se ajuste al contenido, pero alineado al inicio */
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 15px; right: -30px;
+            background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold));
+            color: #000; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.75rem;
+            padding: 5px 30px; transform: rotate(45deg); z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.5); letter-spacing: 1px;
+        }
+
+        .product-card:hover { transform: translateY(-10px); border-color: var(--accent-gold-light); box-shadow: 0 20px 50px rgba(183, 129, 43, 0.25); }
+
+        .img-wrapper {
+            width: 100%; height: 300px; background: #fff; padding: 30px;
+            display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--accent-gold);
+        }
+        .img-wrapper::after { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 40px; height: 2px; background-color: var(--accent-gold); }
+        .img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); }
+
+        .info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; background: linear-gradient(to bottom, #151a1e 0%, #0d1012 100%); }
+        .category-tag { font-family: 'Rajdhani', sans-serif; font-weight: 700; color: var(--accent-gold-light); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: inline-block; border-bottom: 1px solid var(--accent-gold-dark); align-self: flex-start; }
+        .title { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 700; line-height: 1.1; margin-bottom: 15px; color: #fff; text-transform: uppercase; }
+        .description { font-size: 0.95rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        .specs-box { background: rgba(183, 129, 43, 0.1); border: 1px solid rgba(183, 129, 43, 0.3); padding: 10px 15px; font-size: 0.85rem; color: #e5b96e; margin-bottom: 25px; font-family: 'Rajdhani', sans-serif; border-radius: 4px; }
+        
+        .btn { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%); border: none; color: #000; padding: 14px; border-radius: 4px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; text-decoration: none; transition: 0.3s; font-family: 'Rajdhani', sans-serif; }
+        .btn:hover { background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%); box-shadow: 0 0 20px rgba(183, 129, 43, 0.5); color: #000; transform: translateY(-2px); }
+
+        footer { text-align: center; margin-top: auto; padding: 30px 0; border-top: 1px solid #333; color: #666; font-size: 0.9rem; position: relative; z-index: 2; }
+
+        body.generating-pdf .product-card .btn { display: none !important; }
+    </style>
+</head>
+<body id="body">
+
+    <div id="main-wrapper">
+        <header>
+            <h1>
+                <span class="brand">IMPONECT</span>
+                <span class="exclusive">EXCLUSIVOS</span>
+            </h1>
+            <div class="subtitle">Productos Innovadores en ARGENTINA</div>
+
+            <button class="btn-download-exclusive" onclick="descargarPDF()" id="downloadBtn">
+                <span class="btn-text"><i class="fas pdf-icon fa-file-pdf"></i>Descargar Catálogo PDF</span>
+            </button>
+        </header>
+
+        <div class="catalog-container" id="grid">
+        </div>
+
+        <footer>
+            <p>&copy; 2026 IMPONECT S.A. - Catálogo de Productos Exclusivos</p>
+        </footer>
+    </div>
+
+    <script src="data_exclusive.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        const rutaImagenes = 'assets/catalog_exclusive/';
+        const container = document.getElementById('grid');
+
+        if (typeof productos !== 'undefined' && Array.isArray(productos)) {
+            productos.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                const imagenFinal = rutaImagenes + p.imagen;
+
+                card.innerHTML = `
+                    <div class="ribbon">OFFICIAL PARTNER</div>
+                    <div class="img-wrapper">
+                        <img src="${imagenFinal}" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/300x300?text=Exclusivo'"> 
+                    </div>
+                    <div class="info">
+                        <div class="category-tag">${p.categoria}</div>
+                        <h3 class="title">${p.nombre}</h3>
+                        <div class="specs-box">${p.specs}</div>
+                        <p class="description">${p.descripcion}</p>
+                        <a href="#" class="btn">Ver Detalles</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function descargarPDF() {
+            const btn = document.getElementById('downloadBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const wrapper = document.getElementById('main-wrapper');
+            
+            // 1. BARRA DE CARGA
+            btn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress < 90) {
+                    progress += 4;
+                    btn.style.setProperty('--progress', progress + '%');
+                    if(progress > 40) btn.style.color = '#fff'; 
+                }
+            }, 80);
+
+            // 2. ACTIVAR MODO PDF
+            document.body.classList.add('generating-pdf');
+
+            // 3. CÁLCULO DE ALTURA
+            const totalWidth = wrapper.offsetWidth;
+            const actualHeight = wrapper.scrollHeight;
+            
+            // Altura mínima para que no salga "apaisado" si hay poco contenido
+            const minPortraitHeight = totalWidth * 1.41; 
+            const finalHeight = Math.max(actualHeight, minPortraitHeight);
+
+            const opt = {
+                margin:       0,
+                filename:     'Catalogo_Exclusive_Imponect.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, 
+                    useCORS: true, 
+                    backgroundColor: '#0b1216', 
+                    scrollY: 0,
+                    width: totalWidth,
+                    height: finalHeight, 
+                    windowHeight: finalHeight,
+                    ignoreElements: function(element) {
+                        return element.id === 'downloadBtn';
+                    }
+                },
+                jsPDF: { 
+                    unit: 'px', 
+                    format: [totalWidth, finalHeight], 
+                    orientation: 'portrait' 
+                }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(wrapper).save()
+                    .then(() => {
+                        clearInterval(interval);
+                        btn.style.setProperty('--progress', '100%');
+                        btnText.innerHTML = '<i class="fas fa-check"></i> ¡Descargado!';
+                        
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.style.setProperty('--progress', '0%');
+                            btn.style.color = '#e5b96e'; 
+                            btnText.innerHTML = '<i class="fas fa-crown"></i> Descargar Catálogo PDF';
+                            document.body.classList.remove('generating-pdf');
+                        }, 2500);
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Error: Usa Live Server.');
+                        clearInterval(interval);
+                        btn.disabled = false;
+                        document.body.classList.remove('generating-pdf');
+                    });
+            }, 100);
+        }
+    </script>
+</body>
+</html>

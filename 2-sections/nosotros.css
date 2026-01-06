@@ -240,11 +240,6 @@
     .quote-mark { font-size: 5rem; }
     .quote-left { left: -10px; top: -1.5rem; }
     .quote-right { right: -10px; bottom: -2rem; }
-    
-    .team-card {
-        /* En móviles, dejamos que la info se vea siempre o mantenemos el hover? 
-           Normalmente hover en móvil es un click. Lo dejamos igual. */
-    }
 }
 
 @media (min-width: 1024px) {
