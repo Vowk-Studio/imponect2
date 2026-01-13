@@ -8,6 +8,7 @@
     margin-bottom: 2rem;
     font-family: 'Roboto', sans-serif;
     color: #041E32;
+    text-align: center;
 }
 
 .product-desc-container {
@@ -335,29 +336,90 @@
     text-decoration: none;
 }
 
+/* =========================================================
+   CONFIGURACIÓN MOBILE Y TABLET ( < 1024px )
+   Reemplaza tu bloque anterior por este
+   ========================================================= */
 
 @media (max-width: 1023px) {
-    .product-item.open .product-overlay {
-        opacity: 1;
-        background: rgba(0,0,0,0.7);
+
+    /* --- 1. BLOQUEO DEL HOVER FANTASMA --- */
+    .product-item:hover .product-overlay {
+        transform: translateY(40%);
+        opacity: 0;
     }
 
-    .button-wrapper {
-        flex-direction: column;
-        gap: 0.5rem;
+    /* --- 2. ESTADO ACTIVO (Tap) --- */
+    .product-item.active-mobile .product-overlay {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        
+        height: 100%;
+        
+        /* CAMBIO AQUÍ: Usamos el degradado azul estilo Web */
+        /* Va de Azul fuerte abajo (para los botones) a oscuro transparente arriba (para leer el título) */
+        background: linear-gradient(to top, rgba(0, 123, 255, 0.95) 0%, rgba(4, 14, 25, 0.6) 100%);
+        
+        justify-content: space-between;
+        padding: 1.5rem;
     }
 
-    .btn-product-detail {
-        width: 100%;
-        padding: 0.7rem 1rem;
-    }
-
+    /* --- 3. AJUSTES DE TEXTO Y TÍTULO --- */
     .product-features-grid {
-        gap: 2rem;
+        gap: 1rem;
         flex-direction: column;
+        width: 100%;
+    }
+
+    .product-item.active-mobile .product-name {
+        margin-top: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Línea un poco más sutil para el degradado */
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Sombra para asegurar lectura sobre fotos claras */
+    }
+    
+    .product-item.active-mobile .product-name::after {
+        display: none;
+    }
+
+    /* Scroll para la descripción si es muy larga */
+    .product-item.active-mobile .product-features-grid {
+        margin-bottom: auto; 
+        overflow-y: auto;
+        max-height: 55%; /* Ajustado un poco para dar aire al degradado */
+        text-shadow: 0 1px 3px rgba(0,0,0,0.8); /* Sombra para leer mejor los bullets */
+    }
+
+    /* --- 4. BOTONES EN FILA (ROW) --- */
+    .product-item.active-mobile .button-wrapper {
+        flex-direction: row !important;
+        width: 100%;
+        gap: 6px;
+        margin-top: 1rem;
+    }
+
+    .product-item.active-mobile .btn-product-detail {
+        width: 33% !important;
+        padding: 0.5rem 0.2rem !important;
+        font-size: 0.75rem !important;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+        height: 48px;
+        line-height: 1.1; 
+        margin: 0 !important;
+        white-space: normal;
+        
+        /* Un pequeño ajuste de sombra a los botones para que resalten sobre el azul */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 }
-
 
 @media (min-width: 1024px) {
     .products-section {
@@ -586,4 +648,27 @@
     
     /* Mantenemos el border-radius si la tarjeta lo tiene */
     border-radius: inherit; 
+}
+
+/* ==================================================
+   CLASE PARA DOBLE TAP EN MOBILE
+   (Replica el efecto hover cuando JS agrega la clase)
+   ================================================== */
+
+.product-item.active-mobile .product-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.product-item.active-mobile img {
+    transform: scale(1.06);
+}
+
+/* En resoluciones grandes (desktop), mantenemos el comportamiento hover
+   y forzamos la expansión del ancho si fuera necesario, aunque el script 
+   limitará esto solo a móbile */
+@media (min-width: 1024px) {
+    .products-carousel-container .product-item.active-mobile {
+         width: 50% !important; /* O el porcentaje que corresponda según tu media query */
+    }
 }

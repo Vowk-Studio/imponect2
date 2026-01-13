@@ -76,6 +76,33 @@
     justify-content: center;
 }
 
+/* =========================================
+   CORRECCIÓN ALINEACIÓN BOTÓN CHAT (SOLO MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* Grid para dividir el botón en 3 partes: Icono | Texto | Espacio Vacío */
+    #btnChatRepresentante {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        width: 85%;
+        align-items: center;
+        padding: 0; 
+    }
+
+    #btnChatRepresentante .icon-button {
+        justify-self: center; /* Centra el icono en su hueco izquierdo */
+        margin-right: 0 !important; 
+        font-size: 1.4rem !important; 
+    }
+    
+    .btn-chat {
+        width: 100%;
+        padding: 0.75rem 0;
+        box-sizing: border-box;
+    }
+}
+
 /* Force a consistent centered column block so children align under centered headers */
 @media (min-width: 768px) {
     .content-row { max-width: 1100px; margin: 0 auto; }
@@ -189,6 +216,7 @@
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.15s;
+    font-size: 1.2rem;
 }
 
 .btn-chat {

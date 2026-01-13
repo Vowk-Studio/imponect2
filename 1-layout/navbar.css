@@ -111,8 +111,52 @@
     display: none; /* Ocultar separadores | en móvil */
 }
 
+/* --- BOTÓN DE IDIOMA (Diseño Clean & Glow) --- */
+.lang-btn {
+    background: rgba(255, 255, 255, 0.03); /* Fondo ultra sutil para área de click */
+    border: none; /* SIN BORDES */
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Un poco más de aire entre letras */
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    
+    /* Para que no se seleccione el texto al hacer click rápido */
+    user-select: none; 
+    -webkit-tap-highlight-color: transparent; /* Quita el parpadeo azul en Android al tocar */
+}
+
+.lang-btn:hover {
+    background: rgba(0, 173, 239, 0.08); /* Sutil tinte azul al pasar el mouse */
+}
+
+.lang-text {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgba(4, 30, 50, 0.4); /* Gris apagado para el inactivo */
+    transition: all 0.3s ease;
+}
+
+/* ESTADO ACTIVO: Azul Imponect + Brillo */
+.lang-text.active {
+    color: #00ADEF; /* Azul Cyan */
+    font-weight: 800; /* Más gordito */
+    text-shadow: 0 0 12px rgba(0, 173, 239, 0.5); /* EFECTO GLOW / NEÓN */
+    transform: scale(1.05); /* Crece un pelín */
+}
+
+.lang-divider {
+    color: rgba(4, 30, 50, 0.2); /* Barra separadora muy sutil */
+    font-size: 0.8rem;
+    margin-top: -1px;
+}
+
 /* =========================
-   MEDIA QUERIES (Escritorio)
+   MEDIA QUERIES (Escritorio) - BLOQUE COMPLETO
    ========================= */
 
 @media (min-width: 1024px) { /* Ajustado a 1024 para tablets grandes/laptops */
@@ -175,9 +219,39 @@
         margin-right: 0.625rem;
     }
     
-    /* En escritorio volvemos al orden original si prefieres img a la derecha del texto o viceversa */
+    /* En escritorio volvemos al orden original */
     .logo-img { order: 2; }
     .logo-container h1 { order: 1; font-size: 1.6rem; }
+
+    /* --- AJUSTES BOTÓN IDIOMA DESKTOP (V2 - Con separador elegante) --- */
+    .lang-item {
+        position: relative; /* Necesario para posicionar la línea */
+        margin-left: 20px;  /* Aleja todo el bloque de "Contacto" */
+        padding-left: 25px; /* Crea el espacio donde irá la línea */
+        display: flex;
+        align-items: center;
+        height: auto;
+        border: none; /* Quitamos el borde anterior que daba problemas */
+    }
+
+    /* CREAMOS LA LÍNEA SEPARADORA MANUALMENTE */
+    .lang-item::before {
+        position: absolute;
+        left: 0;           /* La pegamos al inicio del espacio */
+        top: 50%;          /* Centrada verticalmente */
+        transform: translateY(-50%);
+        
+        width: 1px;        /* Grosor fino */
+        height: 16px;      /* Altura controlada (más elegante que una línea gigante) */
+        background-color: rgba(4, 30, 50, 0.3); /* Color de la línea */
+    }
+    
+    .lang-btn {
+        margin: 0;
+        padding: 0;
+        background: transparent; 
+        border: none;
+    }
 
     /* Sticky Desktop */
     .navbar.scrolled {

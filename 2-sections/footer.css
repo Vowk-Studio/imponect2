@@ -77,6 +77,17 @@
 
 
 @media (max-width: 768px) {
+    .footer-left h4 {
+        font-size: 1.5rem;
+    }
+
+    .footer-right h4 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info p {
+        font-size: 1.3rem;
+    }
     .footer-content-container {
         flex-direction: column; 
         align-items: center;
@@ -104,6 +115,10 @@
     
     .footer-icon {
         margin: 0; 
+    }
+
+    .footer-bottom p {
+        font-size: 1.5rem;
     }
 }
 

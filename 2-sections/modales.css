@@ -298,7 +298,15 @@
     .modal-content {
         padding: 2rem 1.5rem;
         width: 95%;
-        margin-top: 10%;
+        /* Ajustamos el margen para que esté más centrado y no se corte abajo */
+        margin-top: 5vh; 
+        margin-bottom: 5vh;
+        
+        /* ESTO ES LO QUE HABILITA EL SCROLL EN MÓVIL */
+        overflow-y: auto; 
+        
+        /* Aseguramos que no sea más alto que la pantalla para que el scroll funcione */
+        max-height: 90vh; 
     }
     
     .modal-title-service,
