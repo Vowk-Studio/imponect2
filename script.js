@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // SERVICIOS
             sec_services: "SERVICIOS",
             sec_services_phrase: "Traemos cualquier producto que tu negocio necesite.",
-            serv_cotizacion: "Cotización",
+            serv_cotizacion: "Búsqueda y Cotización",
             serv_cotizacion_desc: "Evitá perder tiempo y dinero en proveedores dudosos. Nosotros buscamos, verificamos y negociamos por vos.",
             serv_importacion: "Importación",
             serv_importacion_desc: "Nos ocupamos de todo: desde retirar tu carga en la fábrica hasta entregarla nacionalizada en tu negocio.",
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // --- MODALES (Popups) ---
             // Cotización
-            modal_cot_title: "Cotización",
+            modal_cot_title: "Búsqueda y Cotización",
             modal_subtitle_incl: "Incluye:",
             modal_cot_l1: "Búsqueda de proveedores confiables.",
             modal_cot_l2: "Verificación de certificaciones de gestión del proveedor y reseñas.",
@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // SERVICES
             sec_services: "SERVICES",
             sec_services_phrase: "We source any product your business needs.",
-            serv_cotizacion: "Quotation",
+            serv_cotizacion: "Research andQuotation",
             serv_cotizacion_desc: "Avoid wasting time and money on doubtful suppliers. We search, verify, and negotiate for you.",
             serv_importacion: "Import",
             serv_importacion_desc: "We take care of everything: from factory pickup to delivery at your business door.",
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // --- MODALES (Popups) ---
             // Cotización
-            modal_cot_title: "Quotation",
+            modal_cot_title: "Research and Quotation",
             modal_subtitle_incl: "Includes:",
             modal_cot_l1: "Search for reliable suppliers.",
             modal_cot_l2: "Verification of supplier management certifications and reviews.",
