@@ -1,31 +1,65 @@
 /* =========================================
-   SECCIÓN CASOS DE ÉXITO - MARCO DORADO LUXE
+   SECCIÓN CASOS DE ÉXITO - FONDO GLOBAL & PREMIUM
    ========================================= */
 
 .success-stories-section {
-  padding: 3.125rem 0;
-  background-color: #f7f7f7; /* Fondo gris claro de la sección */
+  padding: 6.25rem 0; 
+  position: relative;
+  
+  /* FONDO BASE */
+  background-color: #031524; 
+  
+  /* IMAGEN DE FONDO */
+  background-image: url('assets/background-global.jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  /* EFECTO PARALLAX */
+  background-attachment: fixed;
 }
 
+.success-stories-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 21, 36, 0.8); 
+    z-index: 1;
+}
+
+.success-stories-section .container,
+.success-stories-section .carousel-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- TÍTULOS --- */
 .success-stories-section .section-title-reseñas {
-  color: #041E32;
+  color: #ffffff; 
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .success-stories-section .section-subtitle {
-  color: #093A49;
+  color: #DCCA65; 
   text-align: center;
   font-size: 1.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
 }
 
 .carousel-wrapper {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: visible; /* Permitimos que las sombras se vean bien */
+  overflow: visible; 
   padding: 1rem;
 }
 
@@ -37,149 +71,120 @@
   gap: 1.5rem;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  padding: 1rem 0 2rem 0; /* Espacio para sombras arriba y abajo */
+  padding: 1rem 0 3rem 0; 
 }
 
 .case-studies-container::-webkit-scrollbar {
   display: none;
 }
 
-/* --- TARJETA CONTENEDORA (EL MARCO DORADO) --- */
+/* --- TARJETA DE RESEÑA (DISEÑO MODERNO CON LOGO) --- */
 .case-card {
-  flex: 0 0 100%;
+  flex: 0 0 85%; 
+  max-width: 320px; 
   scroll-snap-align: center;
   
-  /* FONDO DORADO IMPONECT */
   background-color: #ffffff; 
-  
-  /* ESTO CREA EL MARCO UNIFORME ALREDEDOR DE TODO */
-  padding: 1.2rem; 
-  
-  border-radius: 1.5rem; /* Bordes exteriores redondeados */
-  overflow: hidden;
-  
-  /* Flexbox vertical */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  
-  aspect-ratio: 3 / 4;
-  
-  /* Sombra dorada para profundidad */
-  box-shadow: 0 10px 25px rgba(220, 202, 101, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover: realce */
-.case-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(220, 202, 101, 0.6);
-}
-
-/* --- ENCABEZADO (Sobre el dorado) --- */
-.case-top-info {
-  width: 100%;
-  background-color: transparent; /* Transparente para ver el oro */
-  padding: 0 0 0.8rem 0; /* Solo espacio abajo */
-  text-align: center;
-  
-  /* Quitamos estilos viejos de tarjeta blanca */
-  box-shadow: none;
-  border-radius: 0;
-  
-  flex-shrink: 0; 
-  z-index: 2;
-  position: relative;
-}
-
-.case-title {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #041E32; /* Azul Navy para contraste sobre dorado */
-}
-
-.case-subtitle {
-  margin: 0.2rem 0 0 0;
-  font-size: 0.9rem;
-  color: #041E32; /* Azul Navy */
-  opacity: 0.8;
-}
-
-/* --- CONTENEDOR DE LA IMAGEN (EL RECUADRO BLANCO) --- */
-.case-image-wrapper {
-  width: 100%;
-  flex: 1; 
-  min-height: 0; 
-  
-  /* FONDO BLANCO PARA LA FOTO */
-  background-color: #ffffff;
-  
-  /* Bordes redondeados internos */
+  padding: 2rem; 
   border-radius: 1rem; 
   
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  /* Sombra interna sutil para hundir el área blanca */
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.case-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 0.5rem; /* Radio más pequeño para la imagen en sí */
-}
-
-/* --- PIE (Sobre el dorado) --- */
-.case-bottom-info {
-  width: 100%;
-  background-color: transparent;
-  padding: 0.8rem 0 0 0; /* Solo espacio arriba */
-  text-align: center;
+  flex-direction: column;
+  gap: 1.2rem;
   
-  box-shadow: none;
-  border-radius: 0;
-  
-  flex-shrink: 0;
-  z-index: 2;
-  position: relative;
-  min-height: 1.5rem;
+  /* Sombra sutil pero elegante */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+  cursor: default; 
+  text-align: left; /* Alineado a la izquierda como la referencia */
 }
 
-.case-extra {
+.case-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 40px rgba(220, 202, 101, 0.3); /* Brillo dorado al hover */
+}
+
+/* --- ENCABEZADO: LOGO + ESTRELLAS --- */
+.case-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.quote-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%; /* Hace el logo circular */
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 2px solid #f4f4f4; /* Bordecito suave para resaltar */
+}
+
+.case-stars {
+  color: #DCCA65; /* Dorado Imponect */
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+/* --- TEXTO DE LA RESEÑA --- */
+.case-text {
+  font-size: 1rem;
+  color: #444444; /* Gris oscuro para lectura cómoda */
+  font-style: italic; /* Como las reseñas premium */
+  line-height: 1.6;
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #041E32; /* Azul Navy */
+  flex-grow: 1; /* Esto empuja el bloque del autor siempre hacia abajo */
 }
 
-/* --- BOTONES --- */
+/* --- AUTOR (NOMBRE Y ROL) --- */
+.case-author {
+  margin-top: 0.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #eeeeee; /* Línea separadora sutil */
+}
+
+.case-name {
+  font-weight: 800;
+  color: #041E32; /* Azul Navy */
+  font-size: 1.1rem;
+  margin: 0 0 0.2rem 0;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.case-role {
+  font-size: 0.85rem;
+  color: #888888;
+  font-weight: 500;
+}
+
+/* --- BOTONES DEL CARRUSEL --- */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #041E32; /* Botón Navy */
-  color: #DCCA65; /* Flecha Dorada */
-  border: 2px solid #DCCA65;
+  background-color: #ffffff; 
+  color: #041E32; 
+  border: 2px solid #DCCA65; 
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1.5rem;
+  width: 3.2rem; 
+  height: 3.2rem;
+  font-size: 1.6rem;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 5;
   display: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 .carousel-btn:hover {
-  background-color: #DCCA65;
-  color: #041E32;
-  border-color: #041E32;
+  background-color: #DCCA65; 
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 .prev-btn { left: 0; }
@@ -188,18 +193,16 @@
 /* =========================================
    MEDIA QUERIES
    ========================================= */
-@media (min-width: 480px) {
-  .case-title { font-size: 1.2rem; }
-}
-
 @media (min-width: 768px) {
-  .case-title { font-size: 1.3rem; }
+  .case-card {
+    flex: 0 0 calc((100% - 1.5rem) / 2); /* 2 tarjetas visibles */
+  }
 }
 
 @media (min-width: 1024px) {
   .case-card {
-    flex: 0 0 calc((100% - 3rem) / 3);
-    aspect-ratio: 3 / 4; 
+    flex: 0 0 calc((100% - 4.5rem) / 4); /* 4 tarjetas visibles en desktop */
+    max-width: none; 
   }
   .carousel-btn {
     display: flex;
@@ -212,14 +215,11 @@
   .carousel-wrapper { max-width: 1300px; }
   .success-stories-section .section-title-reseñas { font-size: 3rem; }
   .success-stories-section .section-subtitle { font-size: 2rem; }
-  .case-card { flex: 0 0 calc((100% - 3rem) / 3); }
-  .case-title { font-size: 1.4rem; }
+  .case-text { font-size: 1.1rem; }
 }
 
 @media (min-width: 1920px) {
   .carousel-wrapper { max-width: 1500px; }
   .success-stories-section .section-title-reseñas { font-size: 3.5rem; }
   .success-stories-section .section-subtitle { font-size: 2.5rem; }
-  .case-card { flex: 0 0 calc((100% - 3rem) / 3); }
-  .case-title { font-size: 1.6rem; }
 }

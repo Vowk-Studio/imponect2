@@ -255,13 +255,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatForm = document.getElementById('chatForm');
     const chatInput = document.getElementById('chatInput');
     const chatBody = document.getElementById('chatBody');
-    const N8N_WEBHOOK_URL = 'https://nicoelicecheg97.app.n8n.cloud/webhook/chat-imponect'; 
+    const N8N_WEBHOOK_URL = 'https://nicoelicecheg97.app.n8n.cloud/webhook/chat-imponect';
+
+    // --- NUEVO: FUNCIÓN PARA GESTIONAR EL ID DE SESIÓN ---
+    function getSessionId() {
+        let sessionId = localStorage.getItem('imponect_chat_session');
+        if (!sessionId) {
+            // Generamos un ID único (ej: user_ky84jf9_167234)
+            sessionId = 'user_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now().toString(36);
+            localStorage.setItem('imponect_chat_session', sessionId);
+        }
+        return sessionId;
+    }
+    // -----------------------------------------------------
 
     function appendMessage(text, sender) {
         const div = document.createElement('div');
         div.classList.add('chat-message', sender);
         const p = document.createElement('p');
-        p.textContent = text; 
+        p.textContent = text;
         const timeSpan = document.createElement('span');
         timeSpan.classList.add('time');
         const now = new Date();
@@ -292,26 +304,40 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const userMessage = chatInput.value.trim();
             if (!userMessage) return;
+
             appendMessage(userMessage, 'user');
-            chatInput.value = ''; 
-            chatInput.style.height = 'auto'; 
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
             showTypingIndicator();
+
+            // --- NUEVO: OBTENEMOS EL ID ANTES DE ENVIAR ---
+            const currentSessionId = getSessionId();
+            // ----------------------------------------------
+
             try {
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userMessage })
+                    body: JSON.stringify({
+                        message: userMessage,
+                        sessionId: currentSessionId // <--- AQUÍ ESTÁ LA MAGIA
+                    })
                 });
                 const data = await response.json();
                 removeTypingIndicator();
-                const botReply = data.output || "Gracias por tu mensaje. Un asesor revisará tu consulta.";
+                
+                // Usamos mensaje_usuario si viene del flujo con parser, o output si es directo
+                const botReply = data.output || data.mensaje_usuario || "Gracias por tu mensaje. Un asesor revisará tu consulta.";
+                
                 appendMessage(botReply, 'bot');
             } catch (error) {
                 console.error('Error de conexión:', error);
                 removeTypingIndicator();
+                // Opcional: Mostrar error en el chat
             }
         });
 
+        // ... (resto de tus listeners de enter e input siguen igual) ...
         chatInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -325,7 +351,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
 
 // =========================================================================
 // 10. MULTILENGUAJE (TRADUCCIÓN ES/EN) - GLOBAL DEFINITION
