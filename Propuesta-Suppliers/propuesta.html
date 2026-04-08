@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPONECT - Premium Partnership Proposal</title>
+    <style>
+        :root {
+            /* Colores de Branding IMPONECT */
+            --primary-blue: #0b3142; 
+            --primary-blue-overlay: rgba(11, 49, 66, 0.85); 
+            --accent-ochre: #b6862d; 
+            --text-dark: #333; 
+        }
+
+        /* ESTA ES LA REGLA MAGICA PARA EVITAR BORDES BLANCOS EN CHROME */
+        @page {
+            size: A4;
+            margin: 0; 
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #333; 
+            line-height: 1.4;
+        }
+
+        /* Contenedor de la página A4 */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 12mm; 
+            margin: 5mm auto;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Capa 1: Imagen de Almacén Difuminada */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image_1.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px); 
+            opacity: 1; 
+            z-index: -2; 
+        }
+
+        /* Capa 2: Superposición Azul Petróleo */
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-blue-overlay);
+            opacity: 0.6;
+            z-index: -1; 
+        }
+
+        /* Capa 3: La "Hoja Blanca" */
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.8); /* Opacity que ajustaste */
+            border-radius: 8px;
+            padding: 20px; /* Reducido levemente para asegurar que no desborde la hoja A4 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            z-index: 2; 
+            position: relative;
+        }
+
+        /* Configuración de Impresión */
+        @media print {
+            body { background: none; margin: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none; 
+                width: 210mm; 
+                height: 297mm; /* Obligamos a que mida exactamente lo que mide la hoja */
+            }
+            .content-wrapper { box-shadow: none; } 
+            .page::before, .page::after, .content-wrapper {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-ochre);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 11px;
+            color: #555; 
+        }
+
+        /* Contenido Principal */
+        .hero-text {
+            background-color: var(--primary-blue); 
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 15px; /* Reducido para optimizar espacio */
+        }
+
+        .hero-text h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 22px;
+            color: var(--accent-ochre);
+        }
+
+        .hero-text p { margin-bottom: 0; font-size: 14px; }
+
+        .section-title {
+            color: var(--primary-blue); 
+            border-left: 5px solid var(--accent-ochre);
+            padding-left: 12px;
+            margin: 15px 0 10px 0; /* Reducido para optimizar espacio */
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        p { font-size: 13.5px; margin: 0 0 10px 0; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .service-card {
+            border: 1px solid #ddd; 
+            background-color: #fff; 
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .service-card strong {
+            display: block;
+            color: var(--accent-ochre);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .service-card ul {
+            margin: 5px 0 0 15px;
+            padding: 0;
+            color: #444;
+        }
+
+        /* Lista de Beneficios */
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 13.5px;
+            color: var(--text-dark);
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-ochre);
+            font-weight: bold;
+        }
+
+        /* Caja CTA */
+        .cta-box {
+            background-color: #fdf8ef; 
+            border: 1px dashed var(--accent-ochre);
+            padding: 15px;
+            text-align: center;
+            margin-top: auto; /* Esto empuja el Footer y el CTA hacia abajo del todo */
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .tagline {
+            display: block;
+            margin-top: 5px;
+            font-style: italic;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="content-wrapper">
+            <header>
+                <div class="logo-container">
+                    <img src="image_0.png" alt="IMPONECT Logo" style="height: 60px;">
+                </div>
+                <div class="contact-info">
+                    www.imponect.com<br>
+                    ventas@imponect.com<br>
+                    International Logistics Partner
+                </div>
+            </header>
+
+            <section class="hero-text">
+                <h2>Expand your sales to Argentina</h2>
+                <p>We provide a seamless <strong>Door-to-Door</strong> logistics solution. Offer your customers a worry-free delivery experience while you focus on manufacturing and selling.</p>
+            </section>
+
+            <h3 class="section-title">The Challenge: Argentina's Market</h3>
+            <p>Shipping to Argentina can be complex due to customs regulations and local bureaucracy. Many potential buyers hesitate to complete a purchase because they fear shipping delays or hidden costs. Even as a supplier, you can offer freight, but you cannot accurately determine the taxes the customer will face at customs.</p>
+            <p><strong>IMPONECT acts as your strategic partner to bridge this gap.</strong></p>
+
+            <h3 class="section-title">Our Integrated Solutions</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <strong>International Freight</strong>
+                    <ul>
+                        <li>Pick-up service from factory</li>
+                        <li>Air and Ocean freight management</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <strong>Customs Clearance</strong>
+                    Expert handling of Argentinian customs (AFIP) to avoid delays and provide tax certainty.
+                </div>
+                <div class="service-card">
+                    <strong>Door-to-Door Delivery</strong>
+                    We pick up at your warehouse and deliver directly to your final customer's door.
+                </div>
+                <div class="service-card">
+                    <strong>Real-time Tracking</strong>
+                    End-to-end visibility and status updates for both you and your client.
+                </div>
+            </div>
+
+            <h3 class="section-title">Why partner with us?</h3>
+            <ul class="benefits-list">
+                <li><strong>Boost your conversion rate:</strong> Offer "Guaranteed Delivery" to Argentinian buyers.</li>
+                <li><strong>No complexity for you:</strong> You concrete the sale, we handle the rest.</li>
+                <li><strong>Local Expertise:</strong> We know the Argentinian market regulations inside out.</li>
+                <li><strong>Cost Efficiency:</strong> Competitive rates that make your products more attractive.</li>
+            </ul>
+
+            <div class="cta-box">
+                <strong>Ready to simplify your exports?</strong><br>
+                Contact us to integrate our logistics rates into your quotes.<br>
+                <span class="tagline">IMPONECT: Connecting your business with the South.</span>
+            </div>
+
+            <footer>
+                <strong>IMPONECT International Logistics</strong> | Argentina<br>
+                <small>Visit us at www.imponect.com for more information.</small>
+            </footer>
+        </div> 
+    </div>
+
+</body>
+</html>
