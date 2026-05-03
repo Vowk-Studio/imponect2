@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Institucional - IMPONECT</title>
+    <style>
+        /* Variables de color institucionales */
+        :root {
+            --azul-petroleo: #0e3a48;
+            --dorado: #b8802b;
+            --texto-oscuro: #333333;
+            --fondo-claro: #f8f9fa;
+        }
+
+        /* Configuraciones generales */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--texto-oscuro);
+            background-color: #e0e0e0; /* Fondo gris para ver las páginas en pantalla */
+        }
+
+        /* Configuración de página A4 */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+            page-break-after: always;
+        }
+
+        /* Estilos para impresión */
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            @page { size: A4; margin: 0; }
+        }
+
+        /* Tipografía y encabezados */
+        h1, h2, h3 { color: var(--azul-petroleo); margin-top: 0; }
+        h1 { font-size: 36pt; border-bottom: 3px solid var(--dorado); padding-bottom: 10px; }
+        h2 { font-size: 24pt; border-bottom: 2px solid var(--dorado); padding-bottom: 5px; }
+        p { font-size: 12pt; line-height: 1.6; text-align: justify; }
+
+        /* Estructuras de contenido */
+        .header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--dorado); padding-bottom: 10px; margin-bottom: 20px; }
+        .header-logo { font-size: 18pt; font-weight: bold; color: var(--azul-petroleo); }
+        
+        .footer { position: absolute; bottom: 20mm; width: calc(100% - 40mm); text-align: center; font-size: 10pt; color: #666; border-top: 1px solid var(--dorado); padding-top: 10px; }
+
+        /* Portada */
+        .cover { display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: center; }
+        .cover h1 { border: none; font-size: 48pt; margin-bottom: 10px; }
+        .cover h2 { border: none; font-size: 18pt; color: var(--dorado); font-weight: normal; }
+        .cover-accent { width: 100px; height: 5px; background-color: var(--dorado); margin: 30px auto; }
+
+        /* Columnas y Cajas */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .service-box { background: var(--fondo-claro); padding: 15px; border-left: 4px solid var(--dorado); }
+        .timeline-step { margin-bottom: 20px; padding-left: 20px; border-left: 2px solid var(--azul-petroleo); position: relative; }
+        .timeline-step::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; background: var(--dorado); border-radius: 50%; }
+
+    </style>
+</head>
+<body>
+
+    <div class="page cover">
+        <h1>IMPONECT</h1>
+        <div class="cover-accent"></div>
+        <h2>Presentación Institucional</h2>
+        <p style="text-align: center; margin-top: auto; color: var(--azul-petroleo);">Soluciones Integrales para la Gestión Pública</p>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header-logo">IMPONECT</div>
+        </div>
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una empresa dedicada a brindar soluciones integrales, eficientes y transparentes. Nuestro compromiso es facilitar y optimizar los procesos de gestión, aportando tecnología, conocimiento y ejecución estratégica.</p>
+        <p>Entendemos las necesidades del sector público y las exigencias de las autoridades municipales, por lo cual estructuramos nuestros servicios con los más altos estándares de calidad y cumplimiento.</p>
+        
+        <h3 style="margin-top: 40px;">Nuestra Visión</h3>
+        <p>Ser el aliado estratégico principal de las instituciones gubernamentales para la modernización y la resolución ágil de desafíos operativos.</p>
+        
+        <div class="footer">Documento Institucional - Confidencial</div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header-logo">IMPONECT</div>
+        </div>
+        <h2>Propuesta de Valor</h2>
+        <p>Nuestra metodología se centra en la eficiencia operativa y el impacto positivo a largo plazo. Al elegir a IMPONECT, su municipio se beneficia de:</p>
+        
+        <div class="grid-2" style="margin-top: 30px;">
+            <div class="service-box">
+                <h3 style="font-size: 14pt;">Transparencia Absoluta</h3>
+                <p>Reportes detallados y trazabilidad completa en cada etapa del proyecto para garantizar la confianza institucional.</p>
+            </div>
+            <div class="service-box">
+                <h3 style="font-size: 14pt;">Eficiencia en Recursos</h3>
+                <p>Optimización de presupuestos y tiempos mediante metodologías ágiles y gestión experta.</p>
+            </div>
+            <div class="service-box">
+                <h3 style="font-size: 14pt;">Innovación Aplicada</h3>
+                <p>Uso de herramientas tecnológicas modernas para resolver problemas tradicionales de infraestructura y gestión.</p>
+            </div>
+            <div class="service-box">
+                <h3 style="font-size: 14pt;">Soporte Continuo</h3>
+                <p>Acompañamiento constante antes, durante y después de la implementación de cada solución.</p>
+            </div>
+        </div>
+        
+        <div class="footer">Documento Institucional - Confidencial</div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header-logo">IMPONECT</div>
+        </div>
+        <h2>Nuestros Servicios</h2>
+        <p>Ofrecemos un portafolio de servicios diseñado específicamente para atender las demandas del ámbito municipal:</p>
+
+        <div style="margin-top: 30px;">
+            <h3 style="color: var(--dorado);">1. Consultoría Estratégica</h3>
+            <p>Análisis de viabilidad técnica y económica para proyectos de envergadura municipal.</p>
+
+            <h3 style="color: var(--dorado); margin-top: 20px;">2. Gestión de Proyectos</h3>
+            <p>Planificación, ejecución y supervisión de obras y servicios públicos con estándares de calidad garantizados.</p>
+
+            <h3 style="color: var(--dorado); margin-top: 20px;">3. Optimización de Procesos</h3>
+            <p>Auditoría y mejora de circuitos administrativos internos para reducir la burocracia y agilizar la atención al ciudadano.</p>
+        </div>
+
+        <div class="footer">Documento Institucional - Confidencial</div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header-logo">IMPONECT</div>
+        </div>
+        <h2>Proceso de Trabajo</h2>
+        <p>Para asegurar el éxito de cada iniciativa, aplicamos un esquema de trabajo estructurado y predecible:</p>
+
+        <div style="margin-top: 40px; padding: 0 20px;">
+            <div class="timeline-step">
+                <strong>Fase 1: Diagnóstico Integral</strong>
+                <p>Relevamiento de necesidades y evaluación de los recursos actuales del municipio.</p>
+            </div>
+            <div class="timeline-step">
+                <strong>Fase 2: Diseño de Solución</strong>
+                <p>Elaboración de una propuesta técnica y económica a medida, alineada a los objetivos de gestión.</p>
+            </div>
+            <div class="timeline-step">
+                <strong>Fase 3: Ejecución y Monitoreo</strong>
+                <p>Implementación del proyecto bajo estrictos controles de calidad y reportes de avance periódicos.</p>
+            </div>
+            <div class="timeline-step">
+                <strong>Fase 4: Entrega y Soporte</strong>
+                <p>Cierre del proyecto, entrega de documentación pertinente y establecimiento de líneas de soporte institucional.</p>
+            </div>
+        </div>
+
+        <div class="footer">Documento Institucional - Confidencial</div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header-logo">IMPONECT</div>
+        </div>
+        <h2>Contacto Institucional</h2>
+        
+        <p style="margin-top: 40px;">Agradecemos la atención prestada a este documento. En <strong>IMPONECT</strong> estamos a su entera disposición para ampliar cualquier información aquí presentada y avanzar hacia una mesa de trabajo conjunta que beneficie el desarrollo de su gestión y de toda la comunidad.</p>
+        
+        <div style="margin-top: 60px; text-align: center;">
+            <h3 style="color: var(--azul-petroleo);">IMPONECT</h3>
+            <p>Email: contacto@imponect.com</p>
+            <p>Teléfono: [Ingresar Número]</p>
+            <p>Dirección: [Ingresar Dirección]</p>
+        </div>
+
+        <div class="footer">
+            Quedamos a su disposición para coordinar una reunión formal.<br>
+            <strong>IMPONECT © 2026</strong>
+        </div>
+    </div>
+
+</body>
+</html>
