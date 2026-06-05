@@ -18,6 +18,47 @@ const closeChatButton = document.querySelector('.close-chat');
 const menuToggle = document.getElementById('menu-toggle');
 const menuList = document.querySelector('.menu-list');
 const navbar = document.querySelector('.navbar');
+const menuToggleBaseColor = '#041E32';
+const menuToggleActiveColor = '#00ADEF';
+const deferredFontStylesheet = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700;800&family=Roboto:wght@400;700;900&family=Sora:wght@400;600;700;800;900&display=swap';
+const deferredIconStylesheet = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+const deferredExternalStylesheets = [deferredFontStylesheet, deferredIconStylesheet];
+
+function loadStylesheet(href) {
+    if (document.querySelector(`link[href="${href}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+window.addEventListener('load', () => {
+    const loadDeferredExternalStyles = () => {
+        deferredExternalStylesheets.forEach(loadStylesheet);
+        fontEvents.forEach(eventName => window.removeEventListener(eventName, loadDeferredExternalStyles));
+    };
+    const fontEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+    fontEvents.forEach(eventName => window.addEventListener(eventName, loadDeferredExternalStyles, { once: true, passive: true }));
+    setTimeout(loadDeferredExternalStyles, 10000);
+});
+
+function setMobileMenuState(isOpen) {
+    if (!menuToggle || !menuList) return;
+    menuList.classList.toggle('active', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+    menuToggle.style.color = isOpen ? menuToggleActiveColor : menuToggleBaseColor;
+    menuToggle.style.transform = isOpen ? 'scaleY(1)' : 'scaleY(0.8)';
+}
+
+function toggleMenu() {
+    if (!menuList) return;
+    setMobileMenuState(!menuList.classList.contains('active'));
+}
+
+function closeMobileMenu() {
+    setMobileMenuState(false);
+}
 
 
 // =========================================================================
@@ -90,6 +131,7 @@ function toggleChat() {
 
 if (chatButton && chatWidget) chatButton.addEventListener('click', toggleChat);
 if (closeChatButton) closeChatButton.addEventListener('click', toggleChat);
+if (menuToggle && menuList) menuToggle.addEventListener('click', toggleMenu);
 
 
 // =========================================================================
@@ -177,7 +219,28 @@ if (contactForm) {
 // =========================================================================
 // 6. MOTOR DE ANIMACIONES SCROLL
 // =========================================================================
+let animationsInitialized = false;
+
 function initAnimations() {
+    if (animationsInitialized) return;
+    animationsInitialized = true;
+
+    const selectorsToAnimate = [
+        '.section-title', '.section-title-nos', '.section-title-productos',
+        '.section-title-reseñas', '.section-title-faq', '.section-title-exclusivos',
+        '.section-subtitle', '.about-text', '.about-header-content', '.card-text-area',
+        '.exclusive-desc', '.service-card', '.video-container', '.contact-form-container',
+        '.map-container', '.product-item', '.case-card', '.faq-question-box',
+        '.team-member', '.team-card', '.exclusive-item', '.footer-content-container', '.footer-bottom'
+    ];
+
+    if (!('IntersectionObserver' in window)) {
+        selectorsToAnimate.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => el.classList.add('active'));
+        });
+        return;
+    }
+
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -187,15 +250,6 @@ function initAnimations() {
             }
         });
     }, observerOptions);
-
-    const selectorsToAnimate = [
-        '.section-title', '.section-title-nos', '.section-title-productos', 
-        '.section-title-reseñas', '.section-title-faq', '.section-title-exclusivos',
-        '.section-subtitle', '.about-text', '.about-header-content', '.card-text-area',
-        '.exclusive-desc', '.service-card', '.video-container', '.contact-form-container', 
-        '.map-container', '.product-item', '.case-card', '.faq-question-box',
-        '.team-member', '.exclusive-item', '.footer-content-container', '.footer-bottom'
-    ];
 
     selectorsToAnimate.forEach(selector => {
         const elements = document.querySelectorAll(selector);
@@ -212,12 +266,6 @@ function initAnimations() {
         });
     });
 
-    const heroTitle = document.querySelector('.main-title');
-    const heroSubtitle = document.querySelector('.subtitle');
-    const heroLogo = document.querySelector('.hero-logo');
-    if(heroLogo) { heroLogo.classList.add('simple-fade'); observer.observe(heroLogo); }
-    if(heroTitle) { heroTitle.classList.add('reveal-up'); heroTitle.style.transitionDelay = '300ms'; observer.observe(heroTitle); }
-    if(heroSubtitle) { heroSubtitle.classList.add('reveal-up'); heroSubtitle.style.transitionDelay = '600ms'; observer.observe(heroSubtitle); }
 }
 
 
@@ -241,14 +289,61 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetElement) {
                     e.preventDefault();
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    if (document.querySelector('.menu-list').classList.contains('active')) toggleMenu(); 
+                    closeMobileMenu();
                 }
             }
         });
     });
     initAnimations();
 });
-window.addEventListener('load', initAnimations);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.case-studies-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (!container || !prevBtn || !nextBtn) return;
+
+    const updateArrows = () => {
+        const scrollLeft = Math.ceil(container.scrollLeft);
+        const scrollWidth = container.scrollWidth;
+        const clientWidth = container.clientWidth;
+
+        prevBtn.classList.toggle('hidden-arrow', scrollLeft <= 10);
+        nextBtn.classList.toggle('hidden-arrow', scrollLeft + clientWidth >= scrollWidth - 10);
+    };
+
+    container.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+
+    prevBtn.addEventListener('click', () => { container.scrollBy({ left: -320, behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', () => { container.scrollBy({ left: 320, behavior: 'smooth' }); });
+
+    updateArrows();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const productItems = document.querySelectorAll('.product-item');
+    productItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (window.innerWidth < 1024 && !this.classList.contains('active-mobile')) {
+                e.preventDefault();
+                productItems.forEach(otherItem => {
+                    otherItem.classList.remove('active-mobile');
+                });
+                this.classList.add('active-mobile');
+            }
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth < 1024 && !e.target.closest('.product-item')) {
+            productItems.forEach(item => {
+                item.classList.remove('active-mobile');
+            });
+        }
+    });
+});
 
 // Chat Logic
 document.addEventListener('DOMContentLoaded', function() {
@@ -368,8 +463,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // NAVBAR & HERO
             nav_home: "Home", nav_services: "Servicios", nav_products: "Productos",
             nav_exclusive: "Exclusivos", nav_about: "Nosotros", nav_faq: "FAQ", nav_contact: "Contacto",
-            hero_title: "IMPORTÁ DESDE CUALQUIER<br> PARTE DEL MUNDO",
-            hero_subtitle: "Comprá lo que tu negocio necesita al menor precio con la gestión de Imponect.",
+            hero_title: "IMPORTÁ DESDE<br class=\"hero-mobile-break\"> CUALQUIER<br> PARTE DEL MUNDO",
+            hero_subtitle: "Comprá lo que tu negocio<br class=\"hero-subtitle-break\"> necesita al menor precio<br class=\"hero-subtitle-break\"> con la gestión de Imponect.",
             
             // SERVICIOS
             sec_services: "SERVICIOS",
@@ -501,8 +596,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // NAVBAR & HERO
             nav_home: "Home", nav_services: "Services", nav_products: "Products",
             nav_exclusive: "Exclusive", nav_about: "About Us", nav_faq: "FAQ", nav_contact: "Contact",
-            hero_title: "IMPORT FROM ANYWHERE<br> IN THE WORLD",
-            hero_subtitle: "Buy what your business needs at the lowest price with Imponect's management.",
+            hero_title: "IMPORT FROM<br class=\"hero-mobile-break\"> ANYWHERE<br> IN THE WORLD",
+            hero_subtitle: "Buy what your business needs<br class=\"hero-subtitle-break\"> at the lowest price<br class=\"hero-subtitle-break\"> with Imponect's management.",
             
             // SERVICES
             sec_services: "SERVICES",

@@ -9,14 +9,7 @@
   /* FONDO BASE */
   background-color: #031524; 
   
-  /* IMAGEN DE FONDO */
-  background-image: url('assets/background-global.jpg'); 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  
-  /* EFECTO PARALLAX */
-  background-attachment: fixed;
+  background-image: none;
 }
 
 .success-stories-section::before {

@@ -38,7 +38,7 @@
     margin-left: 10px; /* Separación entre texto e imagen */
 }
 
-.logo-container h1 {
+.brand-name {
     order: 1;
     font-size: 1.4rem; 
     font-weight: 800;
@@ -221,7 +221,7 @@
     
     /* En escritorio volvemos al orden original */
     .logo-img { order: 2; }
-    .logo-container h1 { order: 1; font-size: 1.6rem; }
+    .brand-name { order: 1; font-size: 1.6rem; }
 
     /* --- AJUSTES BOTÓN IDIOMA DESKTOP (V2 - Con separador elegante) --- */
     .lang-item {
@@ -264,7 +264,7 @@
 /* Pantallas muy grandes */
 @media (min-width: 1440px) {
     .navbar { padding: 1.2rem 8rem; }
-    .logo-container h1 { font-size: 2rem; }
+    .brand-name { font-size: 2rem; }
     .logo-img { width: 3rem; }
     .menu-list a { font-size: 1.15rem; }
     .separator { margin: 0 1.2rem; }

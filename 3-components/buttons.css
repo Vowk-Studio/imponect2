@@ -103,6 +103,7 @@
     gap: 0.5rem;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    text-decoration: none;
 }
 .btn-chat:hover {
     transform: translateY(-2px);

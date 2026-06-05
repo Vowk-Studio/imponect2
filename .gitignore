@@ -20,3 +20,36 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+### Local / OS ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+### Editor / IDE ###
+.idea/
+
+### Environment / secrets ###
+.env
+.env.*
+!.env.example
+
+### Dependencies / tooling caches ###
+node_modules/
+.cache/
+.parcel-cache/
+.vite/
+
+### Build output ###
+dist/
+build/
+
+### Logs / temporary files ###
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+
+### Local reports / exports ###
+New folder/

@@ -5,10 +5,15 @@
 }
 
 .section-title-productos {
-    margin-bottom: 2rem;
+    width: 100%;
+    max-width: min(100%, 62rem);
+    margin: 0 auto 2rem;
+    padding: 0 1.25rem;
     font-family: 'Roboto', sans-serif;
     color: #041E32;
     text-align: center;
+    line-height: 1.25;
+    overflow-wrap: break-word;
 }
 
 .product-desc-container {
@@ -140,6 +145,11 @@
 
 /* Adaptación para móviles */
 @media (max-width: 600px) {
+    .section-title-productos {
+        font-size: 1.45rem;
+        padding: 0 1.5rem;
+    }
+
     .btn-catalog-modern {
         padding: 1rem 1.5rem;
         font-size: 0.9rem;
