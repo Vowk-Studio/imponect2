@@ -248,6 +248,7 @@
     </div>
 
     <script src="data.js"></script>
+    <script src="script.js"></script>
 
     <script>
         // TRADUCCIONES ESTÁTICAS
@@ -332,10 +333,22 @@
                             <h3 class="title">${nombre}</h3>
                             <div class="specs-box">${specs}</div>
                             <p class="description">${descripcion}</p>
-                            <a href="#" class="btn">${t.btn_card_action}</a>
+                            <a href="#" class="btn" data-product-id="${p.id}">${t.btn_card_action}</a>
                         </div>
                     `;
                     container.appendChild(card);
+                });
+                
+                // --- NUEVO: LISTENER PARA BOTONES DE ESPECIFICACIONES ---
+                container.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const productId = btn.getAttribute('data-product-id');
+                        // Esta función la definiremos en script.js o aquí
+                        if (typeof window.openProductModal === 'function') {
+                            window.openProductModal(productId);
+                        }
+                    });
                 });
             }
         }

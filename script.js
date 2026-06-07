@@ -135,8 +135,132 @@ if (menuToggle && menuList) menuToggle.addEventListener('click', toggleMenu);
 
 
 // =========================================================================
+// ... (previous code) ...
+// =========================================================================
+
+// --- NUEVO: MODAL DE PRODUCTO Y CARRUSEL ---
+
+function createProductModal() {
+    if (document.getElementById('modalProduct')) return;
+    
+    const modal = document.createElement('div');
+    modal.id = 'modalProduct';
+    modal.className = 'modal modal-product'; 
+    
+    modal.innerHTML = `
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            
+            <div class="modal-product-header">
+                <div class="product-carousel" id="productCarousel">
+                    <!-- Imágenes inyectadas aquí -->
+                </div>
+            </div>
+
+            <div class="modal-product-body">
+                <span class="product-category-badge" id="prodBadge"></span>
+                <h3 class="product-title" id="prodTitle"></h3>
+                <p class="product-description-large" id="prodDescLarge"></p>
+                
+                <div class="product-info-grid">
+                    <div class="info-column">
+                        <h4 class="info-section-title"><i class="fas fa-bullseye"></i> Casos de Uso</h4>
+                        <ul class="use-cases-list" id="prodUseCases">
+                            <!-- Casos de uso inyectados -->
+                        </ul>
+                    </div>
+                    <div class="info-column">
+                        <h4 class="info-section-title"><i class="fas fa-microchip"></i> Especificaciones Técnicas</h4>
+                        <div class="tech-specs-text" id="prodSpecsDetail">
+                            <!-- Detalles técnicos inyectados -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-product-footer">
+                <a href="#" id="waLink" target="_blank" class="btn-modal-action">
+                    <i class="fab fa-whatsapp"></i> Contactar a un asesor
+                </a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.style.display = 'none';
+    
+    modal.querySelector('.close-button').addEventListener('click', () => closeModal(modal));
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
+}
+
+window.openProductModal = function(productId) {
+    createProductModal();
+    const product = productos.find(p => p.id === productId);
+    if (!product) return;
+
+    const lang = localStorage.getItem('imponect_lang') || 'es';
+    const carousel = document.getElementById('productCarousel');
+    
+    // Rutas de imágenes (usamos la misma lógica que el catálogo)
+    const rutaImagenes = 'assets/catalog_images/optimized/';
+    const rutaImagenesFallback = 'assets/catalog_images/';
+    const imagenFinal = rutaImagenes + product.imagen.replace(/\.[^.]+$/, '.webp');
+    const imagenFallback = rutaImagenesFallback + product.imagen;
+
+    // Simulación de varias imágenes (puedes añadir más a data.js si las tienes)
+    const images = [imagenFinal, imagenFinal]; 
+    carousel.innerHTML = images.map((img, i) => `
+        <img src="${img}" class="carousel-image ${i === 0 ? 'active' : ''}" 
+             onerror="this.onerror=null;this.src='${imagenFallback}'" alt="Product">
+    `).join('') + `
+        <button class="carousel-arrow carousel-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-arrow carousel-next"><i class="fas fa-chevron-right"></i></button>
+    `;
+
+    // Poblar datos básicos
+    document.getElementById('prodBadge').textContent = lang === 'es' ? product.categoria_es : product.categoria_en;
+    document.getElementById('prodTitle').textContent = lang === 'es' ? product.nombre_es : product.nombre_en;
+    document.getElementById('prodDescLarge').textContent = lang === 'es' ? product.descripcion_es : product.descripcion_en;
+    
+    // Poblar Casos de Uso
+    const useCases = lang === 'es' ? (product.casos_uso_es || []) : (product.casos_uso_en || []);
+    const useCasesContainer = document.getElementById('prodUseCases');
+    useCasesContainer.innerHTML = useCases.map(item => `<li>${item}</li>`).join('');
+    if (useCases.length === 0) useCasesContainer.innerHTML = '<li>Consulte para más detalles</li>';
+
+    // Poblar Detalles Técnicos
+    const details = lang === 'es' ? (product.detalles_es || product.specs_es) : (product.detalles_en || product.specs_en);
+    document.getElementById('prodSpecsDetail').textContent = details;
+
+    // WhatsApp Link
+    const waText = lang === 'es' 
+        ? `Hola, me interesa obtener más información sobre el producto: ${product.nombre_es}`
+        : `Hello, I'm interested in getting more information about the product: ${product.nombre_en}`;
+    document.getElementById('waLink').href = `https://wa.me/543564369474?text=${encodeURIComponent(waText)}`;
+
+    openModal(document.getElementById('modalProduct'));
+    
+    // Lógica básica de carrusel
+    let currentIndex = 0;
+    const slides = carousel.querySelectorAll('.carousel-image');
+    if (slides.length > 1) {
+        carousel.querySelector('.carousel-prev').onclick = () => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+        };
+        carousel.querySelector('.carousel-next').onclick = () => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        };
+    } else {
+        carousel.querySelectorAll('.carousel-arrow').forEach(a => a.style.display = 'none');
+    }
+}
+// =========================================================================
 // 4. FORMULARIO DE CONTACTO
 // =========================================================================
+// ... (rest of the file)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
