@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPONECT - Recibo de Anticipo</title>
+    <style>
+        :root {
+            --primary-blue: #0b3142;
+            --accent-ochre: #b6862d;
+            --text-dark: #333;
+            --light-bg: #f9f9f9;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #555; 
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            position: relative;
+            /* Forzar al navegador a renderizar los fondos al imprimir */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        @media print {
+            body { background: none; margin: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none; 
+                width: 210mm; 
+                height: 297mm; 
+            }
+            
+            /* Evitar que se imprima el placeholder gris si dejas un campo vacío. 
+               El renglón punteado y el fondo ahora sí se imprimirán. */
+            input.editable::placeholder { color: transparent; }
+        }
+
+        /* Header del Recibo */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            height: 70px;
+        }
+
+        .company-details {
+            text-align: right;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .company-details a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Título del documento */
+        .document-title {
+            text-align: center;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Metadatos (Fecha, Nro) */
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .meta-info-group {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            flex-grow: 1;
+        }
+
+        .receipt-number {
+            color: var(--accent-ochre);
+            font-size: 18px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            justify-content: flex-end;
+            min-width: 200px;
+        }
+
+        /* Cuerpo del Recibo */
+        .receipt-body {
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .receipt-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        /* ESTILOS DEL INPUT NATIVO - Ahora estos estilos se mantienen al imprimir */
+        input.editable {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px dashed #999;
+            padding: 0 5px;
+            outline: none;
+            color: var(--text-dark);
+            background-color: rgba(182, 134, 45, 0.05); 
+            font-family: inherit;
+            font-size: inherit;
+            -webkit-appearance: none;
+            box-shadow: none;
+            margin: 0;
+            width: 100%; 
+        }
+
+        input.editable:focus {
+            background-color: rgba(11, 49, 66, 0.1);
+            border-bottom: 1px solid var(--primary-blue);
+        }
+
+        input.editable::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Ajustes de ancho y texto para inputs específicos */
+        .input-date { max-width: 350px; }
+        .input-number { max-width: 150px; font-weight: bold; color: var(--accent-ochre); font-size: 18px; }
+        
+        /* Cajas de montos destacados */
+        .amounts-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .amount-box {
+            flex: 1;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background-color: var(--light-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .amount-box .currency {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            text-wrap: nowrap;
+        }
+
+        .amount-box .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .input-big-amount {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 24px;
+            max-width: 180px;
+        }
+
+        /* Detalles adicionales */
+        .summary-box {
+            border: 1px solid var(--accent-ochre);
+            padding: 20px;
+            border-radius: 4px;
+            background-color: #fdf8ef;
+            margin-bottom: 50px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .input-summary {
+            text-align: right;
+            max-width: 150px;
+            font-weight: inherit;
+            color: inherit;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+            font-weight: bold;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            color: var(--primary-blue);
+        }
+
+        /* Firmas */
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .signature-box {
+            width: 40%;
+            text-align: center;
+        }
+
+        .signature-line {
+            border-top: 1px solid var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .signature-name {
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="logo-container">
+                <img src="image_0.png" alt="IMPONECT Logo">
+            </div>
+            <div class="company-details">
+                <strong>IMPONECT<br> Tu socio estratégico en importaciones globales</strong><br><strong>Your strategic partner in global imports</strong><br>
+                <a href="https://wa.me/5493564369474" target="_blank">+54 9 3564 369474</a><br>
+                <a href="mailto:ventas@imponect.com" target="_blank">ventas@imponect.com</a><br>
+                <a href="https://www.imponect.com" target="_blank">www.imponect.com</a>
+            </div>
+        </header>
+
+        <div class="document-title">
+            Recibo de Anticipo / Advance Receipt
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-info-group">
+                <span style="text-wrap: nowrap;">Lugar y Fecha / Date:</span> 
+                <input type="text" class="editable input-date" placeholder="Ej: Buenos Aires, 15 de Mayo de 2024" maxlength="60">
+            </div>
+            <div class="receipt-number">
+                <span>Nº</span> 
+                <input type="text" class="editable input-number" placeholder="0001-000010" maxlength="20">
+            </div>
+        </div>
+
+        <div class="receipt-body">
+            <div class="receipt-row">
+                <span class="label">Recibimos de / Received from:</span>
+                <input type="text" class="editable" placeholder="Ej: Nombre del Cliente o Empresa S.A." maxlength="80">
+            </div>
+            <div class="receipt-row">
+                <span class="label">La cantidad de / The sum of:</span>
+                <input type="text" class="editable" placeholder="Ej: Cinco mil dólares con 00/100" maxlength="100">
+            </div>
+            <div class="receipt-row">
+                <span class="label">En concepto de / In concept of:</span>
+                <input type="text" class="editable" placeholder="Ej: Anticipo (Seña) por flete marítimo..." maxlength="120">
+            </div>
+            <div class="receipt-row">
+                <span class="label">Forma de pago / Payment method:</span>
+                <input type="text" class="editable" placeholder="Ej: Transferencia Bancaria / Efectivo" maxlength="50">
+            </div>
+        </div>
+
+        <div class="amounts-container">
+            <div class="amount-box">
+                <span class="currency">Monto Recibido / Received amount (USD)</span>
+                <div class="value">USD <input type="text" class="editable input-big-amount" placeholder="0.00" maxlength="20"></div>
+            </div>
+            <div class="amount-box">
+                <span class="currency">Monto Recibido / Received amount (ARS)</span>
+                <div class="value">ARS <input type="text" class="editable input-big-amount" placeholder="0.00" maxlength="20"></div>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-row">
+                <span>Valor Total del Servicio / Total Service Value:</span>
+                <input type="text" class="editable input-summary" placeholder="USD 0.00" maxlength="20">
+            </div>
+            <div class="summary-row">
+                <span>Anticipo Recibido / Advance Paid:</span>
+                <input type="text" class="editable input-summary" placeholder="USD 0.00" maxlength="20">
+            </div>
+            <div class="summary-row">
+                <span>Saldo Pendiente / Balance Due:</span>
+                <input type="text" class="editable input-summary" placeholder="USD 0.00" maxlength="20">
+            </div>
+        </div>
+
+        <div class="signatures">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-name">Firma y Aclaración CLIENTE<br><small>CUSTOMER Signature</small></div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-name">Firma y Aclaración IMPONECT<br><small>IMPONECT Signature</small></div>
+            </div>
+        </div>
+
+        <footer style="width: 85%; margin-right: 7.5%; margin-left: 7.5%;">
+            Comprobante no válido como factura. Corresponde a un anticipo del servicio, el cual será imputado y descontado de la factura final correspondiente.<br><br>
+            This document is not a valid invoice. It corresponds to an advance payment for services, which will be applied to and deducted from the final invoice.
+        </footer>
+    </div>
+
+</body>
+</html>

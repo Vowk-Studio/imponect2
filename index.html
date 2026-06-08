@@ -5,39 +5,444 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imponect | Importación y Logística Global, Tu Socio B2B</title>
-    <link rel="icon" type="image/png" href="assets/logo-small.png">
+    <meta name="description" content="Imponect conecta negocios argentinos con proveedores internacionales: sourcing, cotización, importación, logística, nacionalización y entrega de productos B2B.">
+    <meta name="keywords" content="importación argentina, logística internacional, sourcing internacional, proveedores China, importaciones B2B, despacho aduanero">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#041E32">
+    <link rel="canonical" href="https://www.imponect.com/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/optimized/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Imponect">
+    <meta property="og:title" content="Imponect | Importación y Logística Global">
+    <meta property="og:description" content="Sourcing, cotización, importación, logística y nacionalización para negocios argentinos que necesitan comprar productos en el exterior.">
+    <meta property="og:url" content="https://www.imponect.com/">
+    <meta property="og:image" content="https://www.imponect.com/assets/optimized/icon-512.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Imponect | Importación y Logística Global">
+    <meta name="twitter:description" content="Tu socio B2B para importar productos desde cualquier parte del mundo.">
+    <meta name="twitter:image" content="https://www.imponect.com/assets/optimized/icon-512.png">
+    <link rel="preload" as="image" href="assets/optimized/hero-640.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/optimized/hero-1200.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/optimized/logo-small-hero-448.webp" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Imponect - Soluciones de Importación",
-    "url": "https://imponect.com",
-    "logo": "https://drive.google.com/file/d/1VTBUBtwR-TqYyV_Ifun2usyZOf30jzyL/view",
-    "description": "Imponect es una empresa de logística y sourcing internacional, especializada en la importación de productos B2B con total transparencia y eficiencia."
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Imponect",
+        "url": "https://www.imponect.com/",
+        "logo": "https://www.imponect.com/assets/optimized/icon-512.png",
+        "description": "Imponect es una empresa de logística y sourcing internacional, especializada en la importación de productos B2B con total transparencia y eficiencia.",
+        "email": "ventas@imponect.com",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+54-3564-369474",
+            "contactType": "sales",
+            "areaServed": "AR",
+            "availableLanguage": ["es", "en"]
+        },
+        "sameAs": [
+            "https://www.instagram.com/imponect/",
+            "https://www.tiktok.com/@imponect"
+        ]
     }
     </script>
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="exclusivos.css"> 
-    <link rel="stylesheet" href="hero.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preload" as="style" href="styles.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700;800&family=Roboto:wght@400;700;900&family=Sora:wght@400;600;700;800;900&display=swap"></noscript>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <style>
+        :root {
+            --color-primary: #007bff;
+            --color-secondary: #f8f9fa;
+            --color-text: #333;
+            --shadow-light: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+            --border-radius-card: 0.9375rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-light);
+            font-family: Arial, sans-serif;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            order: 2;
+            width: 2.2rem;
+            height: auto;
+            margin-left: 10px;
+        }
+
+        .brand-name {
+            order: 1;
+            margin: 0;
+            color: #041E32;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        #menu-toggle {
+            display: block;
+            padding: 0 5px;
+            border: none;
+            background: transparent;
+            color: #041E32;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            transform: scaleY(0.8);
+            transform-origin: center;
+        }
+
+        .menu-list {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-list.active {
+            display: flex;
+        }
+
+        .menu-list li {
+            padding: 0.8rem 0;
+        }
+
+        .menu-list a {
+            color: var(--color-text);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .separator {
+            display: none;
+        }
+
+        .hero-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/optimized/hero-640.webp');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            background-color: #093A49BA;
+        }
+
+        .overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            background-color: #0000000A;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 92%;
+            min-width: 0;
+            padding: 0 1.25rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-logo {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            width: 20rem;
+            aspect-ratio: 1 / 1;
+            filter: drop-shadow(0 0 2px #fff);
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-logo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/optimized/logo-small-hero-448.webp');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .main-title {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            max-width: 100%;
+            font-size: 1.6em;
+            line-height: 1.12;
+            text-align: center;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .hero-mobile-break,
+        .hero-subtitle-break {
+            display: block;
+        }
+
+        .subtitle {
+            position: relative;
+            z-index: 2;
+            margin-top: 0.5rem;
+            max-width: 100%;
+            font-size: 1em;
+            font-weight: 300;
+            line-height: 1.35;
+            text-align: center;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .hero-background::before {
+                background-image: url('assets/optimized/hero-1200.webp');
+            }
+
+            .hero-logo {
+                width: 24rem;
+            }
+
+            .hero-mobile-break,
+            .hero-subtitle-break {
+                display: none;
+            }
+
+            .main-title {
+                font-size: 2.25em;
+            }
+
+            .subtitle {
+                font-size: 1.25em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .navbar {
+                flex-wrap: nowrap;
+                padding: 0.8rem 2rem;
+            }
+
+            #menu-toggle {
+                display: none;
+            }
+
+            .menu-list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: auto;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .menu-list li {
+                padding: 0;
+            }
+
+            .separator {
+                display: inline-block;
+                margin: 0 0.8rem;
+                color: #ccc;
+            }
+
+            .logo-img {
+                width: 2.5rem;
+                margin-left: 0;
+                margin-right: 0.625rem;
+            }
+
+            .brand-name {
+                font-size: 1.6rem;
+            }
+
+            .main-title {
+                font-size: 2.9em;
+            }
+
+            .subtitle {
+                font-size: 1.45em;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero-logo {
+                width: 30rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .hero-logo {
+                width: 36rem;
+            }
+
+            .main-title {
+                font-size: 4.35em;
+            }
+
+            .subtitle {
+                font-size: 1.7em;
+            }
+        }
+
+        /* --- ESTILO EXACTO DEL CATÁLOGO (Dorado/Premium) --- */
+        .lang-item {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            background: rgba(#fff, #fff, #fff, 0.5); /* Fondo oscuro transparente */
+            border: 2px solid #b7812b;      /* COLOR DORADO EXACTO DEL CATÁLOGO */
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;            /* Forma de píldora */
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif; /* Fuente tecnológica */
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Espacio entre letras y barra */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            outline: none;
+        }
+
+        .lang-btn:hover {
+            /*background: #b7812b;  Relleno dorado al pasar mouse */
+            color: #000;         /* Letras negras para contraste */
+            box-shadow: 0 0 15px rgba(183, 129, 43, 0.6); /* Resplandor dorado */
+            transform: translateY(-1px);
+        }
+
+        .lang-text {
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .lang-text.active {
+            opacity: 1;
+            font-weight: 800; /* Extra negrita */
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            color: #000;
+        }
+        
+        /* Cuando el botón tiene hover (fondo dorado), el texto activo pasa a negro */
+        .lang-btn:hover .lang-text.active {
+            color: #000;
+        }
+
+        .lang-divider {
+            opacity: 0.5;
+            font-weight: 400;
+        }
+
+        /* Ajustes Responsive */
+        @media (max-width: 1024px) {
+            .lang-item {
+                margin: 20px 0;
+                justify-content: center;
+                width: 100%;
+            }
+            .lang-btn {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ESTILOS PREVIOS (Carrusel, etc) */
         .carousel-btn {
-            /* Diseño Moderno Glassmorphism Imponect */
-            background: rgba(8, 57, 72, 0.35) !important; /* Azul Imponect transparente */
+            background: rgba(8, 57, 72, 0.35) !important; 
             backdrop-filter: blur(8px) !important;
             -webkit-backdrop-filter: blur(8px) !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            color: #ffffff !important; /* Flecha blanca limpia */
-            
-            /* Geometría */
+            color: #ffffff !important; 
             width: 45px !important;
             height: 45px !important;
             border-radius: 50% !important;
@@ -47,20 +452,17 @@
             font-size: 1.2rem !important;
             cursor: pointer !important;
             z-index: 10 !important;
-            
-            /* Transiciones suaves */
             transition: all 0.3s ease, opacity 0.3s ease !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
         }
 
         .carousel-btn:hover {
-            background: rgba(8, 57, 72, 0.85) !important; /* Más sólido al pasar el mouse */
+            background: rgba(8, 57, 72, 0.85) !important;
             transform: translateY(-50%) scale(1.1) !important;
             box-shadow: 0 8px 25px rgba(8, 57, 72, 0.4) !important;
             border-color: rgba(255, 255, 255, 0.4) !important;
         }
 
-        /* Clase para ocultar flechas cuando no son necesarias */
         .carousel-btn.hidden-arrow {
             opacity: 0 !important;
             pointer-events: none !important;
@@ -72,76 +474,80 @@
 
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navegación principal">
         <div class="logo-container">
-            <img src="assets/logo-small.png" alt="Logo de Imponect" class="logo-img">
-            <h1>IMPONECT</h1>
+            <img src="assets/optimized/logo-small-80.webp" alt="Logo de Imponect" class="logo-img" width="80" height="80" decoding="async">
+            <span class="brand-name">IMPONECT</span>
         </div>
 
-        <button id="menu-toggle" class="menu-toggle-btn" aria-label="Abrir menú">☰</button>
+        <button id="menu-toggle" class="menu-toggle-btn" type="button" aria-label="Abrir menú" aria-controls="main-menu" aria-expanded="false">☰</button>
 
-        <ul class="menu-list">
-            <li><a href="#home">Home</a></li>
+        <ul class="menu-list" id="main-menu">
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
             <li class="separator">|</li>
-            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#servicios" data-i18n="nav_services">Servicios</a></li>
             <li class="separator">|</li>
-            <li><a href="#productos">Productos</a></li>
+            <li><a href="#productos" data-i18n="nav_products">Productos</a></li>
             <li class="separator">|</li>
-            <li><a href="#exclusivos">Exclusivos</a></li>
+            <li><a href="#exclusivos" data-i18n="nav_exclusive">Exclusivos</a></li>
             <li class="separator">|</li>
-            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#nosotros" data-i18n="nav_about">Nosotros</a></li>
             <li class="separator">|</li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
             <li class="separator">|</li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+            
+            <li class="lang-item">
+                <button id="lang-toggle" class="lang-btn" aria-label="Cambiar idioma">
+                    <span class="lang-text active">ES</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-text">EN</span>
+                </button>
+            </li>
         </ul>
     </nav>
 
 
+    <main id="main-content">
     <header id="home" class="hero-section">
-        <div class="hero-background">
-            <img src="assets/imagen-rectangulo-ancho.jpg"
-                alt="Contenedor de carga marítima, símbolo de la importación internacional de Imponect"
-                class="hero-img">
+        <div class="hero-background" role="img" aria-label="Contenedor de carga marítima, símbolo de la importación internacional de Imponect">
             <div class="overlay"></div>
         </div>
 
         <div class="hero-content">
-            <img src="assets/logo-small-hero.png" alt="Imponect, tu conexión de importación" class="hero-logo">
+            <span class="hero-logo" role="img" aria-label="Imponect, tu conexión de importación"></span>
 
-            <h1 class="main-title">IMPORTÁ DESDE CUALQUIER<br> PARTE DEL MUNDO</h1>
-            <p class="subtitle">Comprá lo que tu negocio necesita al menor precio con la gestión de Imponect.</p>
+            <h1 class="main-title" data-i18n="hero_title">IMPORTÁ DESDE<br class="hero-mobile-break"> CUALQUIER<br> PARTE DEL MUNDO</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">Comprá lo que tu negocio<br class="hero-subtitle-break"> necesita al menor precio<br class="hero-subtitle-break"> con la gestión de Imponect.</p>
         </div>
     </header>
 
     <section id="servicios" class="services-section">
-        <h2 class="section-title">SERVICIOS</h2>
+        <h2 class="section-title" data-i18n="sec_services">SERVICIOS</h2>
 
         <div class="services-phrase">
-            <h2 class="section-title-productos">Traemos cualquier producto que tu negocio necesite.</h2>
+            <h2 class="section-title-productos" data-i18n="sec_services_phrase">Traemos cualquier producto que tu negocio necesite.</h2>
         </div>
         <div class="services-container">
-            <div id="cotizacion" class="service-card" title="Servicio de Cotización y Cálculo de Costos de Importación">
+            <div id="cotizacion" class="service-card" title="Búsqueda y Cotización">
                 <div class="card-icon-area">
                     <i class="fas fa-tablet-alt icon-large"></i>
-                    <p class="service-name">Cotización</p>
+                    <p class="service-name" data-i18n="serv_cotizacion">Búsqueda y Cotización</p>
                 </div>
                 <div class="card-text-area">
-                    <p> Evitá perder tiempo y dinero en proveedores dudosos. Nosotros buscamos, verificamos y negociamos
-                        por vos.</p>
+                    <p data-i18n="serv_cotizacion_desc"> Evitá perder tiempo y dinero en proveedores dudosos. Nosotros buscamos, verificamos y negociamos por vos.</p>
                 </div>
             </div>
 
-            <div id="importacion" class="service-card" title="Servicio de Sourcing y Gestión de Proveedores Globales">
-                <div class="card-text-area2">
-                    <p style="padding-left:15px;">
-                        Nos ocupamos de todo: desde retirar tu carga en la fábrica hasta entregarla nacionalizada en tu
-                        negocio.
-                    </p>
-                </div>
+            <div id="importacion" class="service-card" title="Servicio de Importación">
                 <div class="card-icon-area">
                     <i class="fas fa-box-open icon-large2"></i>
-                    <p class="service-name2">Importación</p>
+                    <p class="service-name2" data-i18n="serv_importacion">Importación</p>
+                </div>
+                <div class="card-text-area2">
+                    <p style="padding-left:15px;" data-i18n="serv_importacion_desc">
+                        Nos ocupamos de todo: desde retirar tu carga en la fábrica hasta entregarla nacionalizada en tu negocio.
+                    </p>
                 </div>
             </div>
         </div>
@@ -149,8 +555,8 @@
         <div class="content-row">
 
             <div class="contact-form-container">
-                <h2 class="form-title">CONSULTAS</h2>
-                <p>Dejanos tu consulta acá,<br> te responderemos a la brevedad.</p><br>
+                <h2 class="form-title" data-i18n="form_title">CONSULTAS</h2>
+                <p data-i18n="form_subtitle">Dejanos tu consulta acá,<br> te responderemos a la brevedad.</p><br>
 
                 <form class="contact-form" id="contactForm">
 
@@ -168,46 +574,43 @@
 
                     </div>
                     <div class="form-buttons">
-                        <button type="submit" class="btn-submit">Enviar Consulta</button>
-                        <a href="https://wa.me/543564369474" target="_blank" class="btn-chat">
-                            <button type="button" class="btn-chat-text" id="btnChatRepresentante">
-                                <i class="fas fa-comment-dots icon-button"></i>Hablar con un representante
-                            </button>
+                        <button type="submit" class="btn-submit" data-i18n="btn_submit">Enviar Consulta</button>
+                        <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-chat" id="btnChatRepresentante">
+                            <i class="fas fa-comment-dots icon-button" aria-hidden="true"></i><span data-i18n="btn_chat_rep">Hablar con un representante</span>
                         </a>
                     </div>
                 </form>
             </div>
 
             <div class="video-container">
-                <video id="institutional-video" class="institutional-video" muted loop preload="auto"
-                    poster="assets/poster-video.jpg">
+                <video id="institutional-video" class="institutional-video" muted loop preload="none"
+                    poster="assets/optimized/poster-video-640.webp" width="640" height="360">
                     <source src="assets/video-institucional.mp4" type="video/mp4">
                     Tu navegador no soporta el elemento de video.
                 </video>
                 <div class="video-controls-overlay">
-                    <i id="volume-icon" class="fas fa-volume-mute"></i>
+                    <i id="volume-icon" class="fas fa-volume-mute" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
     </section>
     <section id="productos" class="products-section">
 
-        <h2 class="section-title-productos">Algunos de nuestros productos innovadores<br>para el mercado argentino.</h2>
+        <h2 class="section-title-productos" data-i18n="sec_products_title">Algunos de nuestros productos innovadores<br>para el mercado argentino.</h2>
         
         <div class="catalog-container">
-            <a href="catalog.html" target="_blank" class="btn-catalog-modern">
-                <span>Ver el catálogo completo</span>
-                <i class="fas fa-arrow-right"></i>
+            <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-catalog-modern">
+                <span data-i18n="btn_catalog_main">Ver el catálogo completo</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 <div class="btn-shine"></div>
             </a>
         </div>
 
         <div class="products-carousel-container">
 
-            <div class="product-item product-large" data-product="maquinaria"
-                aria-label="Cámara Endoscópica de Precisión importada por Imponect">
+            <div class="product-item product-large" data-product="maquinaria">
                 <div class="product-overlay">
-                    <h3 class="product-name">Cámara Endoscópica</h3>
+                    <h3 class="product-name" data-i18n="prod_camara_name">Cámara Endoscópica</h3>
                     <div class="product-features-grid">
 
                         <div class="feature-col">
@@ -220,7 +623,7 @@
                         </div>
 
                         <div class="feature-col">
-                            <h4>Largo:</h4>
+                            <h4 data-i18n="prod_camara_len">Largo:</h4>
                             <ul>
                                 <li>1m</li>
                                 <li>5m</li>
@@ -230,102 +633,97 @@
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
-                        <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_view_catalog">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_datasheet">Ficha Técnica</a>
+                        <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_stock">Consultar Stock</a>
                     </div>
                 </div>
-                <img src="assets/productos-1.jpg" alt="Cámara Endoscópica de precisión">
+                <img src="assets/optimized/productos-1.webp" loading="lazy" decoding="async" width="900" height="1200" alt="Cámara Endoscópica">
             </div>
 
-            <div class="product-item product-large" data-product="quimicos" aria-label="Iflador Portátil">
+            <div class="product-item product-large" data-product="quimicos">
                 <div class="product-overlay">
-                    <h3 class="product-name">Inflador Portátil</h3>
+                    <h3 class="product-name" data-i18n="prod_inflador_name">Inflador Portátil</h3>
                     <div class="product-features-grid">
                         <div class="feature-col">
-                            <h4>Descripción:</h4>
+                            <h4 data-i18n="prod_inflador_desc">Descripción:</h4>
                             <ul>
                                 <li>150 PSI</li>
-                                <li>Bateria de 10.000 mAh</li>
-                                <li>Carga celular</li>
-                                <li>Linterna LED</li>
+                                <li>10.000 mAh</li>
+                                <li data-i18n="prod_inflador_charge">Carga celular</li>
+                                <li data-i18n="prod_inflador_light">Linterna LED</li>
                             </ul>
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
-                        <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_view_catalog">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_datasheet">Ficha Técnica</a>
+                        <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_stock">Consultar Stock</a>
                     </div>
                 </div>
-                <img src="assets/producto-2.jpg" alt="Inflador Portátil">
+                <img src="assets/optimized/producto-2.webp" loading="lazy" decoding="async" width="900" height="900" alt="Inflador Portátil">
             </div>
 
-            <div class="product-item product-small product-vincha-led" data-product="textil"
-                aria-label="Vincha LED de Alta Calidad">
+            <div class="product-item product-small product-vincha-led" data-product="textil">
                 <div class="product-overlay">
-                    <h3 class="product-name">Vincha Led</h3>
+                    <h3 class="product-name" data-i18n="prod_vincha_name">Vincha Led</h3>
                     <div class="product-features-grid">
 
                         <div class="feature-col">
-                            <h4>LEDs de 3 Colores:</h4>
+                            <h4 data-i18n="prod_vincha_colors">LEDs de 3 Colores:</h4>
                             <ul>
-                                <li>Blanco</li>
-                                <li>Amarillo</li>
-                                <li>Rojo</li>
+                                <li data-i18n="prod_vincha_white">Blanco</li>
+                                <li data-i18n="prod_vincha_yellow">Amarillo</li>
+                                <li data-i18n="prod_vincha_red">Rojo</li>
                             </ul>
                         </div>
 
                         <div class="feature-col">
                             <ul>
-                                <li>Linterna LED en un lateral.</li>
-                                <li>Sensor de proximidad</li>
-                                <li>Regulable.</li>
-
+                                <li data-i18n="prod_vincha_side">Linterna LED lateral.</li>
+                                <li data-i18n="prod_vincha_sensor">Sensor de proximidad</li>
+                                <li data-i18n="prod_vincha_reg">Regulable.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-                        <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
-                        <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_view_catalog">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_datasheet">Ficha Técnica</a>
+                        <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_stock">Consultar Stock</a>
                     </div>
                 </div>
-                <img src="assets/producto-3.jpg" alt="vincha led">
+                <img src="assets/optimized/producto-3.webp" loading="lazy" decoding="async" width="900" height="675" alt="Vincha LED">
             </div>
 
-            <div class="product-item product-small chalecoled" data-product="insumos"
-                aria-label="Chaleco LED de alta calidad">
+            <div class="product-item product-small chalecoled" data-product="insumos">
                 <div class="product-overlay">
-                    <h3 class="product-name">Chaleco LED</h3>
+                    <h3 class="product-name" data-i18n="prod_chaleco_name">Chaleco LED</h3>
                     <div class="product-features-grid">
 
                         <div class="feature-col">
-                            <h4>Colores de Chaleco:</h4>
+                            <h4 data-i18n="prod_chaleco_colors_title">Colores de Chaleco:</h4>
                             <ul>
-                                <li>Verde</li>
-                                <li>Ceñeste</li>
-                                <li>Rosa</li>
-                                <li>Rojo</li>
-                                <li>Azul</li>
+                                <li data-i18n="prod_chaleco_green">Verde</li>
+                                <li data-i18n="prod_chaleco_blue_light">Celeste</li>
+                                <li data-i18n="prod_chaleco_pink">Rosa</li>
+                                <li data-i18n="prod_chaleco_red">Rojo</li>
+                                <li data-i18n="prod_chaleco_blue">Azul</li>
                             </ul>
                         </div>
 
                         <div class="feature-col">
-
                             <ul>
-                                <li>Bateria interna recargable <br>con cargadores USB-A / USB-C</li>
+                                <li data-i18n="prod_chaleco_bat">Bateria interna recargable <br>con cargadores USB-A / USB-C</li>
                             </ul>
                         </div>
                     </div>
                     <div class="button-wrapper">
-                    <a href="catalog.html" target="_blank" class="btn-product-detail">Ver Catálogo</a>
-                    <a href="catalog.html" target="_blank" class="btn-product-detail">Ficha Técnica</a>
-                        <a href="https://wa.me/543564369474" class="btn-product-detail">Consultar Stock</a>
-
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_view_catalog">Ver Catálogo</a>
+                        <a href="catalog.html" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_datasheet">Ficha Técnica</a>
+                        <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-product-detail" data-i18n="btn_stock">Consultar Stock</a>
                     </div>
                 </div>
-                <img src="assets/producto-4.jpg" alt="Chaleco LED">
+                <img src="assets/optimized/producto-4.webp" loading="lazy" decoding="async" width="900" height="900" alt="Chaleco LED">
             </div>
         </div>
 
@@ -334,320 +732,330 @@
     <section id="exclusivos" class="exclusive-section">
         <div class="exclusive-header">
             <div class="btn-shine"></div> 
-            <h2 class="section-title-exclusivos">Exclusivos IMPONECT</h2>
-            <p class="section-subtitle">Somos representantes oficiales de marcas únicas en Argentina.</p>
+            <h2 class="section-title-exclusivos" data-i18n="sec_exclusive_title">Exclusivos IMPONECT</h2>
+            <p class="section-subtitle" data-i18n="sec_exclusive_subtitle">Somos representantes oficiales de marcas únicas en Argentina.</p>
         </div>
 
         <div class="exclusive-images-container">
             <div class="exclusive-item">
-                <img src="assets/producto-esp1.jpg" alt="Kneel-It">
+                <img src="assets/optimized/producto-esp1.webp" loading="lazy" decoding="async" width="1100" height="733" alt="Kneel-It">
                 <div class="exclusive-overlay">
                     <h3 class="exclusive-name">Kneel-It</h3>
-                    <p class="exclusive-desc">Soporte ergonómico para trabajar de rodillas.</p>
+                    <p class="exclusive-desc" data-i18n="ex_kneelit_desc">Soporte ergonómico para trabajar de rodillas.</p>
                     <ul class="exclusive-features">
-                        <li>Protección articular</li>
-                        <li>Ajuste personalizado</li>
-                        <li>Facilita el trabajo a nivel del suelo</li>
+                        <li data-i18n="ex_kneelit_f1">Protección articular</li>
+                        <li data-i18n="ex_kneelit_f2">Ajuste personalizado</li>
+                        <li data-i18n="ex_kneelit_f3">Facilita el trabajo a nivel del suelo</li>
                     </ul>
-                    <button class="btn-exclusive-detail">Ver Detalle</button>
+                    <button class="btn-exclusive-detail" data-i18n="btn_detail">Ver Detalle</button>
                 </div>
             </div>
 
             <div class="exclusive-item">
-                <img src="assets/producto-esp2.jpg" alt="Kneaze">
+                <img src="assets/optimized/producto-esp2.webp" loading="lazy" decoding="async" width="1100" height="733" alt="Kneaze">
                 <div class="exclusive-overlay">
                     <h3 class="exclusive-name">Kneaze</h3>
-                    <p class="exclusive-desc">Movilidad estable y reducción de tensión.</p>
+                    <p class="exclusive-desc" data-i18n="ex_kneaze_desc">Movilidad estable y reducción de tensión.</p>
                     <ul class="exclusive-features">
-                        <li>Ajuste biométrico</li>
-                        <li>Máxima estabilidad</li>
-                        <li>Reduce la tensión articular</li>
+                        <li data-i18n="ex_kneaze_f1">Ajuste biométrico</li>
+                        <li data-i18n="ex_kneaze_f2">Máxima estabilidad</li>
+                        <li data-i18n="ex_kneaze_f3">Reduce la tensión articular</li>
                     </ul>
-                    <button class="btn-exclusive-detail">Ver Detalle</button>
+                    <button class="btn-exclusive-detail" data-i18n="btn_detail">Ver Detalle</button>
                 </div>
             </div>
         </div>
 
         <div class="catalog-container">
-            <a href="catalog_exclusive.html" target="_blank" class="btn-catalog-modern btn-exclusive-catalog">
-                <span>Ver el catálogo exclusivo</span>
-                <i class="fas fa-arrow-right"></i>
+            <a href="catalog_exclusive.html" target="_blank" rel="noopener noreferrer" class="btn-catalog-modern btn-exclusive-catalog">
+                <span data-i18n="btn_catalog_exclusive">Ver el catálogo exclusivo</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 <div class="btn-shine"></div>
             </a>
         </div>
     </section>
 
     <section id="nosotros" class="about-section">
-    <div class="about-container">
-        <div class="about-header">
-            <h2 class="section-title-nos">SOBRE NOSOTROS</h2>
-            <div class="title-underline-gold"></div>
-        </div>
+        <div class="about-container">
+            <div class="about-header">
+                <h2 class="section-title-nos" data-i18n="sec_about_title">SOBRE NOSOTROS</h2>
+                <div class="title-underline-gold"></div>
+            </div>
 
-        <div class="about-quote-container">
-            <p class="about-text">
-                "Somos un equipo apasionado por la transparencia. Nacimos para conectar negocios
-                <span class="highlight-arg">ARGENTINOS</span> con el mundo, brindando confianza y visibilidad del proceso."
-            </p>
-        </div>
+            <div class="about-quote-container">
+                <p class="about-text" data-i18n="about_quote">
+                    "Somos un equipo apasionado por la transparencia. Nacimos para conectar negocios
+                    <span class="highlight-arg">ARGENTINOS</span> con el mundo, brindando confianza y visibilidad del proceso."
+                </p>
+            </div>
 
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="member-photo-box">
-                    <img src="assets/Nico.png" loading="lazy" alt="Nicolás" class="member-img">
-                </div>
-                <div class="member-info">
-                    <h3 class="member-name">NICOLÁS</h3>
-                    
-                    <div class="member-meta">
-                        <img src="assets/bandera.png" alt="Argentina" class="flag-icon-solo">
-                        <div class="member-hidden-details">
-                            <span class="member-role-title">Co-Fundador</span>
-                            <span class="member-location">Magdalena, Buenos Aires</span>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="member-photo-box">
+                        <img src="assets/optimized/nico-360.webp" loading="lazy" decoding="async" width="360" height="360" alt="Nicolás" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">NICOLÁS</h3>
+                        <div class="member-meta">
+                            <img src="assets/optimized/bandera-64.webp" loading="lazy" decoding="async" width="64" height="64" alt="Argentina" class="flag-icon-solo">
+                            <div class="member-hidden-details">
+                                <span class="member-role-title" data-i18n="team_role_cofounder">Co-Fundador</span>
+                                <span class="member-location">Magdalena, Buenos Aires</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="team-card">
-                <div class="member-photo-box">
-                    <img src="assets/Alan.png" loading="lazy" alt="Alan" class="member-img">
-                </div>
-                <div class="member-info">
-                    <h3 class="member-name">ALAN</h3>
-                    
-                    <div class="member-meta">
-                        <img src="assets/bandera.png" alt="Argentina" class="flag-icon-solo">
-                        <div class="member-hidden-details">
-                            <span class="member-role-title">Co-Fundador</span>
-                            <span class="member-location">General Roca, Neuquén</span>
+                <div class="team-card">
+                    <div class="member-photo-box">
+                        <img src="assets/optimized/alan-360.webp" loading="lazy" decoding="async" width="360" height="360" alt="Alan" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">ALAN</h3>
+                        <div class="member-meta">
+                            <img src="assets/optimized/bandera-64.webp" loading="lazy" decoding="async" width="64" height="64" alt="Argentina" class="flag-icon-solo">
+                            <div class="member-hidden-details">
+                                <span class="member-role-title" data-i18n="team_role_cofounder">Co-Fundador</span>
+                                <span class="member-location">General Roca, Neuquén</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="team-card">
-                <div class="member-photo-box">
-                    <img src="assets/Diego.png" loading="lazy" alt="Diego" class="member-img">
-                </div>
-                <div class="member-info">
-                    <h3 class="member-name">DIEGO</h3>
-                    
-                    <div class="member-meta">
-                        <img src="assets/bandera.png" alt="Argentina" class="flag-icon-solo">
-                        <div class="member-hidden-details">
-                            <span class="member-role-title">Co-Fundador</span>
-                            <span class="member-location">La Francia, Córdoba</span>
+                <div class="team-card">
+                    <div class="member-photo-box">
+                        <img src="assets/optimized/diego-360.webp" loading="lazy" decoding="async" width="360" height="360" alt="Diego" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">DIEGO</h3>
+                        <div class="member-meta">
+                            <img src="assets/optimized/bandera-64.webp" loading="lazy" decoding="async" width="64" height="64" alt="Argentina" class="flag-icon-solo">
+                            <div class="member-hidden-details">
+                                <span class="member-role-title" data-i18n="team_role_cofounder">Co-Fundador</span>
+                                <span class="member-location">La Francia, Córdoba</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="success-stories-section">
         <div class="container">
             <div class="section-header-text-center">
-                <h2 class="section-title-reseñas">CASOS DE ÉXITO</h2>
-                <p class="section-subtitle">Historias reales, resultados reales</p>
+                <h2 class="section-title-reseñas" data-i18n="sec_reviews_title">CASOS DE ÉXITO</h2>
+                <p class="section-subtitle" data-i18n="sec_reviews_subtitle">Historias reales, resultados reales</p>
             </div>
 
             <div class="carousel-wrapper">
                 <button class="carousel-btn prev-btn" aria-label="Anterior">◄</button>
-
                 <div class="case-studies-container">
+                    
                     <article class="case-card">
-                        <div class="case-top-info">
-                            <h3 class="case-title">Gonzalo</h3>
-                            <p class="case-subtitle">⭐⭐⭐⭐⭐</p>
+                        <div class="case-header">
+                            <img src="assets/optimized/imponect-mark-128.webp" loading="lazy" decoding="async" width="128" height="128" alt="Logo Imponect" class="quote-logo">
+                            <div class="case-stars">
+                                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
                         </div>
-
-                        <div class="case-image-wrapper">
-                            <img src="assets/reseñas2.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
+                        <p class="case-text">"Hola cómo andan? La verdad que venía renegando muchísimo con los trámites aduaneros y con ustedes fue un lujo. Me olvidé de todo ese problema"</p>
+                        <div class="case-author">
+                            <h3 class="case-name">Agustín</h3>
+                            <span class="case-role">Emprendedor E-commerce</span>
                         </div>
                     </article>
 
                     <article class="case-card">
-                        <div class="case-top-info">
-                            <h3 class="case-title">Miguel H.</h3>
-                            <p class="case-subtitle">⭐⭐⭐⭐⭐</p>
+                        <div class="case-header">
+                            <img src="assets/optimized/imponect-mark-128.webp" loading="lazy" decoding="async" width="128" height="128" alt="Logo Imponect" class="quote-logo">
+                            <div class="case-stars">
+                                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
                         </div>
-
-                        <div class="case-image-wrapper">
-                            <img src="assets/reseñas4.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
-                        </div>
-                    </article>
-
-                    <article class="case-card">
-                        <div class="case-top-info">
-                            <h3 class="case-title">John</h3>
-                            <p class="case-subtitle">⭐⭐⭐⭐⭐</p>
-                        </div>
-
-                        <div class="case-image-wrapper">
-                            <img src="assets/reseñas5.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
+                        <p class="case-text">"Buenas cómo están? llegaron las cámaras hoy a la mañana, todo bien embalado, un lujo. Mil gracias, nos ahorraron un dolor de cabeza."</p>
+                        <div class="case-author">
+                            <h3 class="case-name">Carlos</h3>
+                            <span class="case-role">Creador de contenido</span>
                         </div>
                     </article>
 
                     <article class="case-card">
-                        <div class="case-top-info">
-                            <h3 class="case-title">Gonzalo</h3>
-                            <p class="case-subtitle">⭐⭐⭐⭐⭐</p>
+                        <div class="case-header">
+                            <img src="assets/optimized/imponect-mark-128.webp" loading="lazy" decoding="async" width="128" height="128" alt="Logo Imponect" class="quote-logo">
+                            <div class="case-stars">
+                                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
                         </div>
-
-                        <div class="case-image-wrapper">
-                            <img src="assets/reseñas2.PNG" loading="lazy" alt="Caso de éxito 1" class="case-image">
+                        <p class="case-text">"Alan, cómo estás? Recién estábamos probando el Kneel-IT para los videos de ergonomía, es un lujo, podes trabajar todo el día acá arriba"</p>
+                        <div class="case-author">
+                            <h3 class="case-name">Juan</h3>
+                            <span class="case-role">Doctor</span>
                         </div>
                     </article>
+
+                    <article class="case-card">
+                        <div class="case-header">
+                            <img src="assets/optimized/imponect-mark-128.webp" loading="lazy" decoding="async" width="128" height="128" alt="Logo Imponect" class="quote-logo">
+                            <div class="case-stars">
+                                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <p class="case-text">"Nico, impecable todo. Al final llegó antes de lo que calculábamos, un golazo. Gracias por mantenerme al tanto de cada paso, da gusto importar así."</p>
+                        <div class="case-author">
+                            <h3 class="case-name">Esteban</h3>
+                            <span class="case-role">Emprendedor E-commerce</span>
+                        </div>
+                    </article>
+
+                    <article class="case-card">
+                        <div class="case-header">
+                            <img src="assets/optimized/imponect-mark-128.webp" loading="lazy" decoding="async" width="128" height="128" alt="Logo Imponect" class="quote-logo">
+                            <div class="case-stars">
+                                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <p class="case-text">"Mil gracias por la mano con el despacho, sacando cuentas nos salió más barato que comprar acá el stock importando por barco"</p>
+                        <div class="case-author">
+                            <h3 class="case-name">Emiliano</h3>
+                            <span class="case-role">Gerente de Compras</span>
+                        </div>
+                    </article>
+
                 </div>
-
                 <button class="carousel-btn next-btn" aria-label="Siguiente">►</button>
             </div>
         </div>
     </section>
 
-
     <section id="faq" class="faq-section">
         <div class="container">
-            <h2 class="section-title-faq">PREGUNTAS FRECUENTES</h2>
+            <h2 class="section-title-faq" data-i18n="sec_faq_title">PREGUNTAS FRECUENTES</h2>
 
             <div class="faq-container">
 
-                <div class="faq-question-box" data-open-modal="true"
-                    data-title="¿Qué productos no puedo importar a argentina?"
-                    data-content="Por lo general, casi todos los productos pueden ser importados, a menos que haya alguna ley que puntualmente lo prohíba, como por ejemplo, vehículos que no sean 0km pero que tampoco cumplan con la cantidad de años de antigüedad que el gobierno considera como 'vehículo antiguo'. Luego, para productos no restringidos por ley, mientras se cumplan los requisitos, podrán ser importados sin inconvenientes. Un ejemplo puntual serían productos que tengan contacto con la piel o el cuerpo, dichos productos requieren aprobaciones de ciertos organismos de Argentina, pero si se realizan los trámites necesarios para conseguir el/los permiso/s, entonces pueden importarse sin problemas.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_1" data-i18n="faq_1">
                     ¿Qué productos no puedo importar a argentina?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true"
-                    data-title="¿Qué pasa si mi proveedor no tiene certificaciones?"
-                    data-content="Las certificaciones son un punto clave a tener en cuenta para saber de antemano que los productos son de buena calidad y que el proveedor trabaja correctamente con buenas prácticas, aunque si el cliente tiene un proveedor puntual y quiere importar sus productos, nosotros no lo impedimos, pero sí damos a conocer que es probable que ciertos productos sin certificaciones queden retenidos en aduana y no puedan ser despachados. Existen certificaciones tanto de productos como de gestión. Las certificaciones de producto indican que el producto pasó ciertas pruebas y cumple con ciertos parámetros necesarios para poder conseguir dichas certificaciones. Por otro lado, las certificaciones de gestión son aquellas que las fábricas de los proveedores deben tener para nosotros saber de antemano que operan correctamente, cumpliendo requisitos de buenas prácticas en la manufactura de cada producto respectivamente, así como también mantener la higiene, entre otras certificaciones importantes.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_2" data-i18n="faq_2">
                     ¿Qué pasa si mi proveedor no tiene certificaciones?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true"
-                    data-title="¿Cuánto tarda en promedio un envío marítimo y uno aéreo?"
-                    data-content="Los tiempos de envío varían significativamente. Un **envío marítimo** estándar desde Asia a Argentina suele tardar entre **45 y 60 días** (tránsito puro más trámites portuarios y aduaneros). Un **envío aéreo** es mucho más rápido, generalmente entre **7 y 15 días** totales. Estos son promedios y pueden variar por factores externos.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_3" data-i18n="faq_3">
                     ¿Cuánto tarda en promedio un envío marítimo y uno aéreo?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true" data-title="¿Puedo pagar en pesos argentinos?"
-                    data-content="Sí, aceptamos diversos medios de pagos para la comodidad de nuestros clientes, incluyendo el pago en pesos argentinos a la tasa de cambio vigente al momento de la transacción.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_4" data-i18n="faq_4">
                     ¿Puedo pagar en pesos argentinos?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true"
-                    data-title="¿Qué garantía tengo sobre mis productos?"
-                    data-content="La garantía sobre los productos importados depende de lo acordado con el proveedor original. Nosotros garantizamos que el proceso de importación se realiza con la máxima diligencia. Ofrecemos inspección de calidad en origen y seguros de carga opcionales para proteger su inversión ante cualquier eventualidad durante el transporte.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_5" data-i18n="faq_5">
                     ¿Qué garantía tengo sobre mis productos?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true" data-title="¿Cuánto demora tener una cotización?"
-                    data-content="Entre **1 y 2 semanas** dependiendo de la rapidez de respuesta de los proveedores y de los agentes aduaneros. Suele pasar que algún agente aduanero esté en un viaje de negocios y demore un poco en responder, lo que extiende este plazo.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_6" data-i18n="faq_6">
                     ¿Cuánto demora tener una cotización?
                 </div>
 
-                <div class="faq-question-box" data-open-modal="true"
-                    data-title="¿Necesito ser monotributista, responsable inscripto o tener una empresa registrada?"
-                    data-content="No es necesario. Nosotros realizamos toda la importación y, una vez que recibimos el resto del pago para liberar la carga en la aduana, realizamos la facturación correspondiente a nombre del cliente a quien le enviaremos la mercadería. Recomendamos que consulten con su Contador previo a una importación grande para estar bien asesorados y saber si les conviene o no estar inscriptos.">
+                <div class="faq-question-box" data-open-modal="true" data-faq-id="faq_7" data-i18n="faq_7">
                     ¿Necesito ser monotributista, responsable inscripto o tener una empresa registrada?
                 </div>
             </div>
         </div>
     </section>
-
     <div id="modalCotizacion" class="modal">
         <div class="modal-content">
-            <span class="close-button" aria-label="Cerrar ventana de cotización">&times;</span>
+            <button class="close-button" type="button" aria-label="Cerrar ventana de cotización"></button>
 
-            <h3 class="modal-title-service">Cotización</h3>
+            <h3 class="modal-title-service" data-i18n="modal_cot_title">Búsqueda yCotización</h3>
 
-            <div class="modal-subtitle-incluye">Incluye:</div>
+            <div class="modal-subtitle-incluye" data-i18n="modal_subtitle_incl">Incluye:</div>
 
             <ul>
-                <li>Búsqueda de proveedores confiables.</li>
-                <li>Verificación de certificaciones de gestión del proveedor y reseñas.</li>
-                <li>Verificación de certificaciones del producto para asegurar que cumple las normas argentinas.</li>
-                <li>Negociación del mejor precio.</li>
-                <li>Cotización de envío marítimo/aéreo + Tributación aduanera + Despacho a dirección declarada.</li>
+                <li data-i18n="modal_cot_l1">Búsqueda de proveedores confiables.</li>
+                <li data-i18n="modal_cot_l2">Verificación de certificaciones de gestión del proveedor y reseñas.</li>
+                <li data-i18n="modal_cot_l3">Verificación de certificaciones del producto para asegurar que cumple las normas argentinas.</li>
+                <li data-i18n="modal_cot_l4">Negociación del mejor precio.</li>
+                <li data-i18n="modal_cot_l5">Cotización de envío marítimo/aéreo + Tributación aduanera + Despacho a dirección declarada.</li>
             </ul>
 
-            <div class="modal-subtitle-extra">Extra (Opcional - a cargo del cliente):</div>
+            <div class="modal-subtitle-extra" data-i18n="modal_subtitle_extra">Extra (Opcional - a cargo del cliente):</div>
             <ul>
-                <li>Control de calidad sobre una muestra.</li>
-                <li>Fotos, videos y reunión en vivo (Meet) con nuestra agente en China en español.</li>
+                <li data-i18n="modal_cot_e1">Control de calidad sobre una muestra.</li>
+                <li data-i18n="modal_cot_e2">Fotos, videos y reunión en vivo (Meet) con nuestra agente en China en español.</li>
             </ul>
 
             <div class="modal-button-area">
-                <a href="https://wa.me/543564369474" target="_blank" class="btn-modal-action">Solicitar Presupuesto</a>
+                <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-modal-action" data-i18n="btn_modal_req">Solicitar Presupuesto</a>
             </div>
         </div>
     </div>
 
     <div id="modalImportacion" class="modal">
         <div class="modal-content">
-            <span class="close-button" aria-label="Cerrar ventana de logística">&times;</span>
+            <button class="close-button" type="button" aria-label="Cerrar ventana de logística"></button>
 
-            <h3 class="modal-title-service">Importación</h3>
+            <h3 class="modal-title-service" data-i18n="modal_imp_title">Importación</h3>
 
-            <div class="modal-subtitle-incluye">Incluye:</div>
+            <div class="modal-subtitle-incluye" data-i18n="modal_subtitle_incl">Incluye:</div>
 
             <ul>
-                <li>Retiro (pickup) en fábrica y consolidación en despacho (warehouse).</li>
-                <li>Intervenciones especiales necesarias (por ciertas regulaciones).</li>
-                <li>Exportación marítima o aérea hacia Argentina.</li>
-                <li>Tributación aduanera y nacionalización de los bienes en aduana Argentina.</li>
-                <li>Entrega directa a domicilio declarado.</li>
+                <li data-i18n="modal_imp_l1">Retiro (pickup) en fábrica y consolidación en despacho (warehouse).</li>
+                <li data-i18n="modal_imp_l2">Intervenciones especiales necesarias (por ciertas regulaciones).</li>
+                <li data-i18n="modal_imp_l3">Exportación marítima o aérea hacia Argentina.</li>
+                <li data-i18n="modal_imp_l4">Tributación aduanera y nacionalización de los bienes en aduana Argentina.</li>
+                <li data-i18n="modal_imp_l5">Entrega directa a domicilio declarado.</li>
             </ul>
 
             <div class="modal-button-area">
-                <a href="https://wa.me/543564369474" target="_blank" class="btn-modal-action">Solicitar Presupuesto</a>
+                <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="btn-modal-action" data-i18n="btn_modal_req">Solicitar Presupuesto</a>
             </div>
         </div>
     </div>
 
     <div id="faqModal" class="modal">
         <div class="modal-content">
-            <span class="close-button" aria-label="Cerrar pregunta frecuente">&times;</span>
+            <button class="close-button" type="button" aria-label="Cerrar pregunta frecuente"></button>
 
-            <h3 class="modal-title-faq"></h3>
-
-            <div class="modal-body-faq">
-            </div>
+            <h3 class="modal-title-faq"></h3> <div class="modal-body-faq">
+                </div>
 
             <div class="modal-button-area">
-                <button class="btn-solicitar-presupuesto">Hacer una Consulta Personalizada</button>
+                <button class="btn-solicitar-presupuesto" data-i18n="btn_faq_custom">Hacer una Consulta Personalizada</button>
             </div>
         </div>
     </div>
+
+    </main>
+
     <footer class="main-footer" id="contacto">
         <div class="footer-content-container">
 
             <div class="footer-left">
-                <h4>CONTACTO</h4>
+                <h2 class="footer-heading" data-i18n="nav_contact">CONTACTO</h2>
                 <div class="contact-info">
                     <p>Email: <a href="mailto:ventas@imponect.com">ventas@imponect.com</a></p>
-                    <p>WhatsApp: <a href="https://wa.me/543564369474" target="_blank">(+54) 3564-369474</a> (solo
+                    <p>WhatsApp: <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer">(+54) 3564-369474</a> (solo
                         WhatsApp)</p>
                 </div>
             </div>
 
             <div class="footer-right">
-                <h4>NUESTRAS REDES</h4>
+                <h2 class="footer-heading" data-i18n="footer_social_title">NUESTRAS REDES</h2>
                 <div class="social-links">
-                    <a href="URL_TU_INSTAGRAM" target="_blank" aria-label="Síguenos en Instagram">
-                        <i class="fab fa-instagram footer-icon"></i>
+                    <a href="https://www.instagram.com/imponect/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram" style="text-decoration: none;">
+                        <i class="fab fa-instagram footer-icon" aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@imponect" target="_blank" aria-label="Síguenos en TikTok">
-                        <i class="fab fa-tiktok footer-icon"></i>
+                    <a href="https://www.tiktok.com/@imponect" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en TikTok">
+                        <i class="fab fa-tiktok footer-icon" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>IMPONECT - Tu socio estratégico en importaciones globales</p>
+            <p data-i18n="footer_slogan">IMPONECT - Tu socio estratégico en importaciones globales</p>
         </div>
     </footer>
 
@@ -655,7 +1063,7 @@
     <div id="chat-widget">
         <button id="chat-button" aria-expanded="false" aria-controls="chat-window">
             <div class="chat-icon-circle">
-                <img src="assets/logo-small.png" alt="Logo Imponect">
+                <img src="assets/optimized/logo-small-80.webp" loading="lazy" decoding="async" width="80" height="80" alt="Logo Imponect">
             </div>
             <span class="chat-label">Chat</span>
         </button>
@@ -663,9 +1071,9 @@
         <div id="chat-window">
             <header class="chat-header">
                 <div class="header-info">
-                    <h3>ASISTENTE IMPONECT</h3>
+                    <h3 data-i18n="chat_header_title">Asistente de IMPONECT</h3>
                     <div class="status-indicator">
-                        <span class="dot"></span> <span class="text">En línea</span>
+                        <span class="dot"></span> <span class="text" data-i18n="chat_status_online">En línea</span>
                     </div>
                 </div>
                 <button class="close-chat" aria-label="Cerrar ventana de chat">&times;</button>
@@ -673,147 +1081,27 @@
 
             <div class="chat-body" id="chatBody">
                 <div class="chat-message bot">
-                    <p>¡Hola! 👋 Bienvenido a Imponect. <br>¿En qué podemos innovar juntos hoy?</p>
-                    <span class="time">Justo ahora</span>
+                    <p data-i18n="chat_welcome_msg">¡Hola! 👋 Bienvenido a Imponect. <br>¿En qué podemos innovar juntos hoy?</p>
+                    <span class="time" data-i18n="chat_time_now">Justo ahora</span>
                 </div>
             </div>
 
             <footer class="chat-footer">
                 <form id="chatForm">
-                    <textarea id="chatInput" name="mensaje" rows="1" placeholder="Escribe tu consulta..." required></textarea>
+                    <textarea id="chatInput" name="mensaje" rows="1" placeholder="Escribe tu consulta..." data-i18n-placeholder="chat_placeholder" required></textarea>
                     <button type="submit" id="chatSendBtn" aria-label="Enviar mensaje">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                     </button>
                 </form>
             </footer>
         </div>
     </div>
 
-    <a href="https://wa.me/543564369474" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/543564369474" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script src="script.js"></script>
-    <script>
-        // Script para efecto Navbar Sticky basado en la visibilidad del Hero
-        (function () {
-            const navbar = document.querySelector('.navbar');
-            const hero = document.querySelector('#home');
-            if (!navbar || !hero) return;
-
-            function updateNavbarState() {
-                const heroBottom = hero.getBoundingClientRect().bottom;
-                const navbarHeight = navbar.getBoundingClientRect().height;
-                // Si el bottom del hero está por debajo del alto del navbar (o fuera de la vista), consideramos que ya no está detrás
-                if (heroBottom <= navbarHeight + 5) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }
-
-            // Actualizar en scroll/resize y al cargar
-            window.addEventListener('scroll', () => requestAnimationFrame(updateNavbarState));
-            window.addEventListener('resize', () => requestAnimationFrame(updateNavbarState));
-            document.addEventListener('DOMContentLoaded', updateNavbarState);
-            // Ejecutar inmediatamente también
-            updateNavbarState();
-        })();
-
-        // ===============================================
-        // LÓGICA DE LAS FLECHAS DEL CARRUSEL (MODERNA)
-        // ===============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.case-studies-container');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-
-            if (!container || !prevBtn || !nextBtn) return;
-
-            // Función para actualizar visibilidad de flechas
-            const updateArrows = () => {
-                // Obtenemos posición de scroll con margen de error pequeño
-                const scrollLeft = Math.ceil(container.scrollLeft);
-                const scrollWidth = container.scrollWidth;
-                const clientWidth = container.clientWidth;
-
-                // 1. Flecha Izquierda: Se oculta si estamos al principio (scroll < 10px)
-                if (scrollLeft > 10) {
-                    prevBtn.classList.remove('hidden-arrow');
-                } else {
-                    prevBtn.classList.add('hidden-arrow');
-                }
-
-                // 2. Flecha Derecha: Se oculta si llegamos al final
-                if (scrollLeft + clientWidth >= scrollWidth - 10) {
-                    nextBtn.classList.add('hidden-arrow');
-                } else {
-                    nextBtn.classList.remove('hidden-arrow');
-                }
-            };
-
-            // Escuchar el evento de scroll
-            container.addEventListener('scroll', updateArrows);
-            window.addEventListener('resize', updateArrows);
-
-            // Funcionalidad de clic (por si script.js no lo cubre o para asegurar)
-            prevBtn.addEventListener('click', () => {
-                container.scrollBy({ left: -320, behavior: 'smooth' });
-            });
-
-            nextBtn.addEventListener('click', () => {
-                container.scrollBy({ left: 320, behavior: 'smooth' });
-            });
-
-            // Chequeo inicial
-            updateArrows();
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuList = document.querySelector('.menu-list');
-
-        // Definimos los colores aquí para fácil edición
-        const colorOriginal = '#041E32'; // Azul Oscuro (Hamburguesa)
-        const colorActivo = '#00ADEF';   // Azul Claro/Cyan (Cruz) - Puedes ajustar este tono
-
-        if (menuToggle && menuList) {
-            menuToggle.addEventListener('click', () => {
-                // Alternar la clase 'active' para mostrar/ocultar el menú
-                menuList.classList.toggle('active');
-                
-                // Lógica de Icono y Color
-                if (menuList.classList.contains('active')) {
-                    // ESTADO ABIERTO (CRUZ)
-                    menuToggle.innerHTML = '✕'; 
-                    menuToggle.style.color = colorActivo; // Se pone azul
-                    // Quitamos el scaleY para la X porque la X no necesita ser aplastada
-                    menuToggle.style.transform = 'scaleY(1)'; 
-                } else {
-                    // ESTADO CERRADO (HAMBURGUESA)
-                    menuToggle.innerHTML = '☰'; 
-                    menuToggle.style.color = colorOriginal; // Vuelve al color original
-                    // Volvemos a aplastar la hamburguesa para que se vea estilizada
-                    menuToggle.style.transform = 'scaleY(0.8)'; 
-                }
-            });
-
-            // Cerrar el menú automáticamente al hacer click en un enlace
-            const navLinks = document.querySelectorAll('.menu-list a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    menuList.classList.remove('active');
-                    
-                    // Reseteamos el icono al cerrar por click en enlace
-                    menuToggle.innerHTML = '☰';
-                    menuToggle.style.color = colorOriginal;
-                    menuToggle.style.transform = 'scaleY(0.8)';
-                });
-            });
-        }
-    });
-</script>
+    <script src="script.min.js" defer></script>
 </body>
 
 </html>

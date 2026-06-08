@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPONECT - Presentación Corporativa</title>
+    <!-- Fuente Inter: El estándar actual para diseño corporativo limpio -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Design Tokens --- */
+        :root {
+            /* Colores de Branding IMPONECT */
+            --brand-primary: #0b3142; 
+            --brand-accent: #b6862d; 
+            
+            /* Text Colors */
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --text-light: #9ca3af;
+            
+            /* Borders & UI Colors */
+            --border-light: rgba(229, 231, 235, 0.6);
+            --bg-surface: #f9fafb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- Base Reset --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #cbd5e1; /* Fondo oscuro exterior */
+            line-height: 1.5; /* Reducido levemente para ganar espacio vertical */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* --- ESTA ES LA REGLA MÁGICA PARA EVITAR BORDES BLANCOS --- */
+        @page {
+            size: A4;
+            margin: 0; 
+        }
+
+        /* --- Contenedor de la página A4 --- */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 12mm; /* Espacio entre el borde de la hoja y la "Hoja Blanca" interna */
+            margin: 5mm auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* Capa 1: Imagen de Almacén Difuminada */
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: -10px; /* Previene bordes blancos por el blur */
+            background-image: url('../assets/imagen-rectangulo-ancho.jpg'); /* TU RUTA LOCAL */
+            background-size: cover;
+            background-position: center;
+            /* EDITAR AQUÍ PARA EL NIVEL DE DESENFOQUE */
+            filter: blur(4px); 
+            opacity: 1; 
+            z-index: -2; 
+        }
+
+        /* Capa 2: Superposición Color Marca */
+        .page::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /* EDITAR AQUÍ PARA OPACIDAD DEL TINTE AZUL SOBRE LA IMAGEN */
+            background-color: rgba(11, 49, 66, 0.3);
+            z-index: -1; 
+        }
+
+        /* Capa 3: La "Hoja Blanca" (Donde va el contenido) */
+        .content-wrapper {
+            /* EDITAR AQUÍ PARA LA TRANSPARENCIA DE LA HOJA BLANCA CENTRAL */
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 12px;
+            padding: 25mm 20mm; /* Padding interno del contenido */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            z-index: 2; 
+            position: relative;
+        }
+
+        /* --- Configuración de Impresión --- */
+        @media print {
+            body { background: none; margin: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none; 
+                width: 210mm; 
+                height: 297mm;
+                padding: 12mm; /* Mantenemos el marco de la imagen en la impresión */
+            }
+            .content-wrapper { box-shadow: none; } 
+            .page::before, .page::after, .content-wrapper {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* --- Tipografía UI --- */
+        h1, h2, h3, h4 { color: var(--brand-primary); letter-spacing: -0.02em; }
+        .text-lead { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; font-weight: 400; margin-bottom: 1rem; }
+
+        /* --- Componente: UI Header --- */
+        .ui-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 1rem; border-bottom: 2px solid var(--brand-accent); margin-bottom: 1.5rem;
+        }
+
+        .ui-brand {
+            font-size: 1.5rem; font-weight: 800; color: var(--brand-primary);
+            letter-spacing: -0.05em; display: flex; align-items: center; gap: 10px;
+        }
+
+        .ui-brand::before {
+            content: ''; display: block; width: 12px; height: 12px;
+            background-color: var(--brand-accent); border-radius: 3px;
+        }
+
+        /* --- Componente: Badge / Pill --- */
+        .badge {
+            display: inline-flex; align-items: center; padding: 0.25rem 0.75rem;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; border-radius: 9999px; background-color: var(--bg-surface);
+            color: var(--brand-primary); border: 1px solid var(--brand-primary);
+        }
+
+        /* --- Componente: Section Title --- */
+        .section-title { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.25rem; line-height: 1.1; }
+        .section-subtitle { font-size: 1rem; color: var(--brand-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.25rem; }
+
+        /* --- Componente: UI Card --- */
+        .ui-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 1rem; }
+        .ui-card {
+            background-color: rgba(255, 255, 255, 0.95); 
+            border: 1px solid var(--border-light);
+            border-radius: 8px; padding: 1.25rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+        }
+        .ui-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background-color: var(--brand-primary); }
+        .ui-card:nth-child(even)::before { background-color: var(--brand-accent); }
+        .ui-card-icon {
+            width: 32px; height: 32px; background-color: var(--bg-surface); border: 1px solid var(--border-light);
+            border-radius: 6px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.75rem; color: var(--brand-accent); font-weight: bold; font-size: 1rem;
+        }
+        .ui-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .ui-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+
+        /* --- Componente: Stepper --- */
+        .stepper-container { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; position: relative; }
+        .stepper-container::before {
+            content: ''; position: absolute; left: 3rem; top: 0; bottom: 0;
+            width: 2px; background-color: var(--border-light); z-index: 0;
+        }
+        .stepper-item { display: flex; gap: 1.5rem; position: relative; z-index: 1; }
+        .stepper-indicator {
+            width: 2.5rem; height: 2.5rem; background-color: var(--bg-base); border: 2px solid var(--brand-primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;
+            color: var(--brand-primary); font-size: 0.875rem; flex-shrink: 0; box-shadow: 0 0 0 4px var(--bg-base);
+        }
+        .stepper-content h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; padding-top: 0.25rem; }
+        .stepper-content p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+        /* --- Componente: Box Alert --- */
+        .alert-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px dashed var(--brand-accent);
+            border-left: 4px solid var(--brand-accent); border-radius: 8px; padding: 1.25rem; margin-top: 1.5rem;
+        }
+        .alert-box h4 { font-size: 1.05rem; margin-bottom: 0.25rem; color: var(--brand-primary); }
+        .alert-box p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+        /* --- Componente: Footer --- */
+        .ui-footer {
+            margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-light);
+            display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;
+            color: var(--text-muted); font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ================= PÁGINA 1: PORTADA ================= -->
+    <div class="page">
+        <!-- La Hoja Blanca Flotante -->
+        <div class="content-wrapper" style="justify-content: center; align-items: center; text-align: center;">
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <div style="font-size: 4.5rem; font-weight: 800; color: var(--brand-primary); letter-spacing: -0.05em; display: flex; align-items: center; gap: 10px;">IMPONECT</div>
+            </div>
+            
+            <hr style="width: 5rem; border: #b6862d 2px solid; margin: 1rem 0;">
+            
+            <h1 style="font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.04em;">
+                Importación<br>
+                <span style="color: transparent; -webkit-text-stroke: 1px var(--brand-primary);">Estratégica</span> &<br>
+                Búsqueda a <span style="color: transparent; -webkit-text-stroke: 1px var(--brand-primary);">Demanda</span>.
+            </h1>
+            
+            <p class="text-lead" style="max-width: 80%; margin-bottom: 3rem;">
+                Simplificamos el comercio internacional. Localizamos, auditamos e importamos puerta a puerta las materias primas y maquinarias que su empresa necesita para reducir costos.
+            </p>
+        </div>
+    </div>
+
+    <!-- ================= PÁGINA 2: SOBRE NOSOTROS ================= -->
+    <div class="page">
+        <div class="content-wrapper">
+            <div class="ui-header">
+                <div class="ui-brand">IMPONECT</div>
+                <div class="badge">Perfil de la Empresa</div>
+            </div>
+
+            <div>
+                <h2 class="section-title">Su departamento externo de compras internacionales.</h2>
+                <div class="section-subtitle">Sobre Nosotros</div>
+                
+                <p class="text-lead">
+                    <strong>IMPONECT</strong> nace para resolver el dolor de cabeza que implica comprar en el exterior. Nos integramos a su empresa de manera transparente, funcionando como una extensión de su equipo logístico y de compras.
+                </p>
+                <p class="text-lead">
+                    Nuestra fortaleza es la <strong>búsqueda a demanda</strong>. Si su empresa necesita reducir el costo de un insumo, mejorar la calidad de una materia prima o traer maquinaria específica, nosotros rastreamos el mercado global, negociamos directo con la fábrica y lo entregamos en la puerta de su depósito, encargándonos de todo el proceso de punta a punta.
+                </p>
+
+                <div style="display: flex; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="alert-box" style="flex: 1; border-left-color: var(--brand-primary);">
+                        <h4>Nuestra Misión</h4>
+                        <p>Reducir los costos operativos y de inventario de nuestros clientes, eliminando las barreras del idioma, la burocracia aduanera y el riesgo de fraudes al importar.</p>
+                    </div>
+                    
+                    <div class="alert-box" style="flex: 1;">
+                        <h4>Visión Comercial</h4>
+                        <p>Ser el socio estratégico de las empresas locales, brindando un acceso seguro, directo y sumamente rentable a los centros de producción global.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-footer">
+                <span>© 2026 IMPONECT</span>
+                <span>Página 01</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PÁGINA 3: SERVICIOS ================= -->
+    <div class="page">
+        <div class="content-wrapper">
+            <div class="ui-header">
+                <div class="ui-brand">IMPONECT</div>
+                <div class="badge">Nuestros Servicios</div>
+            </div>
+
+            <div>
+                <h2 class="section-title">Soluciones integrales sin dolores de cabeza.</h2>
+                <div class="section-subtitle">Propuesta de Valor</div>
+                
+                <p class="text-lead">
+                    Sabemos que la logística internacional y la aduana pueden ser complejas. Por eso, diseñamos un servicio donde nosotros asumimos el trabajo pesado para que usted se enfoque en su negocio.
+                </p>
+
+                <div class="ui-grid">
+                    <div class="ui-card">
+                        <div class="ui-card-icon">01</div>
+                        <h4>Búsqueda a Demanda (Sourcing)</h4>
+                        <p>Usted nos indica qué producto necesita, nosotros buscamos y filtramos fabricantes certificados para conseguirle la mejor relación precio-calidad.</p>
+                    </div>
+
+                    <div class="ui-card">
+                        <div class="ui-card-icon">02</div>
+                        <h4>Control de Calidad en Origen</h4>
+                        <p>Ofrecemos servicio de Control de Calidad en vivo con nuestro agente en Español. Garantizamos que reciba exactamente lo que compró, eliminando sorpresas al abrir el contenedor.</p>
+                    </div>
+
+                    <div class="ui-card">
+                        <div class="ui-card-icon">03</div>
+                        <h4>Gestión Aduanera e Impuestos</h4>
+                        <p>Nos encargamos de toda la burocracia. Gestionamos las clasificaciones arancelarias, licencias, certificaciones e impuestos para asegurar que su mercadería ingrese al país sin demoras ni multas.</p>
+                    </div>
+
+                    <div class="ui-card">
+                        <div class="ui-card-icon">04</div>
+                        <h4>Logística Puerta a Puerta</h4>
+                        <p>Con nuestro servicio de Pick Up retiramos su mercadería por la fábrica del proveedor, revisamos si el producto requiere intervención, realizamos el flete marítimo o aéreo internacional, nos encargamos de la tributación aduanera, nacionalización de la carga y, por último, despachamos a dirección declarada dejando la carga en su depósito o fábrica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-footer">
+                <span>© 2026 IMPONECT</span>
+                <span>Página 02</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PÁGINA 4: METODOLOGÍA ================= -->
+    <div class="page">
+        <div class="content-wrapper">
+            <div class="ui-header">
+                <div class="ui-brand">IMPONECT</div>
+                <div class="badge">Esquema de Trabajo</div>
+            </div>
+
+            <div>
+                <h2 class="section-title">Un proceso claro y seguro.</h2>
+                <div class="section-subtitle">Cómo Trabajamos</div>
+                
+                <p class="text-lead">
+                    Mantenemos a nuestros clientes informados en cada etapa, garantizando total transparencia financiera y operativa desde el primer contacto hasta la entrega final.
+                </p>
+
+                <div class="stepper-container">
+                    <div class="stepper-item">
+                        <div class="stepper-indicator">1</div>
+                        <div class="stepper-content">
+                            <h4>Análisis de Requerimientos</h4>
+                            <p>Nos reunimos para entender su necesidad. Definimos en detalle el producto, características exigidas, volumen de compra, necesidad de personalización y, en lo posible, costo objetivo ideal.</p>
+                        </div>
+                    </div>
+
+                    <div class="stepper-item">
+                        <div class="stepper-indicator">2</div>
+                        <div class="stepper-content">
+                            <h4>Búsqueda global y Muestras</h4>
+                            <p>Contactamos a fábricas verificadas, comparamos cotizaciones, solicitamos muestras físicas si se requiere un control de calidad y negociamos los mejores precios a su favor.</p>
+                        </div>
+                    </div>
+
+                    <div class="stepper-item">
+                        <div class="stepper-indicator">3</div>
+                        <div class="stepper-content">
+                            <h4>Estructura de Costos</h4>
+                            <p>Le presentamos una cotización 100% transparente. Sabrá con exactitud cuánto le costará el producto puesto en su puerta, incluyendo fletes, seguros y gastos de aduana.</p>
+                        </div>
+                    </div>
+
+                    <div class="stepper-item">
+                        <div class="stepper-indicator">4</div>
+                        <div class="stepper-content">
+                            <h4>Ejecución "Punta-a-Punta" y Entrega</h4>
+                            <p>Usted aprueba la operación, revisamos la seña necesaria y nosotros hacemos el resto: pagamos al proveedor, auditamos, embarcamos, una vez en aduanas se abona el resto para liberar la carga y le entregamos la mercadería en su dirección declarada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-footer">
+                <span>© 2026 IMPONECT</span>
+                <span>Página 03</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PÁGINA 5: CONTACTO ================= -->
+    <div class="page">
+        <div class="content-wrapper" style="align-items: center; justify-content: center; text-align: center;">
+            
+            <div class="badge" style="margin-bottom: 2rem;font-size: 1rem; border: 2px solid;">¿Comenzamos?</div>
+            
+            <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main);">
+                Escribinos y optimizá tus compras lo antes posible.
+            </h2>
+            
+            <p class="text-lead" style="margin-bottom: 3rem; max-width: 600px;">
+                Permitinos demostrar con una cotización real cómo nuestro servicio de búsqueda a demanda puede reducir drásticamente los costos de sus insumos y materias primas con importaciones estratégicas.
+            </p>
+
+            <div class="ui-card" style="width: 100%; max-width: 500px; text-align: left; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Correo Electrónico</div>
+                        <div style="font-weight: 600; color: var(--brand-primary); font-size: 1.1rem;">ventas@imponect.com</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">WhatsApp</div>
+                        <div style="font-weight: 600; color: var(--brand-primary); font-size: 1.1rem;">+54 3564-369474</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Sitio Web</div>
+                        <div style="font-weight: 600; color: var(--brand-primary); font-size: 1.1rem;">www.imponect.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; font-size: 1.3rem; color: var(--text-muted); font-weight: 500;">
+                Documento Comercial
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

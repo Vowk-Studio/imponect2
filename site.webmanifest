@@ -1,0 +1,23 @@
+{
+  "name": "Imponect",
+  "short_name": "Imponect",
+  "description": "Importacion y logistica global para negocios B2B.",
+  "lang": "es-AR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#041E32",
+  "theme_color": "#041E32",
+  "icons": [
+    {
+      "src": "/assets/optimized/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/optimized/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
